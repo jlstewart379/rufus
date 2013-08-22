@@ -28,7 +28,6 @@ describe Rufus::Accessors::View do
         view.should_receive(:find_elements).and_return(nil)
         view.exists?.should be_false
       end
-
     end
   end
 end

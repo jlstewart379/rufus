@@ -19,10 +19,13 @@ module Rufus
 
 
       def args
+        assign_args(:name) if @locator[:name]
+      end
+
+      def assign_args(sym)
         args = []
-        #":name, '#{@locator[:name]}'" if @locator[:name]
-        args[0] = :name
-        args[1] = @locator[:name]
+        args[0] = sym
+        args[1] = @locator[sym]
         args
       end
     end
