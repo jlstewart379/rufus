@@ -9,14 +9,9 @@ module Rufus
 
       def exists?
         element = find_elements(args)
-
-        if element.nil?
-          false
-        else
-          true
-        end
+        false
+        true unless element.nil?
       end
-
 
       def args
         assign_args(:name) if @locator[:name]

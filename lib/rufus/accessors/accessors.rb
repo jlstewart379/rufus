@@ -1,9 +1,9 @@
 module Rufus
   module Accessors
-
-    def button(name, locator)
-
-    end
-
+    def view(name, locator)
+      define_method("#{name}_view") do
+        Rufus::Accessors::View.new(locator)
+      end
+   end
   end
 end
