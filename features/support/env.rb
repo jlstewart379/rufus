@@ -1,9 +1,17 @@
-require 'rspec/expectations'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../../', 'lib'))
+
+require 'rufus'
+require 'rspec-expectations'
 require 'selenium-webdriver'
+require 'require_all'
+
+World(Rufus::Navigation)
+
+require_rel '/screens'
 
 
 # Where our app lives, relative to this file
-APP_PATH = '/Users/jstewart/Documents/projects/copilot/Frank/frankified_build/CoPilot.app'
+APP_PATH = '/Users/jstewart/Library/Developer/Xcode/DerivedData/RufusApp-bseyccodcsszzhcwbshowgsppecs/Build/Products/Debug-iphoneos/Rufus.app'
 
 # What we need as a capability --> iOS device, where our app is, ect.
 def capabilities
@@ -25,4 +33,4 @@ def selenium
   @driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => server_url)
 end
 
-After { @driver.quit }
+#After { @driver.quit }
