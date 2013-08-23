@@ -11,7 +11,7 @@ require_rel '/screens'
 
 
 # Where our app lives, relative to this file
-APP_PATH = '/Users/jstewart/Library/Developer/Xcode/DerivedData/RufusApp-bseyccodcsszzhcwbshowgsppecs/Build/Products/Debug-iphoneos/Rufus.app'
+APP_PATH = '/Users/jstewart/Library/Developer/Xcode/DerivedData/RufusApp-bseyccodcsszzhcwbshowgsppecs/Build/Products/Debug-iphoneos/RufusApp.app'
 
 # What we need as a capability --> iOS device, where our app is, ect.
 def capabilities

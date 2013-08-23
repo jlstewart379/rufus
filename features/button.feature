@@ -1,4 +1,4 @@
-Feature: Selecting buttons
+Feature: Interacting with views
 
-  Scenario: Selecting a button by label
+  Scenario: Using a view to define a page
     Given I am on the HomePage
