@@ -13,6 +13,11 @@ module Rufus
         true unless element.nil?
       end
 
+      def click
+        selenium.find_elements(how,what).click
+      end
+
+      private
       def how
         :name if @locator[:label]
       end

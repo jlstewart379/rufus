@@ -3,12 +3,11 @@ require 'rufus'
 class HomePage
   include Rufus
 
-  view(:rufus_button, :label=>'rufusButton')
-
+  view(:view_rufus, :label=>'rufusButton')
 
 
   def active?
-     rufus_button_view.exists?
+     rufus_view.exists?
   end
 
 end

@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Rufus::Accessors::View do
   context 'checking for existence' do
 
-    let(:view){Rufus::Accessors::View.new(:name => 'testView')}
+    let(:view){Rufus::Accessors::View.new(:label => 'testView')}
     let(:selenium){double('Selenium::WebDriver')}
 
     before(:each) do
@@ -23,6 +23,16 @@ describe Rufus::Accessors::View do
       it 'reports that the element does not exist' do
         selenium.should_receive(:find_elements).and_return(nil)
         view.exists?.should be_false
+      end
+    end
+
+    context 'clicking an element' do
+      let(:element){double('Selenium element')}
+
+      it 'can click an element' do
+        selenium.should_receive(:find_elements).with(:name, 'testView').and_return(element)
+        element.should_receive(:click)
+        view.click
       end
     end
   end

@@ -21,6 +21,11 @@ describe Rufus::Accessors do
     it 'can return the view object' do
       screen.some_view_view.should be(view)
     end
+
+    it 'reports true when view clicked' do
+      screen.some_view.should be_true
+    end
+
   end
 end
 
