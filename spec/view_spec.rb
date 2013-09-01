@@ -6,6 +6,7 @@ describe Rufus::Accessors::View do
   context 'checking for existence' do
 
     let(:view){Rufus::Accessors::View.new(:label => 'testView')}
+    let(:view_by_text){Rufus::Accessors::View.new(:text => "textViewText")}
     let(:selenium){double('Selenium::WebDriver')}
 
     before(:each) do
@@ -35,6 +36,13 @@ describe Rufus::Accessors::View do
         view.click
       end
     end
+
+    context 'locaging elements by text' do
+      it 'can locate an element using text locator' do
+
+      end
+    end
+
   end
 end
 

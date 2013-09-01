@@ -22,10 +22,10 @@ describe Rufus::Accessors do
       screen.some_view_view.should be(view)
     end
 
-    it 'reports true when view clicked' do
-      screen.some_view.should be_true
+    it 'can click a view' do
+      view.should_receive(:click)
+      screen.some_view
     end
-
   end
 end
 

@@ -19,11 +19,13 @@ module Rufus
 
       private
       def how
-        :name if @locator[:label]
+        :name if @locator[:label] || @locator[:text]
+
       end
 
       def what
         @locator[:label] unless @locator[:label].nil?
+        @locator[:text] unless @locator[:text].nil?
       end
     end
   end
