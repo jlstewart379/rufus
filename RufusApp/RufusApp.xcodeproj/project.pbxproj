@@ -124,10 +124,10 @@
 			children = (
 				B88C11EC17BD550E00A62E9D /* RUAppDelegate.h */,
 				B88C11ED17BD550E00A62E9D /* RUAppDelegate.m */,
-				B88C11F517BD550E00A62E9D /* RUViewController.h */,
 				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
 				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
 				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
+				B88C11F517BD550E00A62E9D /* RUViewController.h */,
 				B88C11F617BD550E00A62E9D /* RUViewController.m */,
 				B88C11F817BD550E00A62E9D /* RUViewController.xib */,
 				B88C11E417BD550E00A62E9D /* Supporting Files */,
@@ -466,6 +466,7 @@
 				B88C121417BD550E00A62E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B88C121517BD550E00A62E9D /* Build configuration list for PBXNativeTarget "RufusAppTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +475,7 @@
 				B88C121717BD550E00A62E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,7 @@
 //
 
 #import "RUViewController.h"
+#import "RufusPageViewController.h"
 
 @interface RUViewController ()
 
@@ -27,5 +28,9 @@
 }
 
 - (IBAction)toRufusPage:(id)sender {
+    
+    RufusPageViewController *rufusPageViewController = [[RufusPageViewController alloc] init];
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rufusPageViewController];
+    [[self navigationController] pushViewController:rufusPageViewController animated:YES]; 
 }
 @end
