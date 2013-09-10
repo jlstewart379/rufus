@@ -13,12 +13,14 @@ require_rel '/screens'
 # Where our app lives, relative to this file
 APP_PATH = '/Users/jstewart/Library/Developer/Xcode/DerivedData/RufusApp-bseyccodcsszzhcwbshowgsppecs/Build/Products/Debug-iphoneos/RufusApp.app'
 
+#APP_PATH = '/Users/jstewart/rubymineprojects/rufus/rufusapp/frank/frankified_build/RufusApp.app'
+
 # What we need as a capability --> iOS device, where our app is, ect.
 def capabilities
   {
       'browserName' => 'iOS',
       'platform' => 'Mac',
-      'version' => '6.1.3 (10B329)',
+      'version' => '6.1',
       'app' => APP_PATH
   }
 end

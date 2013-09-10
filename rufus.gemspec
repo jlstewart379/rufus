@@ -2,8 +2,6 @@
 #lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'furter/version'
-
 Gem::Specification.new do |gem|
   gem.name          = "rufus"
   gem.version       = "0.0.0"

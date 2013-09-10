@@ -8,24 +8,24 @@ module Rufus
       end
 
       def exists?
-        element = selenium.find_elements(how,what)
+        element = selenium.find_elements(how,what)[0]
         false
         true unless element.nil?
       end
 
       def click
-        selenium.find_elements(how,what).click
+        element = selenium.find_elements(how,what)[0]
+        element.click
       end
 
       private
       def how
         :name if @locator[:label] || @locator[:text]
-
       end
 
       def what
         @locator[:label] unless @locator[:label].nil?
-        @locator[:text] unless @locator[:text].nil?
+        #@locator[:text] unless @locator[:text].nil?
       end
     end
   end
