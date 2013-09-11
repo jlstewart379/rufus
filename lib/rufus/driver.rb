@@ -4,7 +4,7 @@ module Rufus
   class Driver
 
     def initialize
-      @config = YAML.load 'config.yml' unless !File.exists?('config.yml')
+      @config = YAML.load_file('config.yml') unless !File.exists?('config.yml')
     end
 
     def config
@@ -12,3 +12,6 @@ module Rufus
     end
   end
 end
+
+
+#perhaps set or replace a config value?
