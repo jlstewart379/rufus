@@ -13,3 +13,4 @@ Given(/^I have created a valid appium driver for iOS$/) do
   config["app"].should eq app_path
 
 end
+
