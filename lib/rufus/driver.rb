@@ -17,6 +17,10 @@ module Rufus
       driver.find_elements(:name, name)[0]
     end
 
+    def click(name)
+      find(name).click
+    end
+
     private
     def capabilities
       {

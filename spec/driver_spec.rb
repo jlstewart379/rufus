@@ -27,10 +27,11 @@ describe Rufus::Driver do
     end
  end
 
-  context 'finding elements' do
+  context 'dealing with elements' do
 
     let(:mock_driver){double('mock selenium driver')}
-    let(:mock_elements){double('mock selenium driver')}
+    let(:mock_elements){double('mock selenium driver elements list')}
+    let(:mock_element){double('mock selenium driver element')}
 
     before(:each) do
       File.stub(:exists?).and_return(true)
@@ -43,6 +44,14 @@ describe Rufus::Driver do
       mock_driver.should_receive(:find_elements).with(:name, 'rufusButton').and_return(mock_elements)
       mock_elements.should_receive(:[]).with(0)
       @driver.find('rufusButton')
+    end
+
+    it 'can click on an element by name' do
+      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+      mock_driver.should_receive(:find_elements).with(:name, 'rufusButton').and_return(mock_elements)
+      mock_elements.should_receive(:[]).with(0).and_return(mock_element)
+      mock_element.should_receive(:click)
+      @driver.click('rufusButton')
     end
 
   end
