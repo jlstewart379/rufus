@@ -1,4 +1,3 @@
-require 'selenium-webdriver'
 require 'rufus/navigation'
 require 'rufus/accessors/accessors'
 require 'rufus/accessors/view'

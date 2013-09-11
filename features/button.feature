@@ -1,13 +1,16 @@
 Feature: Interacting with views
   There are some things here that we can use
 
-  Background:
-    Given I am on the HomePage
-
   @clicking
   Scenario: Clicking views
-   When I click the view defined "rufus"
+    Given I can do it all
+
+
+#    Given I am on the HomePage
+#    When I click the view defined "rufus"
 #    Then I am on the "RufusPage"
+
+
 
 #  @first
 #  Scenario: Using a view to define a page
