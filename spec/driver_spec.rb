@@ -36,19 +36,19 @@ describe Rufus::Driver do
     before(:each) do
       File.stub(:exists?).and_return(true)
       YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+
       @driver = Rufus::Driver.new
+
+      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+      mock_driver.should_receive(:find_elements).with(:name, 'rufusButton').and_return(mock_elements)
     end
 
     it 'can find an element by name' do
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
-      mock_driver.should_receive(:find_elements).with(:name, 'rufusButton').and_return(mock_elements)
       mock_elements.should_receive(:[]).with(0)
       @driver.find('rufusButton')
     end
 
     it 'can click on an element by name' do
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
-      mock_driver.should_receive(:find_elements).with(:name, 'rufusButton').and_return(mock_elements)
       mock_elements.should_receive(:[]).with(0).and_return(mock_element)
       mock_element.should_receive(:click)
       @driver.click('rufusButton')

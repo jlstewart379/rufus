@@ -6,11 +6,15 @@ module Rufus
 
     def initialize
       @config = YAML.load_file('config.yml') unless !File.exists?('config.yml')
-      @url = 'http:127.0.0.1:4723/wd/hub'
+      @url = 'http://127.0.0.1:4723/wd/hub'
     end
 
     def config
       @config
+    end
+
+    def server_url
+      @url
     end
 
     def find(name)
@@ -21,7 +25,6 @@ module Rufus
       find(name).click
     end
 
-    private
     def capabilities
       {
           'browserName' => @config["browser"],
