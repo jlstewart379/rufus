@@ -25,6 +25,14 @@ module Rufus
       find(name).click
     end
 
+    def enabled?(name)
+      find(name).enabled?
+    end
+
+    def enabled?(name)
+      find(name).displayed?
+    end
+
     def capabilities
       {
           'browserName' => @config["browser"],
