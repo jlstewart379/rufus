@@ -63,7 +63,7 @@ describe Rufus::Driver do
     it 'can tell if an element is displayed on screen' do
       mock_elements.should_receive(:[]).with(0).and_return(mock_element)
       mock_element.should_receive(:displayed?).and_return(true)
-      @driver.enabled?('rufusButton').should be_true
+      @driver.displayed?('rufusButton').should be_true
     end
 
   end

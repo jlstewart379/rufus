@@ -29,7 +29,7 @@ module Rufus
       find(name).enabled?
     end
 
-    def enabled?(name)
+    def displayed?(name)
       find(name).displayed?
     end
 
