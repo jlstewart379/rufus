@@ -109,13 +109,12 @@ describe Rufus::Driver do
       mock_rufus_button.should_receive(:[]).exactly(20).times.with(0).and_return(mock_rufus_button)
       mock_rufus_page_button.should_receive(:[]).exactly(10).times.with(0).and_return(mock_rufus_page_button)
 
-
       mock_driver.should_receive(:find_elements).exactly(20).times.with(:name, 'rufusButton').and_return(mock_rufus_button)
       mock_driver.should_receive(:find_elements).exactly(10).times.with(:name, 'rufusPageButton').and_return(mock_rufus_page_button)
       mock_rufus_button.should_receive(:click).exactly(20).times
       mock_rufus_page_button.should_receive(:click).exactly(10).times
 
-      @driver.start_sequence('rufusButton', 'rufusPageButton', 'rufusButton', 10)
+      @driver.timed_sequence(['rufusButton', 'rufusPageButton', 'rufusButton'] , 10, 0)
 
     end
   end

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RufusPageViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *rufusPageButton;
+- (IBAction)goToHomePage:(id)sender;
 
 @end

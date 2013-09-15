@@ -7,7 +7,7 @@ module Rufus
     def initialize
       @config = YAML.load_file('config.yml') unless !File.exists?('config.yml')
 
-      if @config["appium_url"].eql?("") || @config["appium_url"].nil?
+      if @config["appium_url"].nil? || @config["appium_url"].eql?("")
         @url = 'http://127.0.0.1:4723/wd/hub'
       else
         @url = @config["appium_url"]
@@ -47,15 +47,19 @@ module Rufus
       find(name).send_keys keys
     end
 
+    def sequence(*names, times)
+      timed_sequence(names, times, 1)
+    end
 
-    def start_sequence(*names, times)
+
+    def timed_sequence(names, times, seconds)
 
       current = 0
 
       until current == times
         names.each do |name|
           click name
-          sleep 1
+          sleep seconds
         end
         current += 1
       end

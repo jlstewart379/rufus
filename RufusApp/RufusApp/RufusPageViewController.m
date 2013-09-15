@@ -7,6 +7,7 @@
 //
 
 #import "RufusPageViewController.h"
+#import "RUViewController.h"
 
 @interface RufusPageViewController ()
 
@@ -33,6 +34,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)goToHomePage:(id)sender {
+    
+    RUViewController *ruViewController = [[RUViewController alloc] init];
+    [[self navigationController] pushViewController:ruViewController animated:YES];
 }
 
 @end
