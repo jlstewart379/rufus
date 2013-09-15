@@ -6,7 +6,17 @@ module Rufus
 
     def initialize
       @config = YAML.load_file('config.yml') unless !File.exists?('config.yml')
-      @url = 'http://127.0.0.1:4723/wd/hub'
+
+      if @config["appium_url"].eql?("") || @config["appium_url"].nil?
+        @url = 'http://127.0.0.1:4723/wd/hub'
+      else
+        @url = @config["appium_url"]
+      end
+
+    end
+
+    def start
+      driver.get @url
     end
 
     def config
@@ -32,6 +42,26 @@ module Rufus
     def displayed?(name)
       find(name).displayed?
     end
+
+    def type(keys, name)
+      find(name).send_keys keys
+    end
+
+
+    def start_sequence(*names, times)
+
+      current = 0
+
+      until current == times
+        names.each do |name|
+          click name
+          sleep 1
+        end
+        current += 1
+      end
+    end
+
+    private
 
     def capabilities
       {
