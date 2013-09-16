@@ -18,3 +18,11 @@ task :fruitstrap do
 
   end
 end
+
+desc "Start Appium server"
+task :appium do
+
+  Dir.chdir("/Users/jstewart/rubymineprojects/rufus/appium") do
+      `appium -U 4550a561efc2c047637f342bd6320623ba98c385 --app /Users/jstewart/Library/Developer/Xcode/DerivedData/RufusApp-bseyccodcsszzhcwbshowgsppecs/Build/Products/Debug-iphoneos/RufusApp.app`
+  end
+end

@@ -1,0 +1,3 @@
+[submodule "appium"]
+	path = appium
+	url = https://github.com/jlstewart379/appium.git
