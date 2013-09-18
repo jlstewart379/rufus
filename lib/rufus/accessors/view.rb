@@ -14,8 +14,23 @@ module Rufus
       end
 
       def click
-        element = selenium.find(what)
-        element.click
+        selenium.find(what).click
+      end
+
+      def displayed?
+        selenium.find(what).displayed?
+      end
+
+      def enabled?
+        selenium.find(what).enabled?
+      end
+
+      def text
+        selenium.find(what).text
+      end
+
+      def send_keys(keys)
+        selenium.find(what).send_keys keys
       end
 
       private

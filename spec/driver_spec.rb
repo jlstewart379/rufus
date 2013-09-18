@@ -19,7 +19,7 @@ describe Rufus::Driver do
 
     it 'loads the config file' do
 
-      config = driver.config
+      config = @driver.config
       config["browser_name"].should eq("iOS")
       config["platform"].should eq("Mac")
       config["version"].should eq("6.1")
