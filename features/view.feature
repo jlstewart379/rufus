@@ -4,22 +4,11 @@ Feature: Interacting with views
   Background: Launch
     Given I start the driver
 
-  @clicking
     Scenario:  Clicking a view
-    Given  I can do it all
-#    Given I am on the HomePage
-#    When I click the view defined "rufus"
-#    Then I am on the "RufusPage"
+    Given I am on the HomePage
+    When I click the view defined "rufus"
+    Then I am on the "RufusPage"
 
-
-
-#  @first
-#  Scenario: Using a view to define a page
-#    Given I am on the HomePage
-
-
-
-#    Then I am on the "RufusPage"
 
 #  Scenario: Getting a view by text
 #    Given I am on the HomePage
