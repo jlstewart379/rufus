@@ -1,11 +1,12 @@
 Feature: Interacting with views
   There are some things here that we can use
 
+  Background: Launch
+    Given I start the driver
+
   @clicking
-  Scenario: Clicking views
-    Given I can do it all
-
-
+    Scenario:  Clicking a view
+    Given  I can do it all
 #    Given I am on the HomePage
 #    When I click the view defined "rufus"
 #    Then I am on the "RufusPage"

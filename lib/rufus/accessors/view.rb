@@ -8,13 +8,15 @@ module Rufus
       end
 
       def exists?
-        element = selenium.find_elements(how,what)[0]
+        #element = selenium.find_elements(how,what)[0]
+        element = selenium.find(what)
         false
         true unless element.nil?
       end
 
       def click
-        element = selenium.find_elements(how,what)[0]
+        #element = selenium.find_elements(how,what)[0]
+        element = selenium.find(what)
         element.click
       end
 

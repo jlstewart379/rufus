@@ -4,6 +4,7 @@ require 'rufus'
 require 'rspec-expectations'
 require 'selenium-webdriver'
 require 'require_all'
+require 'rufus/driver'
 
 World(Rufus::Navigation)
 
@@ -32,7 +33,20 @@ end
 
 # Set up a driver or, if one exists, return it
 def selenium
-  @driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => server_url)
-end
 
-#After { @driver.quit }
+  #@driver = Rufus::Driver.new if @driver.nil?
+  #@driver
+
+  if $driver.nil?
+    puts 'driver was nil'
+    $driver = Rufus::Driver.new
+  else
+    puts 'driver was not nil'
+    $driver
+  end
+
+
+
+  #@driver ||= Rufus::Driver.new
+  #@driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => server_url)
+end
