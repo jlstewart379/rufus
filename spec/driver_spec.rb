@@ -69,18 +69,57 @@ describe Rufus::Driver do
     end
   end
 
-  context 'choosing the url' do
+  context 'finding all elements of a type' do
 
+    let(:mock_driver){double('mock selenium driver')}
+    let(:mock1){double('first mock element')}
+    let(:mock2){double('second mock element')}
+    let(:mock3){double('third mock element')}
+
+    before(:each) do
+      File.stub(:exists?).and_return(true)
+      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+
+      @test_driver = Rufus::Driver.new
+
+      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+
+    end
+
+    it 'can find all elements on the screen' do
+      mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAButton').and_return([mock1, mock2, mock3])
+      mock1.should_receive(:text).and_return("one")
+      mock2.should_receive(:text).and_return("two")
+      mock3.should_receive(:text).and_return("three")
+      @test_driver.buttons.should == ["one", "two", "three"]
+    end
+
+    it 'can find all elements on the screen' do
+      mock_driver.should_receive(:find_elements).with(:tag_name, 'UIATextField').and_return([mock1, mock2, mock3])
+      mock1.should_receive(:text).and_return("one")
+      mock2.should_receive(:text).and_return("two")
+      mock3.should_receive(:text).and_return("three")
+      @test_driver.text_fields.should == ["one", "two", "three"]
+    end
+
+    it 'can find all labels on the screen' do
+      mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAStaticText').and_return([mock1, mock2, mock3])
+      mock1.should_receive(:text).and_return("one")
+      mock2.should_receive(:text).and_return("two")
+      mock3.should_receive(:text).and_return("three")
+      @test_driver.labels.should == ["one", "two", "three"]
+    end
+  end
+
+  context 'choosing the url' do
     before(:each) do
       File.stub(:exists?).and_return(true)
       YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
     end
-
     it 'sets the default url' do
       @driver.server_url.should eq 'http://127.0.0.1:4723/wd/hub'
     end
-
   end
 
   context 'executing button sequences' do
@@ -94,19 +133,13 @@ describe Rufus::Driver do
       YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
       Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
-
     end
 
     it 'can click buttons in sequence' do
-
-      #mock_rufus_button.should_receive(:[]).exactly(20).times.with(0).and_return(mock_rufus_button)
-      #mock_rufus_page_button.should_receive(:[]).exactly(10).times.with(0).and_return(mock_rufus_page_button)
-
       mock_driver.should_receive(:find_element).exactly(20).times.with(:name, 'rufusButton').and_return(mock_rufus_button)
       mock_driver.should_receive(:find_element).exactly(10).times.with(:name, 'rufusPageButton').and_return(mock_rufus_page_button)
       mock_rufus_button.should_receive(:click).exactly(20).times
       mock_rufus_page_button.should_receive(:click).exactly(10).times
-
       @driver.timed_sequence(['rufusButton', 'rufusPageButton', 'rufusButton'] , 10, 0)
 
     end

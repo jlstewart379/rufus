@@ -54,11 +54,35 @@ module Rufus
       timed_sequence(names, times, 1)
     end
 
+    def buttons
+      buttons = []
+      elements = elements_by_tag 'UIAButton'
+      elements.each do |element|
+        buttons << element.text
+      end
+      buttons
+    end
+
+    def text_fields
+      fields = []
+      elements = elements_by_tag 'UIATextField'
+      elements.each do |element|
+        fields << element.text
+      end
+      fields
+    end
+
+    def labels
+      labels = []
+      elements = elements_by_tag 'UIAStaticText'
+      elements.each do |element|
+        labels << element.text
+      end
+      labels
+    end
 
     def timed_sequence(names, times, seconds)
-
       current = 0
-
       until current == times
         names.each do |name|
           click(:name => name)
@@ -69,6 +93,10 @@ module Rufus
     end
 
     private
+
+    def elements_by_tag(name)
+      driver.find_elements(:tag_name, name)
+    end
 
     def capabilities
       {
