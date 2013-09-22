@@ -77,6 +77,15 @@ describe Rufus::Accessors::Label do
         label.send_keys("keyboard entries")
       end
     end
+
+    context 'finding a view by text' do
+      it 'can find a view by text' do
+        selenium.should_receive(:find_by_text).with('textViewText')
+        label.
+
+      end
+    end
+
   end
 end
 

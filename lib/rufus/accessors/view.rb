@@ -33,14 +33,14 @@ module Rufus
         selenium.find(what).send_keys keys
       end
 
-      private
-      def how
-        :name if @locator[:label] || @locator[:text]
+      def what
+        key = @locator.keys[0].to_sym
+        value = @locator[key]
+        {key => value}
       end
 
-      def what
-        @locator[:label] unless @locator[:label].nil?
-        #@locator[:text] unless @locator[:text].nil?
+      def locator
+        @locator
       end
     end
   end

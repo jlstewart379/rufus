@@ -27,24 +27,27 @@ module Rufus
       @url
     end
 
-    def find(name)
-      driver.find_elements(:name, name)[0]
+    def find(locator)
+      how = locator.keys[0].to_sym
+      what = locator[how]
+      driver.find_element(how, what)
     end
 
-    def click(name)
-      find(name).click
+    def click(locator)
+      find(locator).click
     end
 
-    def enabled?(name)
-      find(name).enabled?
+    def enabled?(locator)
+      find(locator).enabled?
     end
 
-    def displayed?(name)
-      find(name).displayed?
+    def displayed?(locator)
+      find(locator).displayed?
     end
 
     def type(keys, name)
-      find(name).send_keys keys
+      locator = {:name => name}
+      find(locator).send_keys keys
     end
 
     def sequence(*names, times)
@@ -58,7 +61,7 @@ module Rufus
 
       until current == times
         names.each do |name|
-          click name
+          click(:label => name)
           sleep seconds
         end
         current += 1
