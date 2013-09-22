@@ -8,7 +8,18 @@ module Rufus
       define_method("#{name}") do
         Rufus::Accessors::View.new(locator).click
       end
-   end
+    end
 
+    def label(name, locator)
+      view(name, locator)
+    end
+
+    def text(name, locator)
+      view(name, locator)
+    end
+
+    def button(name, locator)
+      view(name, locator)
+    end
   end
 end

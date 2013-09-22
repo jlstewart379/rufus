@@ -61,7 +61,7 @@ module Rufus
 
       until current == times
         names.each do |name|
-          click(:label => name)
+          click(:name => name)
           sleep seconds
         end
         current += 1
