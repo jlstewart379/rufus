@@ -112,6 +112,3 @@ module Rufus
     end
   end
 end
-
-
-#perhaps set or replace a config value?
