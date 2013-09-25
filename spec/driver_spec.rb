@@ -53,6 +53,11 @@ describe Rufus::Driver do
       @driver.click({:name =>'rufusButton'})
     end
 
+    it 'can click a button by name only' do
+      mock_element.should_receive(:click)
+      @driver.press_button 'rufusButton'
+    end
+
     it 'can tell if an element is enabled' do
       mock_element.should_receive(:enabled?).and_return(true)
       @driver.enabled?(:name => 'rufusButton').should be_true
@@ -86,7 +91,7 @@ describe Rufus::Driver do
 
     end
 
-    it 'can find all elements on the screen' do
+    it 'can find all button elements on the screen' do
       mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAButton').and_return([mock1, mock2, mock3])
       mock1.should_receive(:text).and_return("one")
       mock2.should_receive(:text).and_return("two")
@@ -94,7 +99,7 @@ describe Rufus::Driver do
       @test_driver.buttons.should == ["one", "two", "three"]
     end
 
-    it 'can find all elements on the screen' do
+    it 'can find all text field elements on the screen' do
       mock_driver.should_receive(:find_elements).with(:tag_name, 'UIATextField').and_return([mock1, mock2, mock3])
       mock1.should_receive(:text).and_return("one")
       mock2.should_receive(:text).and_return("two")

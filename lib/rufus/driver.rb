@@ -37,6 +37,10 @@ module Rufus
       find(locator).click
     end
 
+    def press_button name
+      click(:name => name)
+    end
+
     def enabled?(locator)
       find(locator).enabled?
     end
@@ -93,11 +97,11 @@ module Rufus
     end
 
     private
-
     def elements_by_tag(name)
       driver.find_elements(:tag_name, name)
     end
 
+    private
     def capabilities
       {
           'browserName' => @config["browser"],
