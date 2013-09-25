@@ -1,3 +1,5 @@
+Last Updated: 9-24-2013
+
 PREREQUISITES 
 --------------------------
 
@@ -39,6 +41,19 @@ After issuing the command there should be a message stating that the appium serv
 
 DEPLOYING TO DEVICE
 ----------------------------------
+
+The most consistent method of deployment I found was through libimobiledevice which one can install by visiting https://github.com/benvium/libimobiledevice-macosx
+
+The only gotcha I was generating the .ipa file that libimobiledevice parses for installation. Take the following steps to generate the .ipa archive.
+
+1. Build the app for deployment to device
+2. Navigate to the .app file that should be found in the ../Debug-iphoneos/ directory
+3. Created a foldler in that directory named 'Payload'. It must be named Payload
+4. Put a copy of the .app file in the Payload directory
+5. Compress the directory into a .zip archive
+6. Changed the .zip extension to .ipa
+7. Issue the command ideviceinstaller -i <PATH_TO_ARCHIVE_ENDING_IN_.IPA>
+
 
 
 
