@@ -2,6 +2,31 @@ Last Updated: 9-24-2013
 
 This project is intended to facilitate automated testing on iOS devices using cucumber and the Page Object pattern. 
 
+
+QUICK START GUIDE
+-----------------
+1. gem install rufus
+2. require 'rufus' in your Gemfile
+3. Clone appium into project directory (where .xcodeproj resides). Repo located at: https://github.com/appium/appium.git
+4. Create a config.yml in project directory with the following information:
+
+browser: iOS
+platform: Mac
+version: 6.1
+app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE_ID>/Build/Products/Debug-iphoneos/YourApp.app 
+
+5. Start appium server using node
+>node server.js -U <UDID> --app <PATH_TO_APP>
+
+6. Deploy to iOS device using libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
+
+7. Run tests
+>bundle exec cucumber
+
+
+LONG START GUIDE
+----------------
+
 PREREQUISITES 
 --------------------------
 1. Ruby
@@ -26,8 +51,7 @@ Appium must be installed to run it from the command line. The repository at http
 >git submodule init
 >git submodule update
 
-Look into the appium directory an make sure there is a file server.js. 
-
+If you did not download the rufus source code, clone appium into your project directory. Either way, look into the appium directory to make sure there is a file server.js. 
 
 CONFIGURING ENVIRONMENT 
 --------------------------------------------
