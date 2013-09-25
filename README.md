@@ -18,7 +18,7 @@ app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-ipho
 5. Start appium server using node
 >appium -U DEVICE_UDID --app YourApp.app
 
-6. Deploy to iOS device using libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
+6. Deploy to iOS device using XCode or libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
 
 7. Run tests
 >bundle exec cucumber
