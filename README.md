@@ -16,7 +16,7 @@ version: 6.1
 app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
 
 5. Start appium server using node
->node server.js -U <UDID> --app <PATH_TO_APP>
+>appium -U DEVICE_UDID --app YourApp.app
 
 6. Deploy to iOS device using libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
 
@@ -24,24 +24,19 @@ app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-ipho
 >bundle exec cucumber
 
 
-LONG START GUIDE
+#LONG START GUIDE
 ----------------
 
-PREREQUISITES 
---------------------------
-1. Ruby
-2. Homebrew
-3. Bundler
+CONFIGURING ENVIRONMENT 
+-----------------------
+Rufus relies on a config.yml file to exists in the project's root directory. This is used to tell appium about the physical device and the software under test. Below is a typical configuration to run automated tests on the iPad.
 
-INSTALLING NODE WITH HOMEBREW
------------------------------
-
-- brew doctor
-- brew install node
-- curl https://npmjs.org/install.sh | sh
-- export NODE_PATH="/usr/local/lib/node"
-- export PATH="/usr/local/share/npm/bin:$PATH"
-- node -v <= check to see that node installed correctly
+````YAML
+    browser: iOS
+    platform: Mac
+    version: 6.1
+    app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE_ID>/Build/Products/Debug-iphoneos/YourApp.app 
+````
 
 APPIUM
 ------
@@ -49,31 +44,25 @@ APPIUM
 Appium must be installed to run it from the command line. The repository at https://github.com/appium/appium.git is included as a submodule to this project. To download the necessary files, issue the following in your project directory:
 
 >git submodule init
+
 >git submodule update
 
 If you did not download the rufus source code, clone appium into your project directory. Either way, look into the appium directory to make sure there is a file server.js. 
 
-CONFIGURING ENVIRONMENT 
---------------------------------------------
-Rufus relies on a config.yml file to exists in the project's root directory. This is used to tell appium about the physical device and the software under test. Below is a typical configuration to run automated tests on the iPad.
 
-browser: iOS
-platform: Mac
-version: 6.1
-app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE_ID>/Build/Products/Debug-iphoneos/YourApp.app 
 
 STARTING APPIUM SERVER
 -----------------------------------------
 Open a separate terminal window and navigate to you appium installation. This will be the window that shows the appium server output. In this window issue the following command to start the appium server
 
->node server.js -U <UDID> --app <PATH_TO_APP>
+>appium -U DEVICE_UDID --app YourApp.app
 
 The UDID is the unique identifier of your physical device. This can be found in Xcode. Navigate to Window > Organizer, select the target device and notice it's identifier. The PATH_TO_APP is the path to the compiled app that Xcode produces. It should be the same as the path configured in the config.yml
 
 After issuing the command there should be a message stating that the appium server is listening. 
 
-DEPLOYING TO DEVICE
-----------------------------------
+DEPLOYING TO DEVICE WITHOUT USING XCODE
+---------------------------------------
 
 Rufus doesn't necessarily care how your app made it onto the device as long as selenium can see it, but I found the most consistent method to be through libimobiledevice. That project also is included as a submodule to this one. The original repository is https://github.com/benvium/libimobiledevice-macosx. Look at the libimobiledevice Readme in order to configure the environment variables your system needs to use this deployment mechanism. 
 
@@ -92,10 +81,11 @@ USING THE RUFUS IRB DRIVER
 --------------------------
 After installing the gem, open an irb session from the same directory as your config.yml. 
 
->require 'rufus/driver'
->driver = Rufus.new
->driver.start (starts the app)
-
+````ruby
+    require 'rufus/driver'
+    driver = Rufus.new
+    driver.start (starts the app)
+````
 
 DEFINING A BUTTON SEQUENCE
 --------------------------
@@ -109,12 +99,18 @@ OTHER DRIVER USE CASES
 
 Push a button by name
 
->driver.push_button 'buttonName'
+````ruby
+    driver.push_button 'buttonName'
+````
 
->Get a list of all the button names
+Get a list of all the button names
 
->driver.buttons (example return: ['go', 'yesButton','noButton'])
+````ruby
+    driver.buttons (example return: ['go', 'yesButton','noButton'])
+````
 
 Enter 'Hello' into text field
 
->driver.type 'hello' 'textFieldName'
+````ruby
+    driver.type 'hello' 'textFieldName'
+````
