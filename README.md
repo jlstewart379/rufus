@@ -13,7 +13,7 @@ QUICK START GUIDE
 browser: iOS
 platform: Mac
 version: 6.1
-app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE_ID>/Build/Products/Debug-iphoneos/YourApp.app 
+app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
 
 5. Start appium server using node
 >node server.js -U <UDID> --app <PATH_TO_APP>

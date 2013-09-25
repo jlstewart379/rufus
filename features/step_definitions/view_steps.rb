@@ -1,5 +1,3 @@
-Given /^I am on the HomePage$/ do on(HomePage).active?.should be_true
-end
 When(/^I click the view defined "([^"]*)"$/) do |label|
   on(HomePage).send("view_#{label}")
 end
