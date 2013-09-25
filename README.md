@@ -52,7 +52,7 @@ The only gotcha I was generating the .ipa file that libimobiledevice parses for 
 4. Put a copy of the .app file in the Payload directory
 5. Compress the directory into a .zip archive
 6. Changed the .zip extension to .ipa
-7. Issue the command ideviceinstaller -i <PATH_TO_ARCHIVE_ENDING_IN_.IPA>
+7. Issue the command ideviceinstaller -i YourApp.ipa
 
 
 
