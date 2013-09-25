@@ -1,3 +1,6 @@
 [submodule "appium"]
 	path = appium
 	url = https://github.com/jlstewart379/appium.git
+[submodule "libimobiledevice-macosx"]
+	path = libimobiledevice-macosx
+	url = https://github.com/benvium/libimobiledevice-macosx.git
