@@ -4,7 +4,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = "rufus"
-  gem.version       = "0.0.0"
+  gem.version       = "0.0.1"
   gem.authors       = ["Jeremy Stewart"]
   gem.email         = ["jlstewart379@gmail.com"]
   gem.description   = ""

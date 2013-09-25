@@ -1,9 +1,15 @@
 Last Updated: 9-24-2013
 
+This project is intended to facilitate automated testing on iOS devices using cucumber and the Page Object pattern. 
+
 PREREQUISITES 
 --------------------------
+1. Ruby
+2. Homebrew
+3. Bundler
 
-Installing Node with Homebrew
+INSTALLING NODE WITH HOMEBREW
+-----------------------------
 
 - brew doctor
 - brew install node
@@ -60,9 +66,6 @@ The only gotcha I ran into was generating the .ipa archive that libimobiledevice
 
 USING THE RUFUS IRB DRIVER
 --------------------------
-
->gem install rufus
-
 After installing the gem, open an irb session from the same directory as your config.yml. 
 
 >require 'rufus/driver'
