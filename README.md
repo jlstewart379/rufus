@@ -37,7 +37,7 @@ QUICK START GUIDE
     version: 7.0
     app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
 ````
-- Start appium server
+- Start appium server in new terminal window
 
 >appium -U DEVICE_UDID --app YourApp.app
 
