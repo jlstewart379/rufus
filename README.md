@@ -16,7 +16,7 @@ version: 6.1
 app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
 
 5. Start appium server using node
->node server.js -U <UDID> --app <PATH_TO_APP>
+>appium -U <UDID> --app <PATH_TO_APP>
 
 6. Deploy to iOS device using libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
 

@@ -91,8 +91,10 @@ module Rufus
         names.each do |name|
           click(:name => name)
           sleep seconds
+
         end
         current += 1
+        puts "sequence #{current} completed"
       end
     end
 
