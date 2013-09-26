@@ -5,11 +5,12 @@ This project is intended to facilitate automated testing on iOS devices using cu
 PREREQUISITES
 --------------------------
 -Ruby
+
 -Homebrew
 
-In order to use appium you'll first need to install node and npm. Perform the following steps in the terminal to retrieve the necessary items:
+-Bundler
 
-Install node:
+In order to use appium you'll first need to install node and npm. Perform the following steps in the terminal to retrieve the necessary items:
 
 >brew install node
 
@@ -26,9 +27,9 @@ Install node:
 
 QUICK START GUIDE
 ------------------------------
-1. gem install rufus
-2. require 'rufus' in your Gemfile
-3. Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
+- gem install rufus
+- require 'rufus' in your Gemfile
+- Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
 
 ````YAML
     browser: iOS
@@ -36,13 +37,14 @@ QUICK START GUIDE
     version: 7.0
     app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
 ````
+- Start appium server
 
-5. Start appium server using node
 >appium -U DEVICE_UDID --app YourApp.app
 
-6. Deploy to iOS device using XCode or libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
+- Deploy to iOS device using XCode or libimobiledevice. Libimobiledevice repo located at: https://github.com/benvium/libimobiledevice-macosx
 
-7. Run tests
+- Run tests 
+
 >bundle exec cucumber
 
 USING THE RUFUS IRB DRIVER
