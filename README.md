@@ -62,7 +62,9 @@ DEFINING A BUTTON SEQUENCE
 
 Rufus doesn't mind the mindless work of pushing buttons in sequence. The following command will push the goodButton, badButton and sortaOkayButton in sequence 10 times in a row if such a sequence is possible. In this example, the goodButton must be available to be pressed after pushing the sortaOkayButton in order for the loop to continue. 
 
-driver.sequence 'goodButton', 'badButton', 'sortaOkayButton', 10
+````ruby
+    driver.sequence 'goodButton', 'badButton', 'sortaOkayButton', 10
+````
 
 OTHER DRIVER USE CASES
 ----------------------
