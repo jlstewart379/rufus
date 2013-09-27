@@ -31,4 +31,25 @@
     RufusPageViewController *rufusPageViewController = [[RufusPageViewController alloc] init];
     [[self navigationController] pushViewController:rufusPageViewController animated:YES]; 
 }
+
+- (IBAction)showAlert:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rufus Alert" message:@"You've chosen to show the rufus alert" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == [alertView cancelButtonIndex])
+    {
+        alertView = nil;
+    }
+    else
+    {
+        [self toRufusPage:nil];
+    }
+    
+}
+
 @end

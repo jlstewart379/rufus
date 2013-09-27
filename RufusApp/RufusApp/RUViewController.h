@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RUViewController : UIViewController
+@interface RUViewController : UIViewController <UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *showAlertButton;
 @property (weak, nonatomic) IBOutlet UIButton *rufusButton;
 - (IBAction)toRufusPage:(id)sender;
+- (IBAction)showAlert:(id)sender;
+
 
 @end

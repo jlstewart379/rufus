@@ -1,79 +1,94 @@
-Last Updated: 9-24-2013
+Last Updated: 9-25-2013
 
 This project is intended to facilitate automated testing on iOS devices using cucumber and the Page Object pattern. 
 
+PREREQUISITES
+--------------------------
+-Ruby
+
+-Homebrew
+
+-Bundler
+
+In order to use appium you'll first need to install node and npm. Perform the following steps in the terminal to retrieve the necessary items:
+
+>brew install node
+
+>curl https://npmjs.org/install.sh | sh
+
+>export NODE_PATH="/usr/local/lib/node"
+
+>export PATH="/usr/local/share/npm/bin:$PATH
+
+>npm install -g appium
+
+>npm install wd
+
 
 QUICK START GUIDE
------------------
-1. gem install rufus
-2. require 'rufus' in your Gemfile
-3. Clone appium into project directory (where .xcodeproj resides). Repo located at: https://github.com/appium/appium.git
-4. Create a config.yml in project directory with the following information:
+------------------------------
+- gem install rufus
+- require 'rufus' in your Gemfile
+- Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
 
-browser: iOS
-platform: Mac
-version: 6.1
-app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
+````YAML
+    browser: iOS
+    platform: Mac
+    version: 7.0
+    app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
+````
+- Start appium server in new terminal window
 
-5. Start appium server using node
->appium -U <UDID> --app <PATH_TO_APP>
+>appium -U DEVICE_UDID --app YourApp.app
 
-6. Deploy to iOS device using libimobiledevice. Repo located at: https://github.com/benvium/libimobiledevice-macosx
+- Deploy to iOS device using XCode or libimobiledevice. Libimobiledevice repo located at: https://github.com/benvium/libimobiledevice-macosx
 
-7. Run tests
+- Run tests 
+
 >bundle exec cucumber
 
-
-LONG START GUIDE
-----------------
-
-PREREQUISITES 
+USING THE RUFUS IRB DRIVER
 --------------------------
-1. Ruby
-2. Homebrew
-3. Bundler
+After installing the gem, open an irb session from the same directory as your config.yml. 
 
-INSTALLING NODE WITH HOMEBREW
------------------------------
+````ruby
+    require 'rufus/driver'
+    driver = Rufus.new
+    driver.start (starts the app)
+````
 
-- brew doctor
-- brew install node
-- curl https://npmjs.org/install.sh | sh
-- export NODE_PATH="/usr/local/lib/node"
-- export PATH="/usr/local/share/npm/bin:$PATH"
-- node -v <= check to see that node installed correctly
+DEFINING A BUTTON SEQUENCE
+--------------------------
 
-APPIUM
-------
+Rufus doesn't mind the mindless work of pushing buttons in sequence. The following command will push the goodButton, badButton and sortaOkayButton in sequence 10 times in a row if such a sequence is possible. In this example, the goodButton must be available to be pressed after pushing the sortaOkayButton in order for the loop to continue. 
 
-Appium must be installed to run it from the command line. The repository at https://github.com/appium/appium.git is included as a submodule to this project. To download the necessary files, issue the following in your project directory:
+````ruby
+    driver.sequence 'goodButton', 'badButton', 'sortaOkayButton', '10'
+````
 
->git submodule init
->git submodule update
+OTHER DRIVER USE CASES
+----------------------
 
-If you did not download the rufus source code, clone appium into your project directory. Either way, look into the appium directory to make sure there is a file server.js. 
+Push a button by name
 
-CONFIGURING ENVIRONMENT 
---------------------------------------------
-Rufus relies on a config.yml file to exists in the project's root directory. This is used to tell appium about the physical device and the software under test. Below is a typical configuration to run automated tests on the iPad.
+````ruby
+    driver.push_button 'buttonName'
+````
 
-browser: iOS
-platform: Mac
-version: 6.1
-app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE_ID>/Build/Products/Debug-iphoneos/YourApp.app 
+Get a list of all the button names
 
-STARTING APPIUM SERVER
------------------------------------------
-Open a separate terminal window and navigate to you appium installation. This will be the window that shows the appium server output. In this window issue the following command to start the appium server
+````ruby
+    driver.buttons (example return: ['go', 'yesButton','noButton'])
+````
 
->node server.js -U <UDID> --app <PATH_TO_APP>
+Enter 'Hello' into text field
 
-The UDID is the unique identifier of your physical device. This can be found in Xcode. Navigate to Window > Organizer, select the target device and notice it's identifier. The PATH_TO_APP is the path to the compiled app that Xcode produces. It should be the same as the path configured in the config.yml
+````ruby
+    driver.type 'hello' 'textFieldName'
+````
 
-After issuing the command there should be a message stating that the appium server is listening. 
-
-DEPLOYING TO DEVICE
-----------------------------------
+DEPLOYING TO DEVICE WITHOUT USING XCODE
+----------------------------------------------------------------------
 
 Rufus doesn't necessarily care how your app made it onto the device as long as selenium can see it, but I found the most consistent method to be through libimobiledevice. That project also is included as a submodule to this one. The original repository is https://github.com/benvium/libimobiledevice-macosx. Look at the libimobiledevice Readme in order to configure the environment variables your system needs to use this deployment mechanism. 
 
@@ -88,33 +103,3 @@ The only gotcha I ran into was generating the .ipa archive that libimobiledevice
 7. Issue the command ideviceinstaller -i YourApp.ipa (This installs the app)
 
 
-USING THE RUFUS IRB DRIVER
---------------------------
-After installing the gem, open an irb session from the same directory as your config.yml. 
-
->require 'rufus/driver'
->driver = Rufus.new
->driver.start (starts the app)
-
-
-DEFINING A BUTTON SEQUENCE
---------------------------
-
-Rufus doesn't mind the mindless work of pushing buttons in sequence. The following command will push the goodButton, badButton and sortaOkayButton in sequence 10 times in a row if such a sequence is possible. In this example, the goodButton must be available to be pressed after pushing the sortaOkayButton in order for the loop to continue. 
-
-driver.sequence 'goodButton', 'badButton', 'sortaOkayButton', 10
-
-OTHER DRIVER USE CASES
-----------------------
-
-Push a button by name
-
->driver.push_button 'buttonName'
-
->Get a list of all the button names
-
->driver.buttons (example return: ['go', 'yesButton','noButton'])
-
-Enter 'Hello' into text field
-
->driver.type 'hello' 'textFieldName'
