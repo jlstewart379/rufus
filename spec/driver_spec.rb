@@ -187,10 +187,15 @@ describe Rufus::Driver do
       mock_element.should_receive(:tag_name).and_return('UIAAlert')
       @driver.class_for(mock_element).should eq('UIAAlert')
     end
+
     context 'matching elements by name' do
       it 'returns true if element matches' do
         mock_element.should_receive(:attribute).with(:name).and_return('Rufus Alert')
         @driver.match?(mock_element, 'Rufus Alert').should be_true
+      end
+      it 'returns false if element does not match' do
+        mock_element.should_receive(:attribute).with(:name).and_return('Some other alert title')
+        @driver.match?(mock_element, 'Rufus Alert').should be_false
       end
     end
   end

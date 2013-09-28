@@ -11,5 +11,8 @@ Given(/^I start the driver$/) do
  puts selenium
 end
 Then(/^I am presented with an alert with the title "([^"]*)"$/) do |title|
-  on(HomePage).send("#{title}_view").class.should eql?('UIAAlert')
+
+end
+Then(/^I see the title of the alert defined "([^"]*)" is "([^"]*)"$/) do |alert, title|
+  on(HomePage).send("#{alert}_view").title.should == title
 end

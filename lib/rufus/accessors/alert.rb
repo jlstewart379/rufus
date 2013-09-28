@@ -5,7 +5,7 @@ module Rufus
     class Alert < View
       def title
         alert = selenium.find_alert(what)
-        alert.attribute :name
+        alert.attribute('name')
       end
     end
   end
