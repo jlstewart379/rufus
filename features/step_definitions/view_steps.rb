@@ -10,3 +10,6 @@ end
 Given(/^I start the driver$/) do
  puts selenium
 end
+Then(/^I am presented with an alert with the title "([^"]*)"$/) do |title|
+  on(HomePage).send("#{title}_view").class.should eql?('UIAAlert')
+end

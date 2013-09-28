@@ -149,4 +149,49 @@ describe Rufus::Driver do
 
     end
   end
+
+  context 'finding alerts' do
+
+    let(:mock_driver){double('mock selenium driver')}
+    let(:mock_alert){double('mock alert view')}
+    let(:mock_elements){double('mock elements')}
+    let(:mock_element){double('mock element')}
+
+    before(:each) do
+      File.stub(:exists?).and_return(true)
+      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      @driver = Rufus::Driver.new
+      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+    end
+
+    it 'can find an alert view' do
+      mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAElement').and_return(mock_elements)
+      mock_elements.should_receive(:each)
+      mock_element.should_receive(:tag_name).and_return('UIAAlert')
+      mock_element.should_receive(:attribute).with(:name).and_return('Rufus Alert')
+      @driver.find_alert(:name => 'Rufus Alert').should_not be_nil
+    end
+  end
+
+  context 'searching elements' do
+    let(:mock_element){double('mock element')}
+    let(:mock_driver){double('mock selenium driver')}
+
+    before(:each) do
+      File.stub(:exists?).and_return(true)
+      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      @driver = Rufus::Driver.new
+    end
+
+    it 'can find the class for an element' do
+      mock_element.should_receive(:tag_name).and_return('UIAAlert')
+      @driver.class_for(mock_element).should eq('UIAAlert')
+    end
+    context 'matching elements by name' do
+      it 'returns true if element matches' do
+        mock_element.should_receive(:attribute).with(:name).and_return('Rufus Alert')
+        @driver.match?(mock_element, 'Rufus Alert').should be_true
+      end
+    end
+  end
 end

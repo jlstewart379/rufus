@@ -21,5 +21,14 @@ module Rufus
     def button(name, locator)
       view(name, locator)
     end
+
+    def alert(name, locator)
+      define_method("#{name}_view") do
+        Rufus::Accessors::Alert.new(locator)
+      end
+      define_method("#{name}") do
+        Rufus::Accessors::Alert.new(locator)
+      end
+    end
   end
 end

@@ -78,6 +78,14 @@ describe Rufus::Accessors::View do
       end
     end
 
+    context 'getting the class of a view' do
+      it 'can get the UIAutomation class respresntation of view' do
+        element.should_receive(:tag_name).and_return('UIStaticText')
+        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
+        view.class.should eql('UIStaticText')
+      end
+    end
+
   end
 
   context 'finding element by text' do

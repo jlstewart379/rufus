@@ -33,6 +33,10 @@ module Rufus
         selenium.find(what).send_keys keys
       end
 
+      def class
+        selenium.find(what).tag_name
+      end
+
       def what
         key = @locator.keys[0].to_sym
         value = @locator[key]

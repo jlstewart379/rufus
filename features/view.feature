@@ -8,3 +8,8 @@ Feature: Interacting with views
     Given I am on the "HomePage"
     When I click the view defined "rufus"
     Then I am on the "RufusPage"
+
+   Scenario: Showing the alert view
+     Given I am on the "HomePage"
+     When I click the view defined "show_alert"
+     Then I am presented with an alert with the title "Rufus Alert"

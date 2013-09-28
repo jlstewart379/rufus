@@ -98,12 +98,33 @@ module Rufus
       end
     end
 
+    def find_alert(locator)
+      all_elements.each do |element|
+        if class_for(element).eql?('UIAAlert')
+          alert = element if match?(element, locator[:name])
+        end
+      end
+    end
+
+    def class_for(element)
+      element.tag_name
+    end
+
+    def match?(element, name)
+      element.attribute(:name).eql? name
+    end
+
     private
+    def all_elements
+      driver.find_elements(:tag_name, 'UIAElement')
+    end
+
+
+
     def elements_by_tag(name)
       driver.find_elements(:tag_name, name)
     end
 
-    private
     def capabilities
       {
           'browserName' => @config["browser"],
