@@ -163,14 +163,6 @@ describe Rufus::Driver do
       @driver = Rufus::Driver.new
       Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
     end
-
-    it 'can find an alert view' do
-      mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAElement').and_return(mock_elements)
-      mock_elements.should_receive(:each)
-      mock_element.should_receive(:tag_name).and_return('UIAAlert')
-      mock_element.should_receive(:attribute).with(:name).and_return('Rufus Alert')
-      @driver.find_alert(:name => 'Rufus Alert').should_not be_nil
-    end
   end
 
   context 'searching elements' do
