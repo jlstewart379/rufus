@@ -194,11 +194,13 @@ describe Rufus::Driver do
     context 'clicking alert view buttons' do
 
       let(:mock_element){double{'mock element'}}
+      let(:mock_driver){double('mock selenium driver')}
 
       before(:each) do
         File.stub(:exists?).and_return(true)
         YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
         @driver = Rufus::Driver.new
+
       end
 
       it 'can tell if an alert is in the view hierarchy' do
@@ -209,7 +211,13 @@ describe Rufus::Driver do
         mock_element.should_receive(:tag_name).and_return('SomeOtherClass')
         @driver.is_alert?(mock_element).should be_false
       end
-    end
 
+      it 'can click an alert button' do
+        mock_driver.should_receive(:find_elements).at_least(2).times.with(:tag_name, 'UIAElement').and_return([mock_element])
+        Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+        mock_element.should_receive(:tag_name).at_least(2).times.and_return('UIAAlert')
+        @driver.click_alert('Ok')
+      end
+    end
   end
 end
