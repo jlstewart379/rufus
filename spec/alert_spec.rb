@@ -29,13 +29,18 @@ describe Rufus::Accessors::Alert do
     end
 
     context 'getting the alert view title' do
-
       it 'can get the title of the alert view' do
         selenium.should_receive(:find_alert).and_return(element)
         element.should_receive(:attribute).with('name').and_return('Alert Title')
         alert.title.should eq('Alert Title')
       end
+    end
 
+    context 'touching alert view buttons' do
+      it 'can touch an action button' do
+        selenium.should_receive(:click_alert).with("Ok")
+        alert.click "Ok"
+      end
     end
   end
 end

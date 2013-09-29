@@ -101,12 +101,22 @@ module Rufus
     def find_alert(locator)
       alert = nil
       all_elements.each do |element|
-        if class_for(element).eql?('UIAAlert')
+        if is_alert?(element)
           alert = element if match?(element, locator[:name])
         end
       end
       alert
     end
+
+    def alert_shown?
+      all_elements.each do |element|
+        if is_alert?(element)
+          return true
+        end
+      end
+      false
+    end
+
 
     def class_for(element)
       element.tag_name
@@ -116,7 +126,12 @@ module Rufus
       element.attribute(:name).eql? name
     end
 
+    def is_alert?(element)
+      class_for(element).eql?('UIAAlert')
+    end
+
     private
+
     def all_elements
       driver.find_elements(:tag_name, 'UIAElement')
     end

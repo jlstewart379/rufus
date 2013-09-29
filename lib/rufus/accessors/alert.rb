@@ -7,6 +7,9 @@ module Rufus
         alert = selenium.find_alert(what)
         alert.attribute('name')
       end
+      def click(button)
+        selenium.click_alert button
+      end
     end
   end
 end

@@ -190,5 +190,26 @@ describe Rufus::Driver do
         @driver.match?(mock_element, 'Rufus Alert').should be_false
       end
     end
+
+    context 'clicking alert view buttons' do
+
+      let(:mock_element){double{'mock element'}}
+
+      before(:each) do
+        File.stub(:exists?).and_return(true)
+        YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+        @driver = Rufus::Driver.new
+      end
+
+      it 'can tell if an alert is in the view hierarchy' do
+        mock_element.should_receive(:tag_name).and_return('UIAAlert')
+        @driver.is_alert?(mock_element).should be_true
+      end
+      it 'can tell if an alert is not in the view hierarchy' do
+        mock_element.should_receive(:tag_name).and_return('SomeOtherClass')
+        @driver.is_alert?(mock_element).should be_false
+      end
+    end
+
   end
 end
