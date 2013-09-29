@@ -114,9 +114,6 @@ module Rufus
       end
     end
 
-
-
-
     def alert_shown?
       all_elements.each do |element|
         if is_alert?(element)
@@ -134,24 +131,20 @@ module Rufus
       element.attribute(:name).eql? name
     end
 
+    private
+    def click_alert_button(button)
+      all_elements.each do |element|
+        element.click if is_table_view_cell?(element) && match?(element, button)
+      end
+    end
+
     def is_alert?(element)
       class_for(element).eql?('UIAAlert')
     end
 
-    private
-
-    def click_alert_button(button)
-
-      all_elements.each do |element|
-        element.click if is_table_view_cell(element) && match(element, button)
-      end
-    end
-
-    def is_table_view_cell(element)
+    def is_table_view_cell?(element)
       class_for(element).eql?('UIATableCell')
     end
-
-
 
     def all_elements
       driver.find_elements(:tag_name, 'UIAElement')

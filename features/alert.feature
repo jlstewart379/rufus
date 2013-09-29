@@ -10,3 +10,7 @@ Feature: Interacting with alerts
   Scenario: Selecting action button in alert view
     And I select the "Ok" button on the alert defined "alert"
     Then I am on the "RufusPage"
+
+  Scenario: Selecting cancel button in alert view
+    And I select the "Cancel" button on the alert defined "alert"
+    Then I am on the "HomePage"

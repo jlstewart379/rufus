@@ -205,11 +205,16 @@ describe Rufus::Driver do
 
       it 'can tell if an alert is in the view hierarchy' do
         mock_element.should_receive(:tag_name).and_return('UIAAlert')
-        @driver.is_alert?(mock_element).should be_true
+        @driver.send(:is_alert?, mock_element).should be_true
       end
       it 'can tell if an alert is not in the view hierarchy' do
         mock_element.should_receive(:tag_name).and_return('SomeOtherClass')
-        @driver.is_alert?(mock_element).should be_false
+        @driver.send(:is_alert?, mock_element).should be_false
+      end
+
+      it 'can tell if a table cell is in the view hierarchy' do
+        mock_element.should_receive(:tag_name).and_return('UIATableCell')
+        @driver.send(:is_table_view_cell?, mock_element).should be_true
       end
 
       it 'can click an alert button' do
