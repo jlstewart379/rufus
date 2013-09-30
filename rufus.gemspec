@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.summary       = "Page object wrapper for Appium"
   gem.homepage      = "https://github.com/jlstewart379/rufus"
   gem.require_paths = ["lib"]
+  gem.license = 'MIT'
   gem.files         = `git ls-files`.split($/)
   gem.add_dependency 'page_navigation', '>= 0.7'
   gem.add_development_dependency 'rspec'

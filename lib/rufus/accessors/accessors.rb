@@ -23,12 +23,7 @@ module Rufus
     end
 
     def alert(name, locator)
-      define_method("#{name}_view") do
-        Rufus::Accessors::Alert.new(locator)
-      end
-      define_method("#{name}") do
-        Rufus::Accessors::Alert.new(locator)
-      end
+      view(name, locator)
     end
   end
 end
