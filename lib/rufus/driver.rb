@@ -147,7 +147,7 @@ module Rufus
     end
 
     def all_elements
-      driver.find_elements(:tag_name, 'UIAElement')
+     elements_by_tag('UIAElement')
     end
 
     def elements_by_tag(name)
