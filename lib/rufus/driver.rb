@@ -162,14 +162,14 @@ module Rufus
 
     def driver
       if use_device
-        @selenium ||= Rufus::Drivers::IOS_Device.for(@config)
+        @selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
       else
-        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config)
+        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
       end
     end
 
     def use_device
-      @config["use_physical"] == "true"
+      @config["use_physical"] == true
     end
 
   end

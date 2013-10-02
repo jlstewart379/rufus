@@ -4,14 +4,9 @@ module Rufus
   module Drivers
     class IOS_Simulator
 
-      #def initialize(config)
-      #  @config = config
-      #  Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => @url)
-      #end
-
-      def self.for(config)
+      def self.for(config,url)
         @config = config
-        @driver ||=  Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => @url)
+         Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
       end
 
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rufus/drivers/driver'
+require 'rufus/driver'
 require 'rufus/drivers/iOS_device'
 require 'rufus/drivers/iOS_simulator'
 require 'yaml'
@@ -243,17 +243,18 @@ describe Rufus::Driver do
 
       let(:yaml){double('YAML loader')}
       let(:mock_driver){'a mock app driver'}
+      let(:url){'http://127.0.0.1:4723/wd/hub'}
 
       context 'starting iOS device driver' do
         before(:each) do
           File.stub(:exists?).and_return(true)
-          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => "true"}
+          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => true}
           YAML.should_receive(:load_file).with("config.yml").and_return(@config)
           @driver = Rufus::Driver.new
         end
 
         it 'can start the driver for an iOS device' do
-            Rufus::Drivers::IOS_Device.should_receive(:for).with(@config).and_return(mock_driver)
+            Rufus::Drivers::IOS_Device.should_receive(:for).with(@config, url).and_return(mock_driver)
             mock_driver.should_receive(:get)
             @driver.start
         end
@@ -262,13 +263,13 @@ describe Rufus::Driver do
       context 'starting iOS simulator driver' do
         before(:each) do
           File.stub(:exists?).and_return(true)
-          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => "false"}
+          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
           YAML.should_receive(:load_file).with("config.yml").and_return(@config)
           @driver = Rufus::Driver.new
         end
 
         it 'can start the driver for an iOS simulator' do
-          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config).and_return(mock_driver)
+          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
           mock_driver.should_receive(:get)
           @driver.start
         end
