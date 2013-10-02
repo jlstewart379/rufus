@@ -5,14 +5,13 @@ module Rufus
   class Driver
 
     def initialize
-      @config = YAML.load_file('config.yml') unless !File.exists?('config.yml')
-
+      raise 'No config.yml found' if !File.exists?('config.yml')
+      @config = YAML.load_file('config.yml')
       if @config["appium_url"].nil? || @config["appium_url"].eql?("")
         @url = 'http://127.0.0.1:4723/wd/hub'
       else
         @url = @config["appium_url"]
       end
-
     end
 
     def start
