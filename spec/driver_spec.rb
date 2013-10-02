@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rufus/driver'
+require 'rufus/drivers/iOS_device'
 require 'yaml'
 
 describe Rufus::Driver do
@@ -235,17 +236,27 @@ describe Rufus::Driver do
         @driver.click_alert('Ok')
       end
     end
-    context 'waiting for stuff' do
-
-      it 'can wait for something to happen' do
-
-        #wait = Selenium::WebDriver::Wait.new :timeout => 10
-        #wait.until { password_view.enabled?  }
 
 
+    context 'starting drivers' do
+
+      let(:yaml){double('YAML loader')}
+      let(:mock_driver){'a mock app driver'}
+
+      context 'starting iOS device driver' do
+        before(:each) do
+          File.stub(:exists?).and_return(true)
+          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => "true"}
+          YAML.should_receive(:load_file).with("config.yml").and_return(@config)
+          @driver = Rufus::Driver.new
+        end
+
+        it 'can start the driver for an iOS device' do
+            Rufus::Drivers::IOS_Device.should_receive(:driver_for).with(@config).and_return(mock_driver)
+            mock_driver.should_receive(:get)
+            @driver.start
+        end
       end
-
-
     end
   end
 end

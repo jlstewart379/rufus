@@ -1,4 +1,5 @@
 require 'yaml'
+require 'rufus/drivers/iOS_device'
 require 'selenium-webdriver'
 
 module Rufus
@@ -7,11 +8,7 @@ module Rufus
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load_file('config.yml')
-      if @config["appium_url"].nil? || @config["appium_url"].eql?("")
-        @url = 'http://127.0.0.1:4723/wd/hub'
-      else
-        @url = @config["appium_url"]
-      end
+      @url = url(@config)
     end
 
     def start
@@ -131,6 +128,15 @@ module Rufus
     end
 
     private
+
+    def url(config)
+      if config["appium_url"].nil? || config["appium_url"].eql?("")
+        'http://127.0.0.1:4723/wd/hub'
+      else
+        config["appium_url"]
+      end
+    end
+
     def click_alert_button(button)
       all_elements.each do |element|
         element.click if is_table_view_cell?(element) && match?(element, button)
@@ -153,17 +159,29 @@ module Rufus
       driver.find_elements(:tag_name, name)
     end
 
-    def capabilities
+
+
+    def iOS_sim_capabilities
       {
           'browserName' => @config["browser"],
           'platform' => @config["platform"],
           'version' => @config["version"].to_s,
-          'app' => @config["app"]
+          'app' => @config["simulator_app"],
+          'device' => @config["device"]
       }
     end
 
     def driver
-      @selenium ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => @url)
+      if use_device
+        @selenium ||= Rufus::Drivers::IOS_Device.driver_for(@config)
+      else
+        @selenium ||= Selenium::WebDriver.for(:remote, :desired_capabilities => iOS_sim_capabilities, :url => @url)
+      end
     end
+
+    def use_device
+      @config["use_physical"] == "true"
+    end
+
   end
 end
