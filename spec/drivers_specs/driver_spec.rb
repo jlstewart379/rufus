@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rufus/driver'
+require 'rufus/drivers/driver'
 require 'rufus/drivers/iOS_device'
 require 'yaml'
 
@@ -255,6 +255,21 @@ describe Rufus::Driver do
             Rufus::Drivers::IOS_Device.should_receive(:driver_for).with(@config).and_return(mock_driver)
             mock_driver.should_receive(:get)
             @driver.start
+        end
+      end
+
+      context 'starting iOS simulator driver' do
+        before(:each) do
+          File.stub(:exists?).and_return(true)
+          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => "false"}
+          YAML.should_receive(:load_file).with("config.yml").and_return(@config)
+          @driver = Rufus::Driver.new
+        end
+
+        it 'can start the driver for an iOS simulator' do
+          Rufus::Drivers::IOS_Simulator.should_receive(:driver_for).with(@config).and_return(mock_driver)
+          mock_driver.should_receive(:get)
+          @driver.start
         end
       end
     end
