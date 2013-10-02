@@ -1,5 +1,6 @@
 require 'yaml'
 require 'rufus/drivers/iOS_device'
+require 'rufus/drivers/iOS_simulator'
 require 'selenium-webdriver'
 
 module Rufus
@@ -159,23 +160,11 @@ module Rufus
       driver.find_elements(:tag_name, name)
     end
 
-
-
-    def iOS_sim_capabilities
-      {
-          'browserName' => @config["browser"],
-          'platform' => @config["platform"],
-          'version' => @config["version"].to_s,
-          'app' => @config["simulator_app"],
-          'device' => @config["device"]
-      }
-    end
-
     def driver
       if use_device
-        @selenium ||= Rufus::Drivers::IOS_Device.driver_for(@config)
+        @selenium ||= Rufus::Drivers::IOS_Device.for(@config)
       else
-        @selenium ||= Selenium::WebDriver.for(:remote, :desired_capabilities => iOS_sim_capabilities, :url => @url)
+        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config)
       end
     end
 

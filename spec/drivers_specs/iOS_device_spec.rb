@@ -11,7 +11,7 @@ describe Rufus::Drivers::IOS_Device do
   context 'initializing driver for iOS device' do
     it 'can create a selenium driver for an iOS device' do
       Selenium::WebDriver.should_receive(:for).with(:remote, :desired_capabilities => capabilities, :url => config["url"])
-      Rufus::Drivers::IOS_Device.new config
+      Rufus::Drivers::IOS_Device.for config
     end
   end
 end

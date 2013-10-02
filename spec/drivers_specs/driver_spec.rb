@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'rufus/drivers/driver'
 require 'rufus/drivers/iOS_device'
+require 'rufus/drivers/iOS_simulator'
 require 'yaml'
 
 describe Rufus::Driver do
@@ -252,7 +253,7 @@ describe Rufus::Driver do
         end
 
         it 'can start the driver for an iOS device' do
-            Rufus::Drivers::IOS_Device.should_receive(:driver_for).with(@config).and_return(mock_driver)
+            Rufus::Drivers::IOS_Device.should_receive(:for).with(@config).and_return(mock_driver)
             mock_driver.should_receive(:get)
             @driver.start
         end
@@ -267,7 +268,7 @@ describe Rufus::Driver do
         end
 
         it 'can start the driver for an iOS simulator' do
-          Rufus::Drivers::IOS_Simulator.should_receive(:driver_for).with(@config).and_return(mock_driver)
+          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config).and_return(mock_driver)
           mock_driver.should_receive(:get)
           @driver.start
         end
