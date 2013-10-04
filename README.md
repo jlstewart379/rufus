@@ -1,6 +1,6 @@
-Last Updated: 9-25-2013
+Last Updated: 10-03-2013
 
-This project is intended to facilitate automated testing on iOS devices using cucumber and the Page Object pattern. 
+This project is intended to facilitate automated testing on iOS devices using cucumber, appium and the Page Object pattern. 
 
 PREREQUISITES
 --------------------------
@@ -31,17 +31,21 @@ QUICK START GUIDE
 - require 'rufus' in your Gemfile
 - Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
 
+
 ````YAML
     browser: iOS
     platform: Mac
     version: 7.0
     app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
+    use_physical: true   #run on physical device?
+    sim_app_path: $HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphonesimulator/YourApp.app
+    device:iPhoneSimulator
 ````
 - Start appium server in new terminal window
 
->appium -U DEVICE_UDID --app YourApp.app
+>appium -U DEVICE_UDID --app YourApp.app --native-instruments-lib (omit -U option for simulator)
 
-- Deploy to iOS device using XCode or libimobiledevice. Libimobiledevice repo located at: https://github.com/benvium/libimobiledevice-macosx
+- Deploy to iOS device or simulator using XCode or libimobiledevice. Libimobiledevice repo located at: https://github.com/benvium/libimobiledevice-macosx
 
 - Run tests 
 
@@ -49,11 +53,11 @@ QUICK START GUIDE
 
 USING THE RUFUS IRB DRIVER
 --------------------------
-After installing the gem, open an irb session from the same directory as your config.yml. 
+After installing the gem and starting the appium server, open an irb session from the same directory as your config.yml. 
 
 ````ruby
     require 'rufus/driver'
-    driver = Rufus.new
+    driver = Rufus::Driver.new
     driver.start (starts the app)
 ````
 
@@ -90,7 +94,7 @@ Enter 'Hello' into text field
 DEPLOYING TO DEVICE WITHOUT USING XCODE
 ----------------------------------------------------------------------
 
-Rufus doesn't necessarily care how your app made it onto the device as long as selenium can see it, but I found the most consistent method to be through libimobiledevice. That project also is included as a submodule to this one. The original repository is https://github.com/benvium/libimobiledevice-macosx. Look at the libimobiledevice Readme in order to configure the environment variables your system needs to use this deployment mechanism. 
+I found the most consistent method to be through libimobiledevice. That project also is included as a submodule to this one. The original repository is https://github.com/benvium/libimobiledevice-macosx. Look at the libimobiledevice Readme in order to configure the environment variables your system needs to use this deployment mechanism. 
 
 The only gotcha I ran into was generating the .ipa archive that libimobiledevice uses. Take the following steps to generate the .ipa archive.
 
