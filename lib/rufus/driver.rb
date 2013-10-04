@@ -2,13 +2,16 @@ require 'yaml'
 require 'rufus/drivers/iOS_device'
 require 'rufus/drivers/iOS_simulator'
 require 'selenium-webdriver'
+require 'erb'
 
 module Rufus
   class Driver
 
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
-      @config = YAML.load_file('config.yml')
+
+      @config = YAML.load(ERB.new(File.read('config.yml')).result)
+
       @url = url(@config)
     end
 
@@ -162,9 +165,9 @@ module Rufus
 
     def driver
       if use_device
-        @selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
+        $selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
       else
-        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
+        $selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
       end
     end
 
