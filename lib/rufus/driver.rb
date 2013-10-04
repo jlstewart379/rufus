@@ -165,9 +165,9 @@ module Rufus
 
     def driver
       if use_device
-        $selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
+        @selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
       else
-        $selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
+        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
       end
     end
 

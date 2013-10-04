@@ -15,7 +15,7 @@ describe Rufus::Driver do
     context 'config file exists' do
       before(:each) do
         File.stub(:exists?).and_return(true)
-        YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+        YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
         @driver = Rufus::Driver.new
       end
       it 'loads the config file' do
@@ -47,13 +47,12 @@ describe Rufus::Driver do
     let(:mock_elements){double('mock selenium driver elements list')}
     let(:mock_element){double('mock selenium driver element')}
 
+
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
-
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
-
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+      Rufus::Drivers::IOS_Simulator.should_receive(:for).and_return(mock_driver)
       mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
     end
 
@@ -96,11 +95,11 @@ describe Rufus::Driver do
 
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
 
       @test_driver = Rufus::Driver.new
 
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+     Rufus::Drivers::IOS_Simulator.should_receive(:for).and_return(mock_driver)
 
     end
 
@@ -132,7 +131,7 @@ describe Rufus::Driver do
   context 'choosing the url' do
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
     end
     it 'sets the default url' do
@@ -148,9 +147,9 @@ describe Rufus::Driver do
 
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+      Rufus::Drivers::IOS_Simulator.should_receive(:for).and_return(mock_driver)
     end
 
     it 'can click buttons in sequence' do
@@ -172,9 +171,9 @@ describe Rufus::Driver do
 
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
-      Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+      Rufus::Drivers::IOS_Simulator..should_receive(:for).and_return(mock_driver)
     end
   end
 
@@ -184,7 +183,7 @@ describe Rufus::Driver do
 
     before(:each) do
       File.stub(:exists?).and_return(true)
-      YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+      YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
     end
 
@@ -211,7 +210,7 @@ describe Rufus::Driver do
 
       before(:each) do
         File.stub(:exists?).and_return(true)
-        YAML.should_receive(:load_file).with("config.yml").and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
+        YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
         @driver = Rufus::Driver.new
 
       end
@@ -232,7 +231,7 @@ describe Rufus::Driver do
 
       it 'can click an alert button' do
         mock_driver.should_receive(:find_elements).at_least(2).times.with(:tag_name, 'UIAElement').and_return([mock_element])
-        Selenium::WebDriver.should_receive(:for).and_return(mock_driver)
+        Rufus::Drivers::IOS_Simulator.should_receive(:for).and_return(mock_driver)
         mock_element.should_receive(:tag_name).at_least(2).times.and_return('UIAAlert')
         @driver.click_alert('Ok')
       end
@@ -249,7 +248,7 @@ describe Rufus::Driver do
         before(:each) do
           File.stub(:exists?).and_return(true)
           @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => true}
-          YAML.should_receive(:load_file).with("config.yml").and_return(@config)
+          YAML.should_receive(:load).and_return(@config)
           @driver = Rufus::Driver.new
         end
 
@@ -264,7 +263,7 @@ describe Rufus::Driver do
         before(:each) do
           File.stub(:exists?).and_return(true)
           @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
-          YAML.should_receive(:load_file).with("config.yml").and_return(@config)
+          YAML.should_receive(:load).and_return(@config)
           @driver = Rufus::Driver.new
         end
 
