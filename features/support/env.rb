@@ -10,6 +10,5 @@ World(Rufus::Navigation)
  require_rel '/screens'
 
 def selenium
-  $driver = Rufus::Driver.new if $driver.nil?
   $driver
 end

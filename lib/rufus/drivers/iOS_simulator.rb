@@ -14,11 +14,12 @@ module Rufus
       end
 
       def rotate(orientation)
-        orientation = orientation.to_sym
-        puts 'here it is'
-        puts orientation
-        #@ios_driver.rotate orientation.to_sym
-        @ios_driver.send(:rotate, orientation)
+        @ios_driver.rotate orientation
+        #@ios_driver.send(:rotate, orientation)
+      end
+
+      def quit
+        @ios_driver.quit
       end
 
       private
@@ -33,7 +34,8 @@ module Rufus
       end
 
       def self.driver(url)
-        @ios_driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
+        @ios_driver = Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url) if @ios_driver.nil?
+        @ios_driver
       end
     end
   end

@@ -7,7 +7,6 @@ module Rufus
       def self.for(config,url)
         @config = config
          Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
-
       end
 
       def self.capabilities
@@ -19,5 +18,10 @@ module Rufus
         }
       end
     end
+    def rotate(orientation)
+      orientation = orientation.to_sym
+      @ios_driver.rotate orientation
+    end
+
   end
 end

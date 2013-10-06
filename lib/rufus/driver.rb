@@ -10,14 +10,17 @@ module Rufus
 
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
-
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
-
       @url = url(@config)
     end
 
     def start
       driver.get @url
+    end
+
+    def quit
+      driver.quit
+      @selenium = nil
     end
 
     def config
@@ -55,10 +58,6 @@ module Rufus
     end
 
     def rotate(orientation)
-       o = orientation.to_s.to_sym
-      puts 'orientation'
-      puts o
-      puts 'hello'.to_sym
       driver.rotate orientation
     end
 

@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'rufus/drivers/iOS_Simulator'
 require 'selenium-webdriver'
 
+
 describe Rufus::Drivers::IOS_Simulator do
 
   let(:config){ {"browser" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => "true", "sim_app_path" => "/path/to/simulator.app"}}
@@ -28,9 +29,9 @@ describe Rufus::Drivers::IOS_Simulator do
   context 'setting the orientation' do
     it 'can set a new orientation' do
       Selenium::WebDriver.should_receive(:for).with(:remote, :desired_capabilities => capabilities, :url => 'http://127.0.0.1:4723/wd/hub').and_return(mock_driver)
-      mock_driver.should_receive(:send).with(:landscape)
+      mock_driver.should_receive(:rotate).with(:landscape)
       driver = Rufus::Drivers::IOS_Simulator.for config, url
-      driver.rotate 'landscape'
+      driver.rotate :landscape
     end
   end
 
