@@ -53,34 +53,47 @@ describe Rufus::Driver do
       YAML.should_receive(:load).and_return("browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app")
       @driver = Rufus::Driver.new
       Rufus::Drivers::IOS_Simulator.should_receive(:for).and_return(mock_driver)
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
     end
 
-    it 'can find an element by name' do
-      @driver.find({:name => 'rufusButton'})
+    context 'finding elements' do
+
+      it 'can find an element by name' do
+        mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
+        @driver.find({:name => 'rufusButton'}).should == mock_element
+      end
+
+      it 'can tell if an element does not exist' do
+        mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_raise(Selenium::WebDriver::Error::NoSuchElementError)
+        @driver.find({:name => 'rufusButton'}).should be_nil
+      end
     end
 
     it 'can click on an element by name' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:click)
       @driver.click({:name =>'rufusButton'})
     end
 
     it 'can click a button by name only' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:click)
       @driver.press_button 'rufusButton'
     end
 
     it 'can tell if an element is enabled' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:enabled?).and_return(true)
       @driver.enabled?(:name => 'rufusButton').should be_true
     end
 
     it 'can tell if an element is displayed on screen' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:displayed?).and_return(true)
       @driver.displayed?(:name => 'rufusButton').should be_true
     end
 
     it 'can enter text into an element' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:send_keys).with('text')
       @driver.type('text', 'rufusButton')
     end

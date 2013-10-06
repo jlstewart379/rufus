@@ -34,7 +34,11 @@ module Rufus
     def find(locator)
       how = locator.keys[0].to_sym
       what = locator[how]
-      driver.find_element(how, what)
+      begin
+        driver.find_element(how, what)
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+        nil
+      end
     end
 
     def click(locator)

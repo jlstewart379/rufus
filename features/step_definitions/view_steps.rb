@@ -11,3 +11,7 @@ Given(/^I start the driver$/) do
  puts selenium
 end
 
+Then(/^the view defined "([^"]*)" does( not)? exist$/) do |which, exist|
+  on(HomePage).send("view_#{which}_view").exists?.should == exist.nil?
+end
+
