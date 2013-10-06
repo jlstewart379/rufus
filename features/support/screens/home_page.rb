@@ -5,7 +5,9 @@ class HomePage
 
   view(:view_rufus, :name =>'rufusButton')
   button(:view_show_alert, :name => 'showAlertButton')
-  alert(:alert, :name => 'Rufus Alert')
+  alert(:alert_rufus, :name => 'Rufus Alert')
+  button(:alert_Ok, :name => 'Ok')
+  button(:alert_Cancel, :name => 'Cancel')
 
 
   def active?

@@ -9,7 +9,7 @@ Feature: Interacting with a view
     When I rotate the app to "portrait"
     Then the app is in the "portrait" orientation
 
-  Scenario: Rotation the orientation twice
+  Scenario: Rotating the orientation twice
     Given the app is in the "landscape" orientation
     When I rotate the app to "portrait"
     And I rotate the app to "landscape"

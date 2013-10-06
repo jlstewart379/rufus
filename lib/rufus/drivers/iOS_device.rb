@@ -18,10 +18,5 @@ module Rufus
         }
       end
     end
-    def rotate(orientation)
-      orientation = orientation.to_sym
-      @ios_driver.rotate orientation
-    end
-
   end
 end
