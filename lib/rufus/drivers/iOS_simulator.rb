@@ -6,9 +6,20 @@ module Rufus
 
       def self.for(config,url)
         @config = config
-         Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
+        driver(url)
       end
 
+      def orientation
+        @ios_driver.orientation
+      end
+
+      def rotate(orientation)
+        orientation = orientation.to_sym
+        puts 'here it is'
+        puts orientation
+        #@ios_driver.rotate orientation.to_sym
+        @ios_driver.send(:rotate, orientation)
+      end
 
       private
       def self.capabilities
@@ -19,6 +30,10 @@ module Rufus
             'app' => @config["sim_app_path"],
             'device' => "iPhoneSimulator"
         }
+      end
+
+      def self.driver(url)
+        @ios_driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
       end
     end
   end

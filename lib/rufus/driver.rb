@@ -3,6 +3,7 @@ require 'rufus/drivers/iOS_device'
 require 'rufus/drivers/iOS_simulator'
 require 'selenium-webdriver'
 require 'erb'
+require 'selenium/webdriver/safari/extension'
 
 module Rufus
   class Driver
@@ -47,6 +48,18 @@ module Rufus
 
     def displayed?(locator)
       find(locator).displayed?
+    end
+
+    def orientation
+      driver.orientation.to_s
+    end
+
+    def rotate(orientation)
+       o = orientation.to_s.to_sym
+      puts 'orientation'
+      puts o
+      puts 'hello'.to_sym
+      driver.rotate orientation
     end
 
     def type(keys, name)

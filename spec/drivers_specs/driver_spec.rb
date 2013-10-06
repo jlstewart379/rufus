@@ -274,5 +274,45 @@ describe Rufus::Driver do
         end
       end
     end
+    context 'verifying and setting device orientation' do
+
+      let(:yaml){double('YAML loader')}
+      let(:mock_driver){'a mock app driver'}
+      let(:url){'http://127.0.0.1:4723/wd/hub'}
+
+      context 'orientation' do
+
+        before(:each) do
+          File.stub(:exists?).and_return(true)
+          @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
+          YAML.should_receive(:load).and_return(@config)
+          @driver = Rufus::Driver.new
+        end
+
+        it 'can get the device orientation in landscape' do
+          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+          mock_driver.should_receive(:orientation).and_return(:landscape)
+          @driver.orientation.should eq('landscape')
+        end
+
+        it 'can set the device orientation to portrait' do
+
+          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+          mock_driver.should_receive(:rotate).with('portrait')
+          @driver.rotate('portrait')
+        end
+
+
+
+
+
+
+
+
+      end
+
+
+
+    end
   end
 end

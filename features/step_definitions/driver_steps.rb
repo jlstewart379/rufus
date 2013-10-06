@@ -14,3 +14,17 @@ Given(/^I have created a valid appium driver for iOS$/) do
 
 end
 
+Given(/^the app is in the "([^"]*)" orientation/) do |orient|
+  driver = Rufus::Driver.new
+  orientation = driver.orientation
+  orientation.should eq orient
+end
+When(/^I rotate the app to "([^"]*)"$/) do |orient|
+
+  orientation = :portrait
+  orientation = :landscape if orient.eql?('landscape')
+
+  driver = Rufus::Driver.new
+  driver.rotate orientation
+
+end
