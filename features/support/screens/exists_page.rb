@@ -7,7 +7,7 @@ class ExistsPage
 
 
   def active?
-    wait_until_exists alert_delayed_view
+    exists_after_wait? alert_delayed_view
   end
 
 
