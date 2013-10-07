@@ -15,3 +15,6 @@ Then(/^the view defined "([^"]*)" does( not)? exist$/) do |which, exist|
   on(HomePage).send("view_#{which}_view").exists?.should == exist.nil?
 end
 
+Given(/^I have navigated to the "([^"]*)" using the "([^"]*)" route$/) do |page, which_route|
+  navigate_to(page.to_class, :using => which_route.to_sym)
+end
