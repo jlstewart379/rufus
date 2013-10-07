@@ -8,6 +8,7 @@
 
 #import "RUViewController.h"
 #import "RufusPageViewController.h"
+#import "ExistsPageViewController.h"
 
 @interface RUViewController ()
 
@@ -37,6 +38,14 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rufus Alert" message:@"You've chosen to show the rufus alert" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
     
     [alert show];
+}
+
+- (IBAction)toExistsPage:(id)sender {
+    
+    ExistsPageViewController *existsPageViewController = [[ExistsPageViewController alloc] init];
+    [[self navigationController] pushViewController:existsPageViewController animated:YES];
+    
+    
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

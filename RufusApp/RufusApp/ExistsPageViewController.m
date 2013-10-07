@@ -1,27 +1,24 @@
 //
-//  RufusPageViewController.m
+//  ExistsViewController.m
 //  RufusApp
 //
-//  Created by Jeremy Stewart on 8/15/13.
+//  Created by Jeremy Stewart on 10/6/13.
 //  Copyright (c) 2013 Northwoods. All rights reserved.
 //
 
-#import "RufusPageViewController.h"
-#import "RUViewController.h"
+#import "ExistsPageViewController.h"
 
-@interface RufusPageViewController ()
+@interface ExistsPageViewController ()
 
 @end
 
-@implementation RufusPageViewController
+@implementation ExistsPageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        [self performSelector:@selector(addLabelToScreen) withObject:nil afterDelay:3]; 
-        
+        [self performSelector:@selector(showAlert) withObject:nil afterDelay:5]; 
     }
     return self;
 }
@@ -38,11 +35,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goToHomePage:(id)sender {
+-(void) showAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This Alert Exists" message:@"Once this alert exists, :active? can return true on the page object." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
     
-    RUViewController *ruViewController = [[RUViewController alloc] init];
-    [[self navigationController] pushViewController:ruViewController animated:YES];
+    [alert show];
+
 }
+
 
 
 @end

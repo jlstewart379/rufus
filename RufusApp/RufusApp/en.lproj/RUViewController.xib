@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RUViewController">
             <connections>
+                <outlet property="existsPageButton" destination="ptK-30-J0y" id="eem-Ie-lJP"/>
                 <outlet property="rufusButton" destination="4" id="11"/>
                 <outlet property="showAlertButton" destination="VTc-fX-2Iw" id="ndi-Zu-qSy"/>
                 <outlet property="view" destination="2" id="3"/>
@@ -55,6 +56,16 @@
                     </state>
                     <connections>
                         <action selector="showAlert:" destination="-1" eventType="touchUpInside" id="gcv-9i-0IY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptK-30-J0y">
+                    <rect key="frame" x="314" y="350" width="131" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Exists Page Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toExistsPage:" destination="-1" eventType="touchUpInside" id="Sk4-Kl-m6A"/>
                     </connections>
                 </button>
             </subviews>
