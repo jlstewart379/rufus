@@ -20,5 +20,10 @@ Given(/^I have navigated to the "([^"]*)" using the "([^"]*)" route$/) do |page,
 end
 Then(/^I will not find the view marked "([^"]*)" after waiting$/) do |arg|
   view = on(HomePage).view_zilch_view
-  wait_until_exists(view).should be_false
+  exists_after_wait?(view).should be_false
+end
+When(/^the view marked "([^"]*)" exists is( not)? displayed$/) do |which, not_displayed|
+  on(DisplayedPage).active?.should be_true
+  view = on(DisplayedPage).send("view_#{which}_view")
+ displayed_after_wait?(view).should == not_displayed.nil?
 end

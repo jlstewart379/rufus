@@ -10,5 +10,6 @@
 
 @interface DisplayedPageViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *mysteryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *invisibleLabel;
 
 @end

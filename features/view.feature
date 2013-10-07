@@ -21,7 +21,9 @@ Feature: Interacting with views
   Scenario: Waiting for a view that is not there
     Given I am on the "HomePage"
     Then I will not find the view marked "zilch" after waiting
-
+@displayed
   Scenario: Waiting for a view to be displayed
     Given I have navigated to the "DisplayedPage" using the "to_displayed" route
     Then I am on the "DisplayedPage"
+    And the view marked "invisible" exists is not displayed
+
