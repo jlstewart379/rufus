@@ -37,7 +37,7 @@ module Rufus
       begin
         driver.find_element(how, what)
       rescue Selenium::WebDriver::Error::NoSuchElementError
-        nil
+        return nil
       end
     end
 

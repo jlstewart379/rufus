@@ -1,4 +1,4 @@
-
+@view
 Feature: Interacting with views
 
    Scenario:  Clicking a view
@@ -9,7 +9,7 @@ Feature: Interacting with views
    Scenario: Finding a view
      Given I am on the "HomePage"
      Then the view defined "rufus" does exist
-  @view
+
   Scenario: Not finding a view
     Given I am on the "HomePage"
     Then the view defined "zilch" does not exist

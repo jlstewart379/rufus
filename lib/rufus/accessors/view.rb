@@ -9,8 +9,7 @@ module Rufus
 
       def exists?
         element = selenium.find(what)
-        false
-        true unless element.nil?
+        !element.nil?
       end
 
       def click
