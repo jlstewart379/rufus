@@ -9,6 +9,7 @@
 #import "RUViewController.h"
 #import "RufusPageViewController.h"
 #import "ExistsPageViewController.h"
+#import "DisplayedPageViewController.h"
 
 @interface RUViewController ()
 
@@ -46,6 +47,11 @@
     [[self navigationController] pushViewController:existsPageViewController animated:YES];
     
     
+}
+
+- (IBAction)toDisplayedPage:(id)sender {
+    DisplayedPageViewController *displayedPageViewController = [[DisplayedPageViewController alloc] init];
+    [[self navigationController] pushViewController:displayedPageViewController animated:YES];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

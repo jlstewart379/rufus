@@ -1,27 +1,24 @@
 //
-//  RufusPageViewController.m
+//  EnabledPageViewController.m
 //  RufusApp
 //
-//  Created by Jeremy Stewart on 8/15/13.
+//  Created by Jeremy Stewart on 10/7/13.
 //  Copyright (c) 2013 Northwoods. All rights reserved.
 //
 
-#import "RufusPageViewController.h"
-#import "RUViewController.h"
+#import "EnabledPageViewController.h"
 
-@interface RufusPageViewController ()
+@interface EnabledPageViewController ()
 
 @end
 
-@implementation RufusPageViewController
+@implementation EnabledPageViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        [self performSelector:@selector(addLabelToScreen) withObject:nil afterDelay:3]; 
-        
+        // Custom initialization
     }
     return self;
 }
@@ -37,13 +34,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)goToHomePage:(id)sender {
-    
-    RUViewController *ruViewController = [[RUViewController alloc] init];
-    [[self navigationController] pushViewController:ruViewController animated:YES];
-}
-
-
 
 @end

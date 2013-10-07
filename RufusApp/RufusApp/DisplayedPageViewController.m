@@ -1,27 +1,25 @@
 //
-//  RufusPageViewController.m
+//  DisplayedPageViewController.m
 //  RufusApp
 //
-//  Created by Jeremy Stewart on 8/15/13.
+//  Created by Jeremy Stewart on 10/7/13.
 //  Copyright (c) 2013 Northwoods. All rights reserved.
 //
 
-#import "RufusPageViewController.h"
-#import "RUViewController.h"
+#import "DisplayedPageViewController.h"
 
-@interface RufusPageViewController ()
+@interface DisplayedPageViewController ()
 
 @end
 
-@implementation RufusPageViewController
+@implementation DisplayedPageViewController
+@synthesize mysteryLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        [self performSelector:@selector(addLabelToScreen) withObject:nil afterDelay:3]; 
-        
+        [self performSelector:@selector(showMysteryLabel) withObject:nil afterDelay:6];
     }
     return self;
 }
@@ -38,12 +36,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)goToHomePage:(id)sender {
-    
-    RUViewController *ruViewController = [[RUViewController alloc] init];
-    [[self navigationController] pushViewController:ruViewController animated:YES];
+-(void)showMysteryLabel
+{
+    [mysteryLabel setHidden:NO]; 
 }
-
-
 
 @end

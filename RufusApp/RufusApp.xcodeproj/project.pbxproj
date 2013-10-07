@@ -27,6 +27,10 @@
 		B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */; };
 		B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */; };
 		B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */; };
+		B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F16F180270290037AD69 /* EnabledPageViewController.m */; };
+		B8F2F172180270290037AD69 /* EnabledPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2F170180270290037AD69 /* EnabledPageViewController.xib */; };
+		B8F2F1761802703D0037AD69 /* DisplayedPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F1741802703D0037AD69 /* DisplayedPageViewController.m */; };
+		B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2F1751802703D0037AD69 /* DisplayedPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,12 @@
 		B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistsPageViewController.h; sourceTree = "<group>"; };
 		B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistsPageViewController.m; sourceTree = "<group>"; };
 		B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistsPageViewController.xib; sourceTree = "<group>"; };
+		B8F2F16E180270290037AD69 /* EnabledPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnabledPageViewController.h; sourceTree = "<group>"; };
+		B8F2F16F180270290037AD69 /* EnabledPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnabledPageViewController.m; sourceTree = "<group>"; };
+		B8F2F170180270290037AD69 /* EnabledPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnabledPageViewController.xib; sourceTree = "<group>"; };
+		B8F2F1731802703D0037AD69 /* DisplayedPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayedPageViewController.h; sourceTree = "<group>"; };
+		B8F2F1741802703D0037AD69 /* DisplayedPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayedPageViewController.m; sourceTree = "<group>"; };
+		B8F2F1751802703D0037AD69 /* DisplayedPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayedPageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,18 +137,13 @@
 		B88C11E317BD550E00A62E9D /* RufusApp */ = {
 			isa = PBXGroup;
 			children = (
+				B8F2F16D18026FA00037AD69 /* PageObjectControllers */,
 				B88C11EC17BD550E00A62E9D /* RUAppDelegate.h */,
 				B88C11ED17BD550E00A62E9D /* RUAppDelegate.m */,
-				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
-				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
-				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
 				B88C11F517BD550E00A62E9D /* RUViewController.h */,
 				B88C11F617BD550E00A62E9D /* RUViewController.m */,
 				B88C11F817BD550E00A62E9D /* RUViewController.xib */,
 				B88C11E417BD550E00A62E9D /* Supporting Files */,
-				B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */,
-				B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */,
-				B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */,
 			);
 			path = RufusApp;
 			sourceTree = "<group>";
@@ -174,6 +179,25 @@
 				B88C120A17BD550E00A62E9D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B8F2F16D18026FA00037AD69 /* PageObjectControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8F2F1731802703D0037AD69 /* DisplayedPageViewController.h */,
+				B8F2F1741802703D0037AD69 /* DisplayedPageViewController.m */,
+				B8F2F1751802703D0037AD69 /* DisplayedPageViewController.xib */,
+				B8F2F16E180270290037AD69 /* EnabledPageViewController.h */,
+				B8F2F16F180270290037AD69 /* EnabledPageViewController.m */,
+				B8F2F170180270290037AD69 /* EnabledPageViewController.xib */,
+				B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */,
+				B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */,
+				B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */,
+				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
+				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
+				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
+			);
+			name = PageObjectControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +277,8 @@
 				B88C11F217BD550E00A62E9D /* Default@2x.png in Resources */,
 				B88C11F417BD550E00A62E9D /* Default-568h@2x.png in Resources */,
 				B88C11FA17BD550E00A62E9D /* RUViewController.xib in Resources */,
+				B8F2F172180270290037AD69 /* EnabledPageViewController.xib in Resources */,
+				B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */,
 				B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */,
 				B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */,
 			);
@@ -294,6 +320,8 @@
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,
+				B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */,
+				B8F2F1761802703D0037AD69 /* DisplayedPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

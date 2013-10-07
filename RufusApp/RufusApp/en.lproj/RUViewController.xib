@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RUViewController">
             <connections>
+                <outlet property="displayedPageButton" destination="cx3-SH-qUq" id="ntd-NP-UTK"/>
                 <outlet property="existsPageButton" destination="ptK-30-J0y" id="eem-Ie-lJP"/>
                 <outlet property="rufusButton" destination="4" id="11"/>
                 <outlet property="showAlertButton" destination="VTc-fX-2Iw" id="ndi-Zu-qSy"/>
@@ -35,8 +36,8 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Rufus Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24">
-                    <rect key="frame" x="270" y="166" width="219" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Rufus Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24">
+                    <rect key="frame" x="333" y="174" width="219" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" label="rufusLabel"/>
                     <constraints>
@@ -67,6 +68,23 @@
                     </state>
                     <connections>
                         <action selector="toExistsPage:" destination="-1" eventType="touchUpInside" id="Sk4-Kl-m6A"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-wy-gw2">
+                    <rect key="frame" x="306" y="388" width="146" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Enabled Page Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx3-SH-qUq">
+                    <rect key="frame" x="300" y="434" width="158" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Displayed Page Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toDisplayedPage:" destination="-1" eventType="touchUpInside" id="hho-oP-47b"/>
                     </connections>
                 </button>
             </subviews>

@@ -7,6 +7,8 @@ require 'require_all'
 require 'rufus/driver'
 
 World(Rufus::Navigation)
+World(Rufus)
+
  require_rel '/screens'
 
 def selenium

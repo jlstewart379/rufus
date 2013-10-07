@@ -18,3 +18,7 @@ end
 Given(/^I have navigated to the "([^"]*)" using the "([^"]*)" route$/) do |page, which_route|
   navigate_to(page.to_class, :using => which_route.to_sym)
 end
+Then(/^I will not find the view marked "([^"]*)" after waiting$/) do |arg|
+  view = on(HomePage).view_zilch_view
+  wait_until_exists(view).should be_false
+end
