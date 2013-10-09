@@ -13,26 +13,22 @@
 @end
 
 @implementation EnabledPageViewController
+@synthesize enabledTextField, notEnabledTextField;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+
+-(void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [enabledTextField setEnabled:NO];
+    [notEnabledTextField setEnabled:NO];
+    [self performSelector:@selector(enableTheTextField) withObject:nil afterDelay:5];
 }
 
-- (void)viewDidLoad
+-(void)enableTheTextField
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [enabledTextField setEnabled:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 @end

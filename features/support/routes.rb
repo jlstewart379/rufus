@@ -8,5 +8,9 @@ Rufus::Navigation.routes = {
     :to_displayed => [
       [HomePage, :view_displayed],
       [DisplayedPage],
+    ],
+    :to_enabled => [
+        [HomePage, :view_enabled],
+        [EnabledPage],
     ]
 }

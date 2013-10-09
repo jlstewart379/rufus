@@ -31,7 +31,7 @@ module Rufus
   def enabled_after_wait?(view, timeout = 5)
     wait = Selenium::WebDriver::Wait.new :timeout => timeout
     begin
-      wait.until{view.displayed?}
+      wait.until{view.enabled?}
     rescue Selenium::WebDriver::Error::TimeOutError
       return false
     end

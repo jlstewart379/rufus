@@ -14,7 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *existsPageButton;
 @property (weak, nonatomic) IBOutlet UIButton *showAlertButton;
 @property (weak, nonatomic) IBOutlet UIButton *rufusButton;
+@property (weak, nonatomic) IBOutlet UIButton *enabledPageButton;
 
+- (IBAction)toEnabledPage:(id)sender;
 - (IBAction)toRufusPage:(id)sender;
 - (IBAction)showAlert:(id)sender;
 - (IBAction)toExistsPage:(id)sender;

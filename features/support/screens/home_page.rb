@@ -9,9 +9,9 @@ class HomePage
   alert(:alert_rufus, :name => 'Rufus Alert')
   button(:view_exists, :name => 'existsButton')
   button(:view_displayed, :name => 'displayedPageButton')
+  button(:view_enabled, :name => 'enabledPageButton')
   button(:alert_Ok, :name => 'Ok')
   button(:alert_Cancel, :name => 'Cancel')
-
 
 
   def active?

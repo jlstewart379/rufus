@@ -10,6 +10,7 @@
 #import "RufusPageViewController.h"
 #import "ExistsPageViewController.h"
 #import "DisplayedPageViewController.h"
+#import "EnabledPageViewController.h"
 
 @interface RUViewController ()
 
@@ -45,8 +46,12 @@
     
     ExistsPageViewController *existsPageViewController = [[ExistsPageViewController alloc] init];
     [[self navigationController] pushViewController:existsPageViewController animated:YES];
-    
-    
+}
+
+-(void)toEnabledPage:(id)sender
+{
+    EnabledPageViewController *enabledPageViewController = [[EnabledPageViewController alloc] init];
+    [[self navigationController] pushViewController:enabledPageViewController animated:YES];
 }
 
 - (IBAction)toDisplayedPage:(id)sender {

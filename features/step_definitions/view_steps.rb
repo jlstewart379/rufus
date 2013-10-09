@@ -27,3 +27,8 @@ When(/^the view marked "([^"]*)" exists is( not)? displayed$/) do |which, not_di
   view = on(DisplayedPage).send("view_#{which}_view")
  displayed_after_wait?(view).should == not_displayed.nil?
 end
+When(/^the view marked "([^"]*)" is( not)? enabled$/) do |which, not_enabled|
+  on(EnabledPage).active?.should be_true
+  view = on(EnabledPage).send("view_#{which}_view")
+  enabled_after_wait?(view).should == not_enabled.nil?
+end

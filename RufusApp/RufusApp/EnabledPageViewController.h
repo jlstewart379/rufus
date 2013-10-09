@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EnabledPageViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *enabledTextField;
+@property (weak, nonatomic) IBOutlet UITextField *notEnabledTextField;
 
 @end
