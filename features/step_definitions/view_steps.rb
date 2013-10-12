@@ -22,7 +22,7 @@ Then(/^I will not find the view marked "([^"]*)" after waiting$/) do |arg|
   view = on(HomePage).view_zilch_view
   exists_after_wait?(view).should be_false
 end
-When(/^the view marked "([^"]*)" exists is( not)? displayed$/) do |which, not_displayed|
+When(/^the view marked "([^"]*)" exists but is( not)? displayed$/) do |which, not_displayed|
   on(DisplayedPage).active?.should be_true
   view = on(DisplayedPage).send("view_#{which}_view")
  displayed_after_wait?(view).should == not_displayed.nil?
@@ -31,4 +31,11 @@ When(/^the view marked "([^"]*)" is( not)? enabled$/) do |which, not_enabled|
   on(EnabledPage).active?.should be_true
   view = on(EnabledPage).send("view_#{which}_view")
   enabled_after_wait?(view).should == not_enabled.nil?
+end
+Then(/^in a block can see the existence of views "([^"]*)", "([^"]*)" and "([^"]*)"$/) do |view_1, view_2, view_3|
+  on(HomePage) do |screen|
+    screen.send("view_#{view_1}_view").exists?.should be_true
+    screen.send("view_#{view_2}_view").exists?.should be_true
+    screen.send("view_#{view_3}_view").exists?.should be_true
+  end
 end

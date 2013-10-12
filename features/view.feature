@@ -25,10 +25,14 @@ Feature: Interacting with views
   Scenario: Waiting for a view to be displayed
     Given I have navigated to the "DisplayedPage" using the "to_displayed" route
     Then I am on the "DisplayedPage"
-    And the view marked "invisible" exists is not displayed
+    And the view marked "invisible" exists but is not displayed
 
   Scenario: Waiting for a view to be enabled
     Given I have navigated to the "EnabledPage" using the "to_enabled" route
     Then I am on the "EnabledPage"
     And the view marked "not_enabled" is not enabled
+    @block
+   Scenario: Calling views in a block
+     Given I am on the "HomePage"
+     Then in a block can see the existence of views "rufus", "exists" and "displayed"
 
