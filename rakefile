@@ -18,7 +18,7 @@ task :build_sim do
 end
 
 desc "build RufusApp for device"
-task :build_sim do
+task :build_device do
   Dir.chdir("./RufusApp") do
     `xcodebuild -project RufusApp.xcodeproj -target RufusApp -sdk iphoneos -configuration Debug clean build 1>&2`  
   end
