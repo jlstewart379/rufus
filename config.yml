@@ -1,0 +1,8 @@
+browser: iOS
+platform: Mac
+version: 7.0
+app: ./build/Debug-iphoneos/RufusApp.app
+udid: 4550a561efc2c047637f342bd6320623ba98c385
+use_physical: false
+sim_app_path: <%=ENV['HOME']%>/Library/Application Support/iPhone Simulator/7.0/Applications/4550a561efc2c047637f342bd6320623ba98c385/RufusApp.app
+device: iPhoneSimulator

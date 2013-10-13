@@ -1,0 +1,89 @@
+require 'yaml'
+require 'rspec/core/rake_task'
+require 'cucumber/rake/task'
+require 'erb'
+require 'childprocess'
+
+desc "Start appium and run features"
+task :test => [:build_sim, :install_sim, :appium_sim, :specs, :features, :stop_sim_server]
+
+desc "Running specs appium server"
+RSpec::Core::RakeTask.new(:specs)
+
+desc "build RufusApp for simulator"
+task :build_sim do
+  Dir.chdir("./RufusApp") do
+    `xcodebuild -project RufusApp.xcodeproj -target RufusApp -sdk iphonesimulator -configuration Debug clean build 1>&2`  
+  end
+end
+
+desc "build RufusApp for device"
+task :build_sim do
+  Dir.chdir("./RufusApp") do
+    `xcodebuild -project RufusApp.xcodeproj -target RufusApp -sdk iphoneos -configuration Debug clean build 1>&2`  
+  end
+end
+
+desc "Run the features"
+task :features do
+  `bundle exec cucumber --tags @block 1>&2`
+end
+
+desc "Starting the appium server"
+task :appium_sim do
+  process = ChildProcess.build('rake', 'appium_server')
+  process.duplex = true
+  process.start
+end
+
+desc "Stops the appium server for simulator"
+task :stop_sim_server do
+  system('pkill -9 -f node /usr/local/bin/appium --app #{ENV["HOME"]}/Library/Application Support/iPhone Simulator/#{config["version"]}/Applications')
+end
+
+desc "Starting appium server for simulator"
+task :appium_server do
+  config = YAML.load(ERB.new(File.read('config.yml')).result)
+  app_path = config["sim_app_path"]
+end
+
+desc "Install CoPilot to simulator"
+task :install_sim do
+  config = YAML.load(ERB.new(File.read('config.yml')).result)
+  folder_dir="#{ENV['HOME']}/Library/Application Support/iPhone Simulator/#{config["version"]}/Applications"
+
+  top_dir="#{folder_dir}/#{config["udid"]}"
+  FileUtils.mkdir_p(top_dir)
+  FileUtils.mkdir_p("#{top_dir}/Documents")
+  FileUtils.mkdir_p("#{top_dir}/Library")
+  FileUtils.mkdir_p("#{top_dir}/tmp")
+
+  FileUtils.cp_r("./RufusApp/build/Debug-iphonesimulator/RufusApp.app", "#{top_dir}/RufusApp.app")
+
+end
+
+desc "Start the simulator"
+task :start_sim do
+   system('open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app')
+end
+
+desc "Starting appium server for device"
+task :appium do
+  config = YAML.load_file('config.yml')
+  app_path = config["app"]
+  udid = config["udid"]
+  `appium -U udid --app app_path 1>&2`
+end
+
+desc "Reset the simulator"
+task :reset_sim do
+  %x{osascript<<APPLESCRIPT
+          tell application "System Events"
+            click menu item 5 of menu "iOS Simulator" of menu bar of process "iPhone Simulator"
+              tell window 1 of process "iPhone Simulator"
+                click button "Reset"
+              end tell
+          end tell
+      APPLESCRIPT}
+end
+
