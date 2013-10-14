@@ -26,7 +26,7 @@ end
 
 desc "Run the features"
 task :features do
-  `bundle exec cucumber --tags @block 1>&2`
+  `bundle exec cucumber --tags @rufus 1>&2`
 end
 
 desc "Starting the appium server"
@@ -45,6 +45,7 @@ desc "Starting appium server for simulator"
 task :appium_server do
   config = YAML.load(ERB.new(File.read('config.yml')).result)
   app_path = config["sim_app_path"]
+  system('appium --app "' + app_path + '" --force-ipad --native-instruments-lib 1>&2')
 end
 
 desc "Install CoPilot to simulator"

@@ -85,4 +85,16 @@ describe Rufus do
       end
     end
   end
+
+  context 'elements without accessors' do
+
+    let(:selenium){'mock selenium driver'}
+    let(:mock_element){'mock selenium element'}
+
+    it 'can find an element by name' do
+      selenium.should_receive(:find).with({:name => 'rufusButton'}).and_return(mock_element)
+      mock_element.should_receive(:click)
+      click(:name => 'rufusButton')
+    end
+  end
 end

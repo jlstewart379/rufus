@@ -38,6 +38,14 @@ module Rufus
     true
   end
 
+  def find(locator)
+    selenium.find(locator)
+  end
+
+  def click(locator)
+    selenium.find(locator).click
+  end
+
 end
 
 
