@@ -103,9 +103,8 @@ describe Rufus do
     let(:selenium){'mock selenium driver'}
 
     it 'can get the raw page data' do
-      selenium.should_receive(:page_source)
-      page_source
+      selenium.should_receive(:page_source).and_return("source data")
+      page_source.should eq("source data")
     end
-
   end
 end

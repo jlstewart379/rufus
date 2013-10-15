@@ -147,6 +147,10 @@ module Rufus
       element.attribute(:name).eql? name
     end
 
+    def page_source
+      driver.page_source
+    end
+
     private
 
     def url(config)

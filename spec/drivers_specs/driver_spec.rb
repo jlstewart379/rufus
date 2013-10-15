@@ -314,18 +314,28 @@ describe Rufus::Driver do
           mock_driver.should_receive(:rotate).with('portrait')
           @driver.rotate('portrait')
         end
+      end
+    end
 
+    context 'getting the page data' do
 
+      let(:yaml){double('YAML loader')}
+      let(:mock_driver){'a mock app driver'}
+      let(:url){'http://127.0.0.1:4723/wd/hub'}
 
-
-
-
-
-
+      before(:each) do
+        File.stub(:exists?).and_return(true)
+        @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
+        YAML.should_receive(:load).and_return(@config)
+        @driver = Rufus::Driver.new
       end
 
+      it 'can get all the page data' do
 
-
+        Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+        mock_driver.should_receive(:page_source).and_return("some page data")
+        @driver.page_source.should eq("some page data")
+      end
     end
   end
 end
