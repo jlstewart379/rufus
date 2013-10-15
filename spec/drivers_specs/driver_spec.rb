@@ -37,8 +37,6 @@ describe Rufus::Driver do
         expect{Rufus::Driver.new}.to raise_error(RuntimeError, 'No config.yml found')
       end
     end
-
-
  end
 
   context 'dealing with elements' do
@@ -94,6 +92,7 @@ describe Rufus::Driver do
 
     it 'can enter text into an element' do
       mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
+      mock_element.should_receive(:click)
       mock_element.should_receive(:send_keys).with('text')
       @driver.type('text', 'rufusButton')
     end

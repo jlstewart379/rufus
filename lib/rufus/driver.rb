@@ -66,8 +66,10 @@ module Rufus
     end
 
     def type(keys, name)
-      locator = {:name => name}
-      find(locator).send_keys keys
+      element = find(:name => name)
+      element.click
+      sleep 1
+      element.send_keys keys
     end
 
     def sequence(*names, times)
@@ -194,6 +196,5 @@ module Rufus
     def use_device
       @config["use_physical"] == true
     end
-
   end
 end

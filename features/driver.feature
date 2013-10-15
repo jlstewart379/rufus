@@ -14,4 +14,9 @@ Feature: Interacting with a view
     When I rotate the app to "landscape"
     And I rotate the app to "portrait"
     Then the app is in the "portrait" orientation
+@sending
+  Scenario: Typing into a text field
+    Given I am on the "HomePage"
+    When I type "BooYah" into the text field defined "text_box"
+    Then the view marked "text_box" has the text "BooYah"
 
