@@ -13,7 +13,7 @@ Feature: Using Rufus
 
   Scenario: Getting the page source
     Then I can print out the page data
-@buttons_list
+
   Scenario: Getting page elements by class
     Then I can get a list of the buttons
 
