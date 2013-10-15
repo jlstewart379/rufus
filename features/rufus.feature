@@ -11,4 +11,7 @@ Feature: Using Rufus
     Given I have clicked on view defined "rufusButton" with an accessor
     Then I am on the "RufusPage"
 
+  Scenario: Getting the page source
+    Then I can print out the page data
+
 

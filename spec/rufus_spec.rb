@@ -97,4 +97,15 @@ describe Rufus do
       click(:name => 'rufusButton')
     end
   end
+
+  context 'getting the raw page data' do
+
+    let(:selenium){'mock selenium driver'}
+
+    it 'can get the raw page data' do
+      selenium.should_receive(:page_source)
+      page_source
+    end
+
+  end
 end

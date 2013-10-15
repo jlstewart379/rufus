@@ -46,6 +46,10 @@ module Rufus
     selenium.find(locator).click
   end
 
+  def page_source
+    selenium.page_source
+  end
+
 end
 
 
