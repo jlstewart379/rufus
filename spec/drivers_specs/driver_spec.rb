@@ -336,6 +336,20 @@ describe Rufus::Driver do
         mock_driver.should_receive(:page_source).and_return("some page data")
         @driver.page_source.should eq("some page data")
       end
+
+      context 'getting element lists by class' do
+
+        let(:mock_list){'a mock list of elements'}
+
+        before(:each) do
+          Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+        end
+
+        it 'can get all the buttons' do
+          mock_driver.should_receive(:find_elements).with(:tag_name, 'UIAButton').and_return(mock_list)
+          @driver.elements_by_tag('UIAButton').should eq(mock_list)
+        end
+      end
     end
   end
 end

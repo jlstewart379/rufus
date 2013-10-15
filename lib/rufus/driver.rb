@@ -151,6 +151,14 @@ module Rufus
       driver.page_source
     end
 
+    def all_elements
+      elements_by_tag('UIAElement')
+    end
+
+    def elements_by_tag(name)
+      driver.find_elements(:tag_name, name)
+    end
+
     private
 
     def url(config)
@@ -173,14 +181,6 @@ module Rufus
 
     def is_table_view_cell?(element)
       class_for(element).eql?('UIATableCell')
-    end
-
-    def all_elements
-     elements_by_tag('UIAElement')
-    end
-
-    def elements_by_tag(name)
-      driver.find_elements(:tag_name, name)
     end
 
     def driver

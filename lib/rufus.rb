@@ -50,6 +50,10 @@ module Rufus
     selenium.page_source
   end
 
+  def elements_of_type(type)
+    selenium.elements_by_tag(type)
+  end
+
 end
 
 

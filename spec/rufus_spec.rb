@@ -7,8 +7,6 @@ require 'yaml'
 describe Rufus do
   include Rufus
 
-
-
   context 'waiting for an element to exist' do
 
     let(:mock_wait){'mock Selenium::WebDriver::Wait'}
@@ -101,10 +99,17 @@ describe Rufus do
   context 'getting the raw page data' do
 
     let(:selenium){'mock selenium driver'}
+    let(:elements){'mock list of elements'}
 
     it 'can get the raw page data' do
       selenium.should_receive(:page_source).and_return("source data")
       page_source.should eq("source data")
     end
+
+    it 'can get a list of buttons' do
+      selenium.should_receive(:elements_by_tag).with('UIAButton').and_return(elements)
+      elements_of_type 'UIAButton'
+    end
+
   end
 end
