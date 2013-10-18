@@ -12,5 +12,9 @@ Rufus::Navigation.routes = {
     :to_enabled => [
         [HomePage, :view_enabled],
         [EnabledPage],
+    ],
+    :to_swipe => [
+        [HomePage, :view_swipe],
+        [SwipePage],
     ]
 }

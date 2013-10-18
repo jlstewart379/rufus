@@ -350,5 +350,54 @@ describe Rufus::Driver do
         end
       end
     end
+    context 'swiping' do
+
+      let(:yaml){double('YAML loader')}
+      let(:mock_driver){'a mock app driver'}
+      let(:url){'http://127.0.0.1:4723/wd/hub'}
+      let(:mock_element){'mock selenium element'}
+      let(:swipe_options){{'element' => 1, 'startX' => 0.0, 'startY' => 0.5, 'endX' => 0.50, 'endY' => 0.50, 'duration' => 1.0}}
+
+      before(:each) do
+        File.stub(:exists?).and_return(true)
+        @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
+        YAML.should_receive(:load).and_return(@config)
+        @driver = Rufus::Driver.new
+      end
+
+      it 'can swipe to the right' do
+        Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+        mock_driver.should_receive(:find_element).with(:name, 'elementName').and_return(mock_element)
+        mock_element.should_receive(:attribute).with('id').and_return(1)
+        mock_driver.should_receive(:execute_script).with('mobile: swipe', swipe_options)
+        @driver.swipe_right(:name => 'elementName')
+      end
+    end
   end
 end
+
+
+#context 'swiping' do
+#
+#  let(:selenium){'mock selenium driver'}
+#  let(:mock_element){'mock selenium element'}
+#  let(:swipe_options){{'element' => 1, 'startX' => 0.0, 'startY' => 0.5, 'endX' => 0.50, 'endY' => 0.50, 'duration' => 1.0}}
+#
+#  it 'can swipe to the right' do
+#
+#    selenium.should_receive(:find).with(:name => 'elementName').and_return(mock_element)
+#    mock_element.should_receive(:attribute).with('id').and_return(1)
+#    selenium.should_receive(:execute_script).with('mobile: swipe', swipe_opts)
+#
+#
+#
+#
+#  end
+#
+#
+#  swipeOpts =
+#      execute_script 'mobile: swipe', swipeOpts
+#
+#
+#
+#end

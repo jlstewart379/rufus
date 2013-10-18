@@ -161,6 +161,12 @@ module Rufus
       driver.find_elements(:tag_name, name)
     end
 
+    def swipe_right(locator)
+      id = find(locator).attribute 'id'
+      swipe_options = swipe_opts_for id
+      driver.execute_script 'mobile: swipe', swipe_options
+    end
+
     private
 
     def url(config)
@@ -183,6 +189,17 @@ module Rufus
 
     def is_table_view_cell?(element)
       class_for(element).eql?('UIATableCell')
+    end
+
+    def swipe_opts_for(id)
+      {
+          'element' => id,
+          'startX' => 0.0,
+          'startY' => 0.5,
+          'endX' => 0.50,
+          'endY' => 0.50,
+          'duration' => 1.0
+      }
     end
 
     def driver
