@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B855BA3D1810E9F000B33F42 /* ScrollPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */; };
-		B855BA3E1810E9F000B33F42 /* ScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */; };
+		B855BA3D1810E9F000B33F42 /* ScrollChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B855BA3B1810E9F000B33F42 /* ScrollChildViewController.m */; };
+		B855BA3E1810E9F000B33F42 /* ScrollChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */; };
 		B88C11DE17BD550E00A62E9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DD17BD550E00A62E9D /* UIKit.framework */; };
 		B88C11E017BD550E00A62E9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DF17BD550E00A62E9D /* Foundation.framework */; };
 		B88C11E217BD550E00A62E9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11E117BD550E00A62E9D /* CoreGraphics.framework */; };
@@ -27,6 +27,8 @@
 		B88C120F17BD550E00A62E9D /* RufusAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B88C120E17BD550E00A62E9D /* RufusAppTests.m */; };
 		B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88C121917BD55BB00A62E9D /* RufusPageViewController.m */; };
 		B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */; };
+		B8B8FA981810FD7800E3BCA3 /* SwipePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */; };
+		B8B8FA991810FD7800E3BCA3 /* SwipePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */; };
 		B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */; };
 		B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */; };
 		B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F16F180270290037AD69 /* EnabledPageViewController.m */; };
@@ -46,9 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B855BA3A1810E9F000B33F42 /* ScrollPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageViewController.h; sourceTree = "<group>"; };
-		B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageViewController.m; sourceTree = "<group>"; };
-		B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollPageViewController.xib; sourceTree = "<group>"; };
+		B855BA3A1810E9F000B33F42 /* ScrollChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollChildViewController.h; sourceTree = "<group>"; };
+		B855BA3B1810E9F000B33F42 /* ScrollChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollChildViewController.m; sourceTree = "<group>"; };
+		B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollChildViewController.xib; sourceTree = "<group>"; };
 		B88C11DA17BD550E00A62E9D /* RufusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RufusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88C11DD17BD550E00A62E9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B88C11DF17BD550E00A62E9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,6 +76,9 @@
 		B88C121817BD55BB00A62E9D /* RufusPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RufusPageViewController.h; sourceTree = "<group>"; };
 		B88C121917BD55BB00A62E9D /* RufusPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RufusPageViewController.m; sourceTree = "<group>"; };
 		B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RufusPageViewController.xib; sourceTree = "<group>"; };
+		B8B8FA951810FD7800E3BCA3 /* SwipePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipePageViewController.h; sourceTree = "<group>"; };
+		B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipePageViewController.m; sourceTree = "<group>"; };
+		B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipePageViewController.xib; sourceTree = "<group>"; };
 		B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistsPageViewController.h; sourceTree = "<group>"; };
 		B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistsPageViewController.m; sourceTree = "<group>"; };
 		B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistsPageViewController.xib; sourceTree = "<group>"; };
@@ -145,9 +150,6 @@
 				B8F2F16D18026FA00037AD69 /* PageObjectControllers */,
 				B88C11EC17BD550E00A62E9D /* RUAppDelegate.h */,
 				B88C11ED17BD550E00A62E9D /* RUAppDelegate.m */,
-				B88C11F517BD550E00A62E9D /* RUViewController.h */,
-				B88C11F617BD550E00A62E9D /* RUViewController.m */,
-				B88C11F817BD550E00A62E9D /* RUViewController.xib */,
 				B88C11E417BD550E00A62E9D /* Supporting Files */,
 			);
 			path = RufusApp;
@@ -186,6 +188,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B88C11F517BD550E00A62E9D /* RUViewController.h */,
+				B88C11F617BD550E00A62E9D /* RUViewController.m */,
+				B88C11F817BD550E00A62E9D /* RUViewController.xib */,
+				B855BA3A1810E9F000B33F42 /* ScrollChildViewController.h */,
+				B855BA3B1810E9F000B33F42 /* ScrollChildViewController.m */,
+			);
+			name = OtherViewControllers;
+			sourceTree = "<group>";
+		};
 		B8F2F16D18026FA00037AD69 /* PageObjectControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,9 +215,11 @@
 				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
 				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
 				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
-				B855BA3A1810E9F000B33F42 /* ScrollPageViewController.h */,
-				B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */,
-				B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */,
+				B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */,
+				B8B8FA951810FD7800E3BCA3 /* SwipePageViewController.h */,
+				B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */,
+				B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */,
+				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -280,13 +296,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B855BA3E1810E9F000B33F42 /* ScrollPageViewController.xib in Resources */,
+				B855BA3E1810E9F000B33F42 /* ScrollChildViewController.xib in Resources */,
 				B88C11E817BD550E00A62E9D /* InfoPlist.strings in Resources */,
 				B88C11F017BD550E00A62E9D /* Default.png in Resources */,
 				B88C11F217BD550E00A62E9D /* Default@2x.png in Resources */,
 				B88C11F417BD550E00A62E9D /* Default-568h@2x.png in Resources */,
 				B88C11FA17BD550E00A62E9D /* RUViewController.xib in Resources */,
 				B8F2F172180270290037AD69 /* EnabledPageViewController.xib in Resources */,
+				B8B8FA991810FD7800E3BCA3 /* SwipePageViewController.xib in Resources */,
 				B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */,
 				B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */,
 				B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */,
@@ -324,10 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B855BA3D1810E9F000B33F42 /* ScrollPageViewController.m in Sources */,
+				B855BA3D1810E9F000B33F42 /* ScrollChildViewController.m in Sources */,
 				B88C11EA17BD550E00A62E9D /* main.m in Sources */,
 				B88C11EE17BD550E00A62E9D /* RUAppDelegate.m in Sources */,
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
+				B8B8FA981810FD7800E3BCA3 /* SwipePageViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,
 				B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */,

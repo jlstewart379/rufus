@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Northwoods. All rights reserved.
 //
 
-#import "ScrollPageViewController.h"
+#import "ScrollChildViewController.h"
 
-@interface ScrollPageViewController ()
+@interface ScrollChildViewController ()
 
 @end
 
-@implementation ScrollPageViewController
+@implementation ScrollChildViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[self screenNumber] setText:[NSString stringWithFormat:@"Screen #%d", [self index]]];
 }
 
 - (void)didReceiveMemoryWarning

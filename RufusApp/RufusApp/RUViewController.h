@@ -22,7 +22,6 @@
 - (IBAction)showAlert:(id)sender;
 - (IBAction)toExistsPage:(id)sender;
 - (IBAction)toDisplayedPage:(id)sender;
-- (IBAction)toScrollPage:(id)sender;
-
+- (IBAction)toSwipePage:(id)sender;
 
 @end

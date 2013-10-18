@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScrollPageViewController : UIViewController
+@interface ScrollChildViewController : UIViewController
+
+@property (assign, nonatomic) NSInteger index;
+@property (weak, nonatomic) IBOutlet UILabel *screenNumber;
 
 @end
