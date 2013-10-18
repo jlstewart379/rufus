@@ -11,6 +11,7 @@
 #import "ExistsPageViewController.h"
 #import "DisplayedPageViewController.h"
 #import "EnabledPageViewController.h"
+#import "ScrollPageViewController.h"
 
 @interface RUViewController ()
 
@@ -57,6 +58,11 @@
 - (IBAction)toDisplayedPage:(id)sender {
     DisplayedPageViewController *displayedPageViewController = [[DisplayedPageViewController alloc] init];
     [[self navigationController] pushViewController:displayedPageViewController animated:YES];
+}
+
+- (IBAction)toScrollPage:(id)sender {
+    ScrollPageViewController *scrollPageViewController = [[ScrollPageViewController alloc] init];
+    [[self navigationController] pushViewController:scrollPageViewController animated:YES];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

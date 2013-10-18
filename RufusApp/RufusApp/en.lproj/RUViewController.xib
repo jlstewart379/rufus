@@ -10,6 +10,7 @@
                 <outlet property="enabledPageButton" destination="8Xe-wy-gw2" id="mNp-pl-GZO"/>
                 <outlet property="existsPageButton" destination="ptK-30-J0y" id="eem-Ie-lJP"/>
                 <outlet property="rufusButton" destination="4" id="11"/>
+                <outlet property="scrollPageButton" destination="Trw-jM-66l" id="lPV-bJ-geS"/>
                 <outlet property="showAlertButton" destination="VTc-fX-2Iw" id="ndi-Zu-qSy"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -91,6 +92,16 @@
                     </state>
                     <connections>
                         <action selector="toDisplayedPage:" destination="-1" eventType="touchUpInside" id="hho-oP-47b"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Trw-jM-66l">
+                    <rect key="frame" x="315" y="472" width="129" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Scroll Page Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toScrollPage:" destination="-1" eventType="touchUpInside" id="yXI-DM-BDs"/>
                     </connections>
                 </button>
             </subviews>

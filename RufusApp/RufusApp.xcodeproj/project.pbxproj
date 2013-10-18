@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B855BA3D1810E9F000B33F42 /* ScrollPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */; };
+		B855BA3E1810E9F000B33F42 /* ScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */; };
 		B88C11DE17BD550E00A62E9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DD17BD550E00A62E9D /* UIKit.framework */; };
 		B88C11E017BD550E00A62E9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DF17BD550E00A62E9D /* Foundation.framework */; };
 		B88C11E217BD550E00A62E9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11E117BD550E00A62E9D /* CoreGraphics.framework */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B855BA3A1810E9F000B33F42 /* ScrollPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageViewController.h; sourceTree = "<group>"; };
+		B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageViewController.m; sourceTree = "<group>"; };
+		B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollPageViewController.xib; sourceTree = "<group>"; };
 		B88C11DA17BD550E00A62E9D /* RufusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RufusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88C11DD17BD550E00A62E9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B88C11DF17BD550E00A62E9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +201,9 @@
 				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
 				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
 				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
+				B855BA3A1810E9F000B33F42 /* ScrollPageViewController.h */,
+				B855BA3B1810E9F000B33F42 /* ScrollPageViewController.m */,
+				B855BA3C1810E9F000B33F42 /* ScrollPageViewController.xib */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B855BA3E1810E9F000B33F42 /* ScrollPageViewController.xib in Resources */,
 				B88C11E817BD550E00A62E9D /* InfoPlist.strings in Resources */,
 				B88C11F017BD550E00A62E9D /* Default.png in Resources */,
 				B88C11F217BD550E00A62E9D /* Default@2x.png in Resources */,
@@ -315,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B855BA3D1810E9F000B33F42 /* ScrollPageViewController.m in Sources */,
 				B88C11EA17BD550E00A62E9D /* main.m in Sources */,
 				B88C11EE17BD550E00A62E9D /* RUAppDelegate.m in Sources */,
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,

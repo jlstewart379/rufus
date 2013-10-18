@@ -15,12 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *showAlertButton;
 @property (weak, nonatomic) IBOutlet UIButton *rufusButton;
 @property (weak, nonatomic) IBOutlet UIButton *enabledPageButton;
+@property (weak, nonatomic) IBOutlet UIButton *scrollPageButton;
 
 - (IBAction)toEnabledPage:(id)sender;
 - (IBAction)toRufusPage:(id)sender;
 - (IBAction)showAlert:(id)sender;
 - (IBAction)toExistsPage:(id)sender;
 - (IBAction)toDisplayedPage:(id)sender;
+- (IBAction)toScrollPage:(id)sender;
 
 
 @end
