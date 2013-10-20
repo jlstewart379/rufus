@@ -16,6 +16,6 @@ end
 Then(/^I can use a hash to wait for "([^"]*)" to become enabled$/) do |which|
   enabled_hash_after_wait?(:name => "#{which}").should be_true
 end
-Then(/^I can use a hash to wait for the "([^"]*)" view to exist$/) do |arg|
+Then(/^I can use a hash to wait for the "([^"]*)" view to exist$/) do |which|
   exists_hash_after_wait?(:name => "#{which}").should be_true
 end

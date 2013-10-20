@@ -44,8 +44,8 @@ module Rufus
   end
 
   def exists_hash_after_wait?(locator, timeout = 5)
-    element = find locator
-    exists_after_wait?(element, timeout)
+    view = Rufus::Accessors::View.new locator
+    exists_after_wait?(view, timeout)
   end
 
   def find(locator)
