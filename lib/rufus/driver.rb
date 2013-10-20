@@ -161,6 +161,11 @@ module Rufus
       driver.find_elements(:tag_name, name)
     end
 
+    def scroll_to(locator)
+      id = find(locator).ref
+      driver.execute_script 'mobile: scrollTo', {'element' => id}
+    end
+
     def swipe_right(locator)
       id = find(locator).ref
       swipe_options = swipe_opts_for id
@@ -198,9 +203,9 @@ module Rufus
       {
           'touchCount' => 2,
           'element' => id,
-          'startX' => 400.0,
+          'startX' => 250.0,
           'startY' => 200.0,
-          'endX' => 85.0,
+          'endX' => 65.0,
           'endY' => 200.0,
           'duration' => 1.0
       }

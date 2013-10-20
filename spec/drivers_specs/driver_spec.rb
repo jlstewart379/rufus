@@ -350,7 +350,7 @@ describe Rufus::Driver do
         end
       end
     end
-    context 'swiping' do
+    context 'scrolling' do
 
       let(:yaml){double('YAML loader')}
       let(:mock_driver){'a mock app driver'}
@@ -365,7 +365,7 @@ describe Rufus::Driver do
         @driver = Rufus::Driver.new
       end
 
-      it 'can swipe to the right' do
+      it 'can scroll to a view' do
         Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
         mock_driver.should_receive(:find_element).with(:name, 'elementName').and_return(mock_element)
         mock_element.should_receive(:ref).and_return(1)

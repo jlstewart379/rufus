@@ -54,8 +54,8 @@ module Rufus
     selenium.elements_by_tag(type)
   end
 
-  def swipe_right(locator)
-    selenium.swipe_right(locator)
+  def scroll_to(locator)
+    selenium.scroll_to(locator)
   end
 end
 
