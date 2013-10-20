@@ -5,7 +5,7 @@ require 'erb'
 require 'childprocess'
 
 desc "Start appium and run features"
-task :test => [:build_sim, :install_sim, :appium_sim, :specs, :features, :stop_sim_server]
+task :test => [:build_sim, :install_sim, :appium_sim, :features, :stop_sim_server]
 
 desc "Running specs appium server"
 RSpec::Core::RakeTask.new(:specs)
@@ -26,7 +26,7 @@ end
 
 desc "Run the features"
 task :features do
-  `bundle exec cucumber --tags @rufus 1>&2`
+  `bundle exec cucumber --tags @hash 1>&2`
 end
 
 desc "Starting the appium server"

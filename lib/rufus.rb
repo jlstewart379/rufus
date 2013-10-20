@@ -38,6 +38,16 @@ module Rufus
     true
   end
 
+  def enabled_hash_after_wait?(locator, timeout = 5)
+    element = find locator
+    enabled_after_wait?(element, timeout)
+  end
+
+  def exists_hash_after_wait?(locator, timeout = 5)
+    element = find locator
+    exists_after_wait?(element, timeout)
+  end
+
   def find(locator)
     selenium.find(locator)
   end

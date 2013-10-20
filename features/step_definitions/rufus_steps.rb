@@ -13,3 +13,9 @@ Then(/^I can get a list of the buttons$/) do
     element.class.name.should eq('Selenium::WebDriver::Element')
   end
 end
+Then(/^I can use a hash to wait for "([^"]*)" to become enabled$/) do |which|
+  enabled_hash_after_wait?(:name => "#{which}").should be_true
+end
+Then(/^I can use a hash to wait for the "([^"]*)" view to exist$/) do |arg|
+  exists_hash_after_wait?(:name => "#{which}").should be_true
+end
