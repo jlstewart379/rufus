@@ -31,7 +31,7 @@ Feature: Interacting with views
     Given I have navigated to the "EnabledPage" using the "to_enabled" route
     Then I am on the "EnabledPage"
     And the view marked "not_enabled" is not enabled
-    @block
+
    Scenario: Calling views in a block
      Given I am on the "HomePage"
      Then in a block can see the existence of views "rufus", "exists" and "displayed"

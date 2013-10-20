@@ -19,3 +19,12 @@ end
 Then(/^I can use a hash to wait for the "([^"]*)" view to exist$/) do |which|
   exists_hash_after_wait?(:name => "#{which}").should be_true
 end
+Then(/^I can use a hash to wait for the "([^"]*)" to be displayed$/) do |which|
+  displayed_hash_after_wait?(:name => "#{which}").should be_true
+end
+When(/^I see that the "([^"]*)" is never displayed$/) do |which|
+  displayed_hash_after_wait?(:name => "#{which}").should be_false
+end
+When(/^I see that the "([^"]*)" is never enabled$/) do |which|
+  enabled_hash_after_wait?(:name => "#{which}").should be_false
+end
