@@ -11,7 +11,6 @@
 #import "ExistsPageViewController.h"
 #import "DisplayedPageViewController.h"
 #import "EnabledPageViewController.h"
-#import "SwipePageViewController.h"
 #import "ScrollPageViewController.h"
 
 @interface RUViewController ()

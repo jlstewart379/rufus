@@ -29,8 +29,6 @@
 		B88C120F17BD550E00A62E9D /* RufusAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B88C120E17BD550E00A62E9D /* RufusAppTests.m */; };
 		B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B88C121917BD55BB00A62E9D /* RufusPageViewController.m */; };
 		B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */; };
-		B8B8FA981810FD7800E3BCA3 /* SwipePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */; };
-		B8B8FA991810FD7800E3BCA3 /* SwipePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */; };
 		B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */; };
 		B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */; };
 		B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F2F16F180270290037AD69 /* EnabledPageViewController.m */; };
@@ -81,9 +79,6 @@
 		B88C121817BD55BB00A62E9D /* RufusPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RufusPageViewController.h; sourceTree = "<group>"; };
 		B88C121917BD55BB00A62E9D /* RufusPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RufusPageViewController.m; sourceTree = "<group>"; };
 		B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RufusPageViewController.xib; sourceTree = "<group>"; };
-		B8B8FA951810FD7800E3BCA3 /* SwipePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipePageViewController.h; sourceTree = "<group>"; };
-		B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipePageViewController.m; sourceTree = "<group>"; };
-		B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipePageViewController.xib; sourceTree = "<group>"; };
 		B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExistsPageViewController.h; sourceTree = "<group>"; };
 		B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExistsPageViewController.m; sourceTree = "<group>"; };
 		B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExistsPageViewController.xib; sourceTree = "<group>"; };
@@ -221,13 +216,10 @@
 				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
 				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
 				B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */,
-				B8B8FA951810FD7800E3BCA3 /* SwipePageViewController.h */,
-				B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */,
-				B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */,
-				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
 				B869CCEB1814292E00093724 /* ScrollPageViewController.h */,
 				B869CCEC1814292E00093724 /* ScrollPageViewController.m */,
 				B869CCED1814292E00093724 /* ScrollPageViewController.xib */,
+				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -311,7 +303,6 @@
 				B88C11F417BD550E00A62E9D /* Default-568h@2x.png in Resources */,
 				B88C11FA17BD550E00A62E9D /* RUViewController.xib in Resources */,
 				B8F2F172180270290037AD69 /* EnabledPageViewController.xib in Resources */,
-				B8B8FA991810FD7800E3BCA3 /* SwipePageViewController.xib in Resources */,
 				B869CCEF1814292E00093724 /* ScrollPageViewController.xib in Resources */,
 				B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */,
 				B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */,
@@ -355,7 +346,6 @@
 				B88C11EE17BD550E00A62E9D /* RUAppDelegate.m in Sources */,
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
 				B869CCEE1814292E00093724 /* ScrollPageViewController.m in Sources */,
-				B8B8FA981810FD7800E3BCA3 /* SwipePageViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,
 				B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */,
