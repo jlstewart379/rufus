@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B855BA3D1810E9F000B33F42 /* ScrollChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B855BA3B1810E9F000B33F42 /* ScrollChildViewController.m */; };
 		B855BA3E1810E9F000B33F42 /* ScrollChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */; };
+		B869CCEE1814292E00093724 /* ScrollPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869CCEC1814292E00093724 /* ScrollPageViewController.m */; };
+		B869CCEF1814292E00093724 /* ScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CCED1814292E00093724 /* ScrollPageViewController.xib */; };
 		B88C11DE17BD550E00A62E9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DD17BD550E00A62E9D /* UIKit.framework */; };
 		B88C11E017BD550E00A62E9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DF17BD550E00A62E9D /* Foundation.framework */; };
 		B88C11E217BD550E00A62E9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11E117BD550E00A62E9D /* CoreGraphics.framework */; };
@@ -51,6 +53,9 @@
 		B855BA3A1810E9F000B33F42 /* ScrollChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollChildViewController.h; sourceTree = "<group>"; };
 		B855BA3B1810E9F000B33F42 /* ScrollChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollChildViewController.m; sourceTree = "<group>"; };
 		B855BA3C1810E9F000B33F42 /* ScrollChildViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollChildViewController.xib; sourceTree = "<group>"; };
+		B869CCEB1814292E00093724 /* ScrollPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollPageViewController.h; sourceTree = "<group>"; };
+		B869CCEC1814292E00093724 /* ScrollPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollPageViewController.m; sourceTree = "<group>"; };
+		B869CCED1814292E00093724 /* ScrollPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollPageViewController.xib; sourceTree = "<group>"; };
 		B88C11DA17BD550E00A62E9D /* RufusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RufusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88C11DD17BD550E00A62E9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B88C11DF17BD550E00A62E9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -220,6 +225,9 @@
 				B8B8FA961810FD7800E3BCA3 /* SwipePageViewController.m */,
 				B8B8FA971810FD7800E3BCA3 /* SwipePageViewController.xib */,
 				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
+				B869CCEB1814292E00093724 /* ScrollPageViewController.h */,
+				B869CCEC1814292E00093724 /* ScrollPageViewController.m */,
+				B869CCED1814292E00093724 /* ScrollPageViewController.xib */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 				B88C11FA17BD550E00A62E9D /* RUViewController.xib in Resources */,
 				B8F2F172180270290037AD69 /* EnabledPageViewController.xib in Resources */,
 				B8B8FA991810FD7800E3BCA3 /* SwipePageViewController.xib in Resources */,
+				B869CCEF1814292E00093724 /* ScrollPageViewController.xib in Resources */,
 				B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */,
 				B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */,
 				B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */,
@@ -345,6 +354,7 @@
 				B88C11EA17BD550E00A62E9D /* main.m in Sources */,
 				B88C11EE17BD550E00A62E9D /* RUAppDelegate.m in Sources */,
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
+				B869CCEE1814292E00093724 /* ScrollPageViewController.m in Sources */,
 				B8B8FA981810FD7800E3BCA3 /* SwipePageViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,

@@ -162,8 +162,11 @@ module Rufus
     end
 
     def swipe_right(locator)
-      id = find(locator).attribute 'id'
+      id = find(locator).ref
       swipe_options = swipe_opts_for id
+
+
+
       driver.execute_script 'mobile: swipe', swipe_options
     end
 
@@ -193,11 +196,12 @@ module Rufus
 
     def swipe_opts_for(id)
       {
+          'touchCount' => 2,
           'element' => id,
-          'startX' => 0.0,
-          'startY' => 0.5,
-          'endX' => 0.50,
-          'endY' => 0.50,
+          'startX' => 400.0,
+          'startY' => 200.0,
+          'endX' => 85.0,
+          'endY' => 200.0,
           'duration' => 1.0
       }
     end

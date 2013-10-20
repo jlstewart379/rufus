@@ -12,6 +12,7 @@
 #import "DisplayedPageViewController.h"
 #import "EnabledPageViewController.h"
 #import "SwipePageViewController.h"
+#import "ScrollPageViewController.h"
 
 @interface RUViewController ()
 
@@ -61,7 +62,7 @@
 }
 
 - (IBAction)toSwipePage:(id)sender {
-    SwipePageViewController *scrollPageViewController = [[SwipePageViewController alloc] init];
+    ScrollPageViewController *scrollPageViewController = [[ScrollPageViewController alloc] init];
     [[self navigationController] pushViewController:scrollPageViewController animated:YES];
 }
 

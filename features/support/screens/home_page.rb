@@ -11,6 +11,7 @@ class HomePage
   button(:view_exists, :name => 'existsButton')
   button(:view_displayed, :name => 'displayedPageButton')
   button(:view_enabled, :name => 'enabledPageButton')
+  button(:view_swipe, :name => 'swipePageButton')
   button(:alert_Ok, :name => 'Ok')
   button(:alert_Cancel, :name => 'Cancel')
 

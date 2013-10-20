@@ -116,7 +116,7 @@ describe Rufus do
   context 'swiping' do
     let(:selenium){'mock selenium driver'}
     it 'can swipe to the right' do
-      selenium.should_receive(:swipe).with(:name => 'elementName')
+      selenium.should_receive(:swipe_right).with(:name => 'elementName')
       swipe_right(:name => 'elementName')
     end
   end

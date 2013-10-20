@@ -41,8 +41,17 @@
     [[self pageController] setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil] ;
     
     [self addChildViewController:[self pageController]];
-    [[self view] addSubview:[[self pageController] view]];
+//    [[self view] addSubview:[[self pageController] view]];
     [[self pageController] didMoveToParentViewController:self];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    CGSize parentSize = self.pageController.view.frame.size;
+    [scrollView setContentSize: CGSizeMake(initialViewController.view.frame.size.width * 3, parentSize.height)];
+    [scrollView addSubview:[[self pageController] view]];
+    [[self view] addSubview:scrollView];
+    
+    
+    
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {

@@ -88,3 +88,6 @@ task :reset_sim do
       APPLESCRIPT}
 end
 
+desc "Deploy new build to simulator"
+task :deploy => [:reset_sim, :build_sim, :install_sim]
+

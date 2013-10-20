@@ -10,6 +10,6 @@
 
 @interface SwipePageViewController : UIViewController <UIPageViewControllerDataSource>
 
-@property (nonatomic, strong) UIPageViewController *pageController; 
+@property (nonatomic, strong) UIPageViewController *pageController;
 
 @end

@@ -55,12 +55,7 @@ module Rufus
   end
 
   def swipe_right(locator)
-    selenium.swipe(locator)
-
-
-
-
-
+    selenium.swipe_right(locator)
   end
 end
 

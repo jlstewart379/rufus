@@ -13,4 +13,6 @@
 @property (assign, nonatomic) NSInteger index;
 @property (weak, nonatomic) IBOutlet UILabel *screenNumber;
 
+-(void)setIndexLabel:(int) index; 
+
 @end
