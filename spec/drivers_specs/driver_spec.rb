@@ -356,8 +356,7 @@ describe Rufus::Driver do
       let(:mock_driver){'a mock app driver'}
       let(:url){'http://127.0.0.1:4723/wd/hub'}
       let(:mock_element){'mock selenium element'}
-      let(:swipe_options){{'touch_count' => 2, 'element' => 1, 'startX' => 400.0, 'startY' => 200.0, 'endX' => 200.0, 'endY' => 200.0, 'duration' => 1.0}}
-
+      let(:swipe_options){{'element' => 1}}
       before(:each) do
         File.stub(:exists?).and_return(true)
         @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
@@ -369,8 +368,8 @@ describe Rufus::Driver do
         Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
         mock_driver.should_receive(:find_element).with(:name, 'elementName').and_return(mock_element)
         mock_element.should_receive(:ref).and_return(1)
-        mock_driver.should_receive(:execute_script).with('mobile: swipe', swipe_options)
-        @driver.swipe_right(:name => 'elementName')
+        mock_driver.should_receive(:execute_script).with('mobile: scrollTo', swipe_options)
+        @driver.scroll_to(:name => 'elementName')
       end
     end
   end
