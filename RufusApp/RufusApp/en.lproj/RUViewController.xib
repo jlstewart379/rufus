@@ -12,6 +12,7 @@
                 <outlet property="rufusButton" destination="4" id="11"/>
                 <outlet property="scrollPageButton" destination="Trw-jM-66l" id="lPV-bJ-geS"/>
                 <outlet property="showAlertButton" destination="VTc-fX-2Iw" id="ndi-Zu-qSy"/>
+                <outlet property="tablePageButton" destination="dE6-Ap-U8w" id="rGg-Yd-dCs"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -103,6 +104,17 @@
                     </state>
                     <connections>
                         <action selector="toSwipePage:" destination="-1" eventType="touchUpInside" id="1Hg-Xm-nsi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dE6-Ap-U8w">
+                    <rect key="frame" x="318" y="510" width="126" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" label="tablePageButton"/>
+                    <state key="normal" title="Table Page Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toTablePage:" destination="-1" eventType="touchUpInside" id="hgd-Rn-c0B"/>
                     </connections>
                 </button>
             </subviews>

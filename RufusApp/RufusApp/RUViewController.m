@@ -12,6 +12,8 @@
 #import "DisplayedPageViewController.h"
 #import "EnabledPageViewController.h"
 #import "ScrollPageViewController.h"
+#import "TablePageViewController.h"
+
 
 @interface RUViewController ()
 
@@ -63,6 +65,11 @@
 - (IBAction)toSwipePage:(id)sender {
     ScrollPageViewController *scrollPageViewController = [[ScrollPageViewController alloc] init];
     [[self navigationController] pushViewController:scrollPageViewController animated:YES];
+}
+
+- (IBAction)toTablePage:(id)sender {
+    TablePageViewController *tablePageViewController = [[TablePageViewController alloc] init];
+    [[self navigationController] pushViewController:tablePageViewController animated:YES];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
