@@ -12,6 +12,7 @@ class HomePage
   button(:view_displayed, :name => 'displayedPageButton')
   button(:view_enabled, :name => 'enabledPageButton')
   button(:view_scroll, :name => 'swipePageButton')
+  button(:view_tables, :name => 'tablePageButton')
   button(:alert_Ok, :name => 'Ok')
   button(:alert_Cancel, :name => 'Cancel')
 

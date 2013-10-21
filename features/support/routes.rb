@@ -16,5 +16,9 @@ Rufus::Navigation.routes = {
     :to_scroll => [
         [HomePage, :view_scroll],
         [ScrollPage],
+    ],
+    :to_tables => [
+        [HomePage, :view_tables],
+        [TablePage],
     ]
 }
