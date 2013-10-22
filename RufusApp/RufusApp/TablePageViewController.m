@@ -13,7 +13,7 @@
 @end
 
 @implementation TablePageViewController
-@synthesize table, unsortedTable;
+@synthesize ascending, descending, notSorted;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,8 +28,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [table setAccessibilityLabel:@"table"];
-    [unsortedTable setAccessibilityLabel:@"unsorted"];
+    [ascending setAccessibilityLabel:@"ascending"];
+    [descending setAccessibilityLabel:@"descending"];
+    [notSorted setAccessibilityLabel:@"notSorted"];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -50,12 +51,19 @@
     }
     NSLog(@"%@", [tableView accessibilityLabel]);
     
-    if ([[tableView accessibilityLabel] isEqualToString:[table accessibilityLabel]]) {
+    if ([[tableView accessibilityLabel] isEqualToString:[ascending accessibilityLabel]]) {
         UILabel *text = [labels objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:[text text]];
-    } else {
+    } else if ([[tableView accessibilityLabel] isEqualToString:[descending accessibilityLabel]])  {
         UILabel *text = [labels objectAtIndex:([labels count] - 1) - [indexPath row]];
         [[cell textLabel] setText:[text text]];
+    } else {
+        if ([indexPath row] % 2 == 0) {
+            [[cell textLabel] setText:@"x"];
+        } else {
+            [[cell textLabel] setText:@"j"];
+        }
+       
     }
     
     return cell;

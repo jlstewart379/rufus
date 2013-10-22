@@ -3,11 +3,12 @@ require 'rufus'
 class TablePage
   include Rufus
 
-  table(:view_sorted, :name => 'table')
-  table(:view_unsorted, :name => 'unsorted')
+  table(:view_ascending, :name => 'ascending')
+  table(:view_descending, :name => 'descending')
+  table(:view_unsorted, :name => 'notSorted')
 
   def active?
-    exists_after_wait? view_sorted_view
+    exists_after_wait? view_ascending_view
   end
 
 end

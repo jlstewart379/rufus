@@ -14,9 +14,10 @@
     NSArray *unsorted;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *table;
-@property (weak, nonatomic) IBOutlet UITableView *unsortedTable;
+@property (weak, nonatomic) IBOutlet UITableView *ascending;
+@property (weak, nonatomic) IBOutlet UITableView *descending;
 @property (weak, nonatomic) IBOutlet UILabel *sortedLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unsortedLabel;
+@property (weak, nonatomic) IBOutlet UITableView *notSorted;
 
 @end
