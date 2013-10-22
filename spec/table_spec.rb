@@ -29,24 +29,6 @@ describe Rufus::Accessors::Table do
         mock_child_elements.should_receive(:count).and_return 1
         table.sorted?.should be_true
       end
-
-      it 'can tell if the child elements are sorted' do
-        mock_child_elements.should_receive(:count).and_return 3
-        mock_child_elements.should_receive(:map).and_return(["1","2","3"])
-        table.sorted?.should be_true
-      end
-
-      it 'does not matter if the list is sorted in reverse' do
-        mock_child_elements.should_receive(:count).and_return 3
-        mock_child_elements.should_receive(:map).exactly(2).times.and_return(["3","2","1"])
-        table.sorted?.should be_true
-      end
-
-      it 'says no if there is an element out of order' do
-        mock_child_elements.should_receive(:count).and_return 3
-        mock_child_elements.should_receive(:map).exactly(2).times.and_return(["3","0","1"])
-        table.sorted?.should be_false
-      end
     end
   end
 end

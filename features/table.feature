@@ -10,4 +10,4 @@ Feature: dealing with tables
     And I see the table defined "unsorted" is not sorted
 
   Scenario: Getting the child elements
-    Then I can see all the children for the view defined "sorted"
+    Then I can see all the children for the view defined "ascending"

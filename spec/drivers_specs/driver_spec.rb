@@ -404,28 +404,3 @@ describe Rufus::Driver do
   end
 end
 
-
-#context 'swiping' do
-#
-#  let(:selenium){'mock selenium driver'}
-#  let(:mock_element){'mock selenium element'}
-#  let(:swipe_options){{'element' => 1, 'startX' => 0.0, 'startY' => 0.5, 'endX' => 0.50, 'endY' => 0.50, 'duration' => 1.0}}
-#
-#  it 'can swipe to the right' do
-#
-#    selenium.should_receive(:find).with(:name => 'elementName').and_return(mock_element)
-#    mock_element.should_receive(:attribute).with('id').and_return(1)
-#    selenium.should_receive(:execute_script).with('mobile: swipe', swipe_opts)
-#
-#
-#
-#
-#  end
-#
-#
-#  swipeOpts =
-#      execute_script 'mobile: swipe', swipeOpts
-#
-#
-#
-#end
