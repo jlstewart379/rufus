@@ -5,7 +5,7 @@ module Rufus
     class Table < View
 
      def children
-       selenium.children locator
+       selenium.cells locator
      end
     end
   end

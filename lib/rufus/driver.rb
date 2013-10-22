@@ -41,6 +41,12 @@ module Rufus
       end
     end
 
+    def cells(locator)
+      element = find(locator)
+      raise 'Expected view to be of type UIATableView' unless element.tag_name.eql? 'UIATableView'
+      element.find_elements(:tag_name, 'UIATableCell')
+    end
+
     def click(locator)
       find(locator).click
     end
@@ -166,15 +172,6 @@ module Rufus
       driver.execute_script 'mobile: scrollTo', {'element' => id}
     end
 
-    def swipe_right(locator)
-      id = find(locator).ref
-      swipe_options = swipe_opts_for id
-
-
-
-      driver.execute_script 'mobile: swipe', swipe_options
-    end
-
     private
 
     def url(config)
@@ -197,18 +194,6 @@ module Rufus
 
     def is_table_view_cell?(element)
       class_for(element).eql?('UIATableCell')
-    end
-
-    def swipe_opts_for(id)
-      {
-          'touchCount' => 2,
-          'element' => id,
-          'startX' => 250.0,
-          'startY' => 200.0,
-          'endX' => 65.0,
-          'endY' => 200.0,
-          'duration' => 1.0
-      }
     end
 
     def driver

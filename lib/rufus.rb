@@ -1,6 +1,7 @@
 require 'rufus/navigation'
 require 'rufus/accessors/accessors'
 require 'rufus/accessors/view'
+require 'rufus/accessors/table'
 
 module Rufus
 

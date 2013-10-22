@@ -372,6 +372,35 @@ describe Rufus::Driver do
         @driver.scroll_to(:name => 'elementName')
       end
     end
+
+    context 'finding child elements of table view' do
+
+      let(:yaml){double('YAML loader')}
+      let(:mock_driver){'a mock app driver'}
+      let(:url){'http://127.0.0.1:4723/wd/hub'}
+      let(:mock_element){'mock selenium element'}
+      let(:children){'mock tableview children'}
+
+      before(:each) do
+        File.stub(:exists?).and_return(true)
+        @config = {"browser_name" =>"iOS", "platform"=>"Mac", "version"=>"6.1", "app"=>"/Users/app/path/rufus.app", "use_physical" => false}
+        YAML.should_receive(:load).and_return(@config)
+        @driver = Rufus::Driver.new
+        Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+        mock_driver.should_receive(:find_element).with(:name, 'elementName').and_return(mock_element)
+      end
+
+      it 'returns no elements if element is not table view' do
+        mock_element.should_receive(:tag_name).and_return('UIStaticText')
+        expect{@driver.cells(:name => 'elementName')}.to raise_error(RuntimeError, 'Expected view to be of type UIATableView')
+      end
+
+      it 'can find a list of child elements' do
+        mock_element.should_receive(:tag_name).and_return('UIATableView')
+        mock_element.should_receive(:find_elements).with(:tag_name, 'UIATableCell').and_return(children)
+        @driver.cells(:name => 'elementName').should == children
+      end
+    end
   end
 end
 

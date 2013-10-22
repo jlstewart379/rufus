@@ -12,20 +12,11 @@ describe Rufus::Accessors::Table do
 
     before(:each) do
       table.should_receive(:selenium).and_return(selenium)
-      selenium.should_receive(:children).with(:name => 'testTable').and_return(mock_child_elements)
+      selenium.should_receive(:cells).with(:name => 'testTable').and_return(mock_child_elements)
     end
 
     it 'can get all the child elements of the table' do
-
       table.children.should eq mock_child_elements
-
-
     end
-
-
-
   end
-
-
-
 end

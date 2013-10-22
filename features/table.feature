@@ -6,7 +6,7 @@ Feature: dealing with tables
 
 
   Scenario: Checking the sort
-    Then I see the table defined "table" is sorted
-
+    Then I see the table defined "sorted" is sorted
+@children
   Scenario: Getting the child elements
-    Then I can see all the children
+    Then I can see all the children for the view defined "sorted"
