@@ -172,6 +172,10 @@ module Rufus
       driver.execute_script 'mobile: scrollTo', {'element' => id}
     end
 
+    def screenshot(name)
+      driver.save_screenshot name
+    end
+
     private
 
     def url(config)

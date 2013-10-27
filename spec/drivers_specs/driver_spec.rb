@@ -336,6 +336,12 @@ describe Rufus::Driver do
         @driver.page_source.should eq("some page data")
       end
 
+      it 'can take a screenshot of the page' do
+        Rufus::Drivers::IOS_Simulator.should_receive(:for).with(@config, url).and_return(mock_driver)
+        mock_driver.should_receive(:save_screenshot).with('theShot.png')
+        @driver.screenshot 'theShot.png'
+      end
+
       context 'getting element lists by class' do
 
         let(:mock_list){'a mock list of elements'}

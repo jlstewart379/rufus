@@ -7,6 +7,7 @@
 //
 
 #import "TablePageViewController.h"
+#import "LabelAPageViewController.h"
 
 @interface TablePageViewController ()
 
@@ -45,19 +46,31 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    NSLog(@"%@", [tableView accessibilityLabel]);
+
+    UITableViewCell *cell = nil;
     
     if ([[tableView accessibilityLabel] isEqualToString:[ascending accessibilityLabel]]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Ascending"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Ascending"];
+        }
         UILabel *text = [labels objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:[text text]];
     } else if ([[tableView accessibilityLabel] isEqualToString:[descending accessibilityLabel]])  {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Descending"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Descending"];
+        }
+
         UILabel *text = [labels objectAtIndex:([labels count] - 1) - [indexPath row]];
         [[cell textLabel] setText:[text text]];
     } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Unsorted"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Unsorted"];
+        }
+        
+
         if ([indexPath row] % 2 == 0) {
             [[cell textLabel] setText:@"x"];
         } else {
@@ -67,6 +80,16 @@
     }
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UILabel *label = [labels objectAtIndex:[indexPath row] - 1];
+    NSLog(@"Index Path row %d", [indexPath row]);
+    if ([[label text] isEqualToString:@"a"]) {
+        LabelAPageViewController *labelAPageViewController = [[LabelAPageViewController alloc] init];
+        [[self navigationController] pushViewController:labelAPageViewController animated:YES];
+    }
 }
 
 -(NSArray *) makeLabels
@@ -105,4 +128,6 @@
 }
 
 
+- (IBAction)toButtonTables:(id)sender {
+}
 @end

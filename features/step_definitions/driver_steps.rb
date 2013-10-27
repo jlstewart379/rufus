@@ -23,3 +23,9 @@ end
 Then(/^the view marked "([^"]*)" has the text "([^"]*)"$/) do |which, keys|
   on(HomePage).send("view_#{which}_view").text.should eq keys
 end
+When(/^I take a screenshot called "([^"]*)"$/) do |name|
+  $driver.screenshot name
+end
+Then(/^then the file "([^"]*)" exists$/) do |name|
+  File.exists?(name).should be_true
+end

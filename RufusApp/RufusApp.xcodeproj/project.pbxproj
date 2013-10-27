@@ -13,6 +13,8 @@
 		B869CCEF1814292E00093724 /* ScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CCED1814292E00093724 /* ScrollPageViewController.xib */; };
 		B869CCF31814B62800093724 /* TablePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869CCF11814B62800093724 /* TablePageViewController.m */; };
 		B869CCF41814B62800093724 /* TablePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CCF21814B62800093724 /* TablePageViewController.xib */; };
+		B869CD0518175B7500093724 /* LabelAPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869CD0318175B7500093724 /* LabelAPageViewController.m */; };
+		B869CD0618175B7500093724 /* LabelAPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CD0418175B7500093724 /* LabelAPageViewController.xib */; };
 		B88C11DE17BD550E00A62E9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DD17BD550E00A62E9D /* UIKit.framework */; };
 		B88C11E017BD550E00A62E9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DF17BD550E00A62E9D /* Foundation.framework */; };
 		B88C11E217BD550E00A62E9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11E117BD550E00A62E9D /* CoreGraphics.framework */; };
@@ -59,6 +61,9 @@
 		B869CCF01814B62800093724 /* TablePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TablePageViewController.h; sourceTree = "<group>"; };
 		B869CCF11814B62800093724 /* TablePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TablePageViewController.m; sourceTree = "<group>"; };
 		B869CCF21814B62800093724 /* TablePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TablePageViewController.xib; sourceTree = "<group>"; };
+		B869CD0218175B7500093724 /* LabelAPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAPageViewController.h; sourceTree = "<group>"; };
+		B869CD0318175B7500093724 /* LabelAPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAPageViewController.m; sourceTree = "<group>"; };
+		B869CD0418175B7500093724 /* LabelAPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelAPageViewController.xib; sourceTree = "<group>"; };
 		B88C11DA17BD550E00A62E9D /* RufusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RufusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88C11DD17BD550E00A62E9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B88C11DF17BD550E00A62E9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -228,6 +233,9 @@
 				B869CCF01814B62800093724 /* TablePageViewController.h */,
 				B869CCF11814B62800093724 /* TablePageViewController.m */,
 				B869CCF21814B62800093724 /* TablePageViewController.xib */,
+				B869CD0218175B7500093724 /* LabelAPageViewController.h */,
+				B869CD0318175B7500093724 /* LabelAPageViewController.m */,
+				B869CD0418175B7500093724 /* LabelAPageViewController.xib */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -315,6 +323,7 @@
 				B869CCEF1814292E00093724 /* ScrollPageViewController.xib in Resources */,
 				B8F2F1771802703D0037AD69 /* DisplayedPageViewController.xib in Resources */,
 				B8F2F16C180255FE0037AD69 /* ExistsPageViewController.xib in Resources */,
+				B869CD0618175B7500093724 /* LabelAPageViewController.xib in Resources */,
 				B88C121C17BD55BB00A62E9D /* RufusPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +364,7 @@
 				B869CCF31814B62800093724 /* TablePageViewController.m in Sources */,
 				B88C11EE17BD550E00A62E9D /* RUAppDelegate.m in Sources */,
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
+				B869CD0518175B7500093724 /* LabelAPageViewController.m in Sources */,
 				B869CCEE1814292E00093724 /* ScrollPageViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,
