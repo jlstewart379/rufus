@@ -12,3 +12,6 @@ Then(/^I can see all the children for the view defined "([^"]*)"$/) do |which|
   children[6].attribute('name').should eq 'd'
   children[7].attribute('name').should eq 'e'
 end
+Given(/^I select index "([^"]*)" of the "([^"]*)" table$/) do |index, table|
+  on(TablePage).send("view_#{table}_view").click_row index.to_i
+end

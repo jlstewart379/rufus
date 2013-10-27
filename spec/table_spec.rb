@@ -30,5 +30,16 @@ describe Rufus::Accessors::Table do
         table.sorted?.should be_true
       end
     end
+
+    context 'selecting elements' do
+
+      let(:mock_element){'some element'}
+
+      it 'can select a table item by index' do
+        mock_child_elements.should_receive(:[]).with(1).and_return(mock_element)
+        mock_element.should_receive(:click)
+        table.click_row 2
+      end
+    end
   end
 end

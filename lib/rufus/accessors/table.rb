@@ -20,6 +20,10 @@ module Rufus
        descending? children
      end
 
+     def click_row(index)
+       children[index - 1].click
+     end
+
      private
 
       def elements_sorted(elements)

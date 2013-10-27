@@ -20,8 +20,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+       
         labels = [self makeLabels];
-        
     }
     return self;
 }
@@ -82,10 +82,13 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UILabel *label = [labels objectAtIndex:[indexPath row] - 1];
+    UILabel *label = [labels objectAtIndex:[indexPath row]];
     NSLog(@"Index Path row %d", [indexPath row]);
+    NSLog(@"Label text is: %@", [label text]);
     if ([[label text] isEqualToString:@"a"]) {
         LabelAPageViewController *labelAPageViewController = [[LabelAPageViewController alloc] init];
         [[self navigationController] pushViewController:labelAPageViewController animated:YES];
