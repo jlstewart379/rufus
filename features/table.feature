@@ -12,7 +12,10 @@ Feature: dealing with tables
   Scenario: Getting the child elements
     Then I can see all the children for the view defined "ascending"
 
-    @index
-  Scenario: Selecting and item by index
+  Scenario: Selecting an item by index
    Given I select index "4" of the "ascending" table
    Then I am on the "LabelAPage"
+
+  Scenario: Selecting and item by label
+    Given I select the label "a" in the "ascending" table
+    Then I am on the "LabelAPage"

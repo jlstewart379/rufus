@@ -19,9 +19,14 @@ module Rufus
      def sorted_descending?
        descending? children
      end
-
-     def click_row(index)
-       children[index - 1].click
+           #start with this method
+     def click_on(what)
+       if what.is_a? Integer
+         child_elements = children
+         child_elements[what - 1].click if what - 1 <= child_elements.count
+       else
+         click_label what
+      end
      end
 
      private
@@ -46,6 +51,12 @@ module Rufus
 
       def element_names(elements)
         elements.map{|element| element.attribute 'name'}
+      end
+
+      def click_label(which)
+        children.each do |child|
+         child.click if child.attribute('name').eql? which
+        end
       end
 
     end

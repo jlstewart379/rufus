@@ -13,5 +13,8 @@ Then(/^I can see all the children for the view defined "([^"]*)"$/) do |which|
   children[7].attribute('name').should eq 'e'
 end
 Given(/^I select index "([^"]*)" of the "([^"]*)" table$/) do |index, table|
-  on(TablePage).send("view_#{table}_view").click_row index.to_i
+  on(TablePage).send("view_#{table}_view").click_on index.to_i
+end
+Given(/^I select the label "([^"]*)" in the "([^"]*)" table$/) do |which, table|
+ on(TablePage).send("view_#{table}_view").click_on which
 end

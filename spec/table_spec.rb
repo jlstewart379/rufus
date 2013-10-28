@@ -37,8 +37,14 @@ describe Rufus::Accessors::Table do
 
       it 'can select a table item by index' do
         mock_child_elements.should_receive(:[]).with(1).and_return(mock_element)
+        mock_child_elements.should_receive(:count).and_return(1)
         mock_element.should_receive(:click)
-        table.click_row 2
+        table.click_on 2
+      end
+
+      it 'can select a table item by label' do
+        mock_child_elements.should_receive(:each)
+        table.click_on 'labelName'
       end
     end
   end
