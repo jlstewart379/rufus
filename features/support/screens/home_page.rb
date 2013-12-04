@@ -15,6 +15,7 @@ class HomePage
   button(:view_tables, :name => 'tablePageButton')
   button(:alert_Ok, :name => 'Ok')
   button(:alert_Cancel, :name => 'Cancel')
+  label(:view_label, :name => 'rufusLabel')
 
 
   def active?
