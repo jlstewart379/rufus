@@ -15,12 +15,16 @@ class HomePage
   button(:view_tables, :name => 'tablePageButton')
   button(:alert_Ok, :name => 'Ok')
   button(:alert_Cancel, :name => 'Cancel')
-  label(:view_label, :name => 'rufusLabel')
+  label(:view_label, :name => 'Rufus Label')
 
 
   def active?
      view_rufus_view.exists?
     true
+  end
+
+  def page_source
+    selenium.page_source
   end
 
 end
