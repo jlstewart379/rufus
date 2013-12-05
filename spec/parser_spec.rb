@@ -4,16 +4,15 @@ require 'rufus/parser'
 
 
 describe Rufus::Parser do
-
-
   context 'initializing' do
     context 'json is valid' do
-      let(:valid){'{"name":"RufusApp","type":"UIAApplication","label":"RufusApp","value":null,"rect":{"origin":{"x":0,"y":20},"size":{"width":768,"height":1004}},"dom":null,"enabled":true,"valid":true,"visible":true,"children":"[]"}'}
+      let(:valid){'{\"name\":\"showAlertButton\",\"type\":\"UIAButton\",\"label\":\"showAlertButton\",\"value\":null,\"rect\":{\"origin\":{\"x\":304,\"y\":302},\"size\":{\"width\":150,\"height\":30}},\"dom\":null,\"enabled\":true,\"valid\":true,\"visible\":true,\"children\":[]}'}
       before(:each) do
         @parser = Rufus::Parser.new(valid)
       end
       it 'loads the json' do
-        @parser.screen_data.should eq MultiJson.load(valid)
+        puts @parser.screen_data
+        @parser.screen_data.should == {"name"=>"showAlertButton", "type"=>"UIAButton", "label"=>"showAlertButton", "value"=>nil, "rect"=>{"origin"=>{"x"=>304, "y"=>302}, "size"=>{"width"=>150, "height"=>30}}, "dom"=>nil, "enabled"=>true, "valid"=>true, "visible"=>true, "children"=>[]}
       end
     end
     context 'json is invalid' do
@@ -23,4 +22,17 @@ describe Rufus::Parser do
       end
     end
   end
+
+  context 'getting view data' do
+
+    let(:single_view){'{\"name\":\"showAlertButton\",\"type\":\"UIAButton\",\"label\":\"showAlertButton\",\"value\":null,\"rect\":{\"origin\":{\"x\":304,\"y\":302},\"size\":{\"width\":150,\"height\":30}},\"dom\":null,\"enabled\":true,\"valid\":true,\"visible\":true,\"children\":[]}'}
+
+    context 'it can get a view class' do
+
+
+
+    end
+
+  end
+
 end
