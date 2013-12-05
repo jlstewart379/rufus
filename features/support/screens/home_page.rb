@@ -23,8 +23,4 @@ class HomePage
     true
   end
 
-  def page_source
-    selenium.page_source
-  end
-
 end

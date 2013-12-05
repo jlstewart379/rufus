@@ -41,5 +41,4 @@ Then(/^in a block can see the existence of views "([^"]*)", "([^"]*)" and "([^"]
 end
 Then(/^I can see the view defined "([^"]*)" has text "([^"]*)"$/) do |which, text|
   on(HomePage).send("view_#{which}_view").text.should == text
-
 end
