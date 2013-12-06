@@ -13,15 +13,15 @@ module Rufus
       end
 
       def click
-        selenium.find(what).click
+        selenium.click(what)
       end
 
       def displayed?
-        selenium.find(what).displayed?
+        selenium.displayed?(what)
       end
 
       def enabled?
-        selenium.find(what).enabled?
+        selenium.enabled?(what)
       end
 
       def text
@@ -29,7 +29,7 @@ module Rufus
       end
 
       def send_keys(keys)
-        selenium.find(what).send_keys keys
+        selenium.type(keys, what[:name])
       end
 
       def class

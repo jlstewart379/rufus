@@ -42,3 +42,6 @@ end
 Then(/^I can see the view defined "([^"]*)" has text "([^"]*)"$/) do |which, text|
   on(HomePage).send("view_#{which}_view").text.should == text
 end
+Then(/^I can determine the view defined "([^"]*)" is of type "([^"]*)"$/) do |which, type|
+  on(HomePage).send("view_#{which}_view").class.should.eql?(type)
+end

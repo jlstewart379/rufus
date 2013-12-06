@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Rufus::Accessors::View do
 
   context 'checking for existence' do
-    let(:view){Rufus::Accessors::View.new(:label => 'testView')}
+    let(:view){Rufus::Accessors::View.new(:name => 'testView')}
     let(:view_by_text){Rufus::Accessors::View.new(:text => "textViewText")}
     let(:selenium){double('Selenium::WebDriver')}
     let(:element){double('Selenium element')}
@@ -30,41 +30,36 @@ describe Rufus::Accessors::View do
 
     context 'clicking an element' do
       it 'can click an element' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:click)
+        selenium.should_receive(:click).with({:name =>'testView'})
         view.click
       end
     end
 
     context 'telling if a view is displayed' do
       it 'can tell if a view is displayed' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:displayed?).and_return(true)
+        selenium.should_receive(:displayed?).with({:name =>'testView'}).and_return(true)
         view.displayed?.should be_true
       end
       it 'can tell if a view is not displayed' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:displayed?).and_return(false)
+        selenium.should_receive(:displayed?).with({:name =>'testView'}).and_return(false)
         view.displayed?.should be_false
       end
     end
 
     context 'telling if a view is enabled' do
       it 'can tell if a view is enabled' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:enabled?).and_return(true)
+        selenium.should_receive(:enabled?).with({:name =>'testView'}).and_return(true)
         view.enabled?.should be_true
       end
       it 'can tell if a view is not enabled' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:enabled?).and_return(false)
+        selenium.should_receive(:enabled?).with({:name =>'testView'}).and_return(false)
         view.enabled?.should be_false
       end
     end
 
     context 'getting text from a view' do
       it 'can get the text of a view' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
+        selenium.should_receive(:find).with({:name =>'testView'}).and_return(element)
         element.should_receive(:text).and_return("some text")
         view.text.should eq("some text")
       end
@@ -72,8 +67,7 @@ describe Rufus::Accessors::View do
 
     context 'sending text input to a view' do
       it 'can send text input to a view' do
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
-        element.should_receive(:send_keys).with("keyboard entries")
+        selenium.should_receive(:type).with('keyboard entries', 'testView').and_return(element)
         view.send_keys("keyboard entries")
       end
     end
@@ -81,7 +75,7 @@ describe Rufus::Accessors::View do
     context 'getting the class of a view' do
       it 'can get the UIAutomation class respresntation of view' do
         element.should_receive(:tag_name).and_return('UIStaticText')
-        selenium.should_receive(:find).with({:label =>'testView'}).and_return(element)
+        selenium.should_receive(:find).with({:name =>'testView'}).and_return(element)
         view.class.should eql('UIStaticText')
       end
     end
