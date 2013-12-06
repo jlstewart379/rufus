@@ -25,7 +25,7 @@ module Rufus
       end
 
       def text
-        selenium.find(what).text
+        selenium.text(what)
       end
 
       def send_keys(keys)

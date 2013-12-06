@@ -96,6 +96,14 @@ describe Rufus::Driver do
       mock_element.should_receive(:send_keys).with('text')
       @driver.type('text', 'rufusButton')
     end
+
+    it 'can get the text of an element' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
+      mock_element.should_receive(:text)
+      @driver.text(:name => 'rufusLabel')
+    end
+
+
   end
 
   context 'finding all elements of a type' do

@@ -59,8 +59,7 @@ describe Rufus::Accessors::View do
 
     context 'getting text from a view' do
       it 'can get the text of a view' do
-        selenium.should_receive(:find).with({:name =>'testView'}).and_return(element)
-        element.should_receive(:text).and_return("some text")
+        selenium.should_receive(:text).with({:name =>'testView'}).and_return('some text')
         view.text.should eq("some text")
       end
     end

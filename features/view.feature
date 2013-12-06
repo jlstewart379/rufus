@@ -36,7 +36,7 @@ Feature: Interacting with views
      Given I am on the "HomePage"
      Then in a block can see the existence of views "rufus", "exists" and "displayed"
 
-
+   @getting_text
    Scenario: Getting text of a view
      Given I am on the "HomePage"
      Then I can see the view defined "label" has text "Rufus Label"
