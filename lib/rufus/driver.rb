@@ -67,6 +67,10 @@ module Rufus
       find(locator).text
     end
 
+    def class(locator)
+      find(locator).tag_name
+    end
+
     def orientation
       driver.orientation.to_s
     end

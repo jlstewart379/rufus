@@ -33,7 +33,7 @@ module Rufus
       end
 
       def class
-        selenium.find(what).tag_name
+        selenium.class(what)
       end
 
       def what
