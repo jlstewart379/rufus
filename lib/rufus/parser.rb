@@ -32,6 +32,10 @@ module Rufus
       view_by_label(label)['rect']['origin']['y'] if found?(label)
     end
 
+    def label_for(label)
+      view_by_label(label)['label'] if found?(label)
+    end
+
     def enabled?(label)
       view_by_label(label)['enabled']
     end
@@ -63,8 +67,6 @@ module Rufus
     end
 
     private
-
-
 
     def found?(label)
       false

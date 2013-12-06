@@ -70,6 +70,10 @@ describe Rufus::Parser do
       it 'is nil if label not found when getting y position' do
         @parser.y_pos('doesNotExist').should be_nil
       end
+
+      it 'can get the label of the view' do
+        @parser.label_for('showAlertButton').should eq('showAlertButton')
+      end
     end
 
     context 'getting view state' do
