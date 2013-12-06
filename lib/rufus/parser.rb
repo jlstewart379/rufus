@@ -9,39 +9,39 @@ module Rufus
     end
 
     def class_for(label)
-      @screen_data['type'] if found?(label)
+      view_by_label(label)['type'] if found?(label)
     end
 
     def value(label)
-      @screen_data['value'] if found?(label)
+      view_by_label(label)['value'] if found?(label)
     end
 
     def width(label)
-      @screen_data['rect']['size']['width'] if found?(label)
+      view_by_label(label)['rect']['size']['width'] if found?(label)
     end
 
     def height(label)
-      @screen_data['rect']['size']['height'] if found?(label)
+      view_by_label(label)['rect']['size']['height'] if found?(label)
     end
 
     def x_pos(label)
-      @screen_data['rect']['origin']['x'] if found?(label)
+      view_by_label(label)['rect']['origin']['x'] if found?(label)
     end
 
     def y_pos(label)
-      @screen_data['rect']['origin']['y'] if found?(label)
+      view_by_label(label)['rect']['origin']['y'] if found?(label)
     end
 
     def enabled?(label)
-      @screen_data['enabled']
+      view_by_label(label)['enabled']
     end
 
     def visible?(label)
-      @screen_data['visible']
+      view_by_label(label)['visible']
     end
 
     def child_count(label)
-      @screen_data['children'].count if found(label)
+      view_by_label(label)['children'].count if found(label)
     end
 
     def view_by_label(label)
@@ -67,7 +67,8 @@ module Rufus
 
 
     def found?(label)
-      @screen_data['name'].eql?(label)
+      false
+      view_by_label(label)['name'].eql?(label) unless view_by_label(label).nil?
     end
   end
 end
