@@ -68,32 +68,34 @@ describe Rufus::Drivers::IOS_FasterSimulator do
       mock_element.should_receive(:click)
       driver.press_button 'rufusButton'
     end
-    it 'can tell if an element is enabled' do
-      mock_driver.should_receive(:page_source).and_return(page_data)
-      Rufus::Parser.should_receive(:new).with(page_data).and_return(mock_parser)
-      mock_parser.should_receive(:enabled?).and_return(true)
-      driver.enabled?(:name => 'rufusButton').should be_true
+    context 'checking read-only elements in expedited fashion' do
+      before(:each) do
+        mock_driver.should_receive(:page_source).and_return(page_data)
+        Rufus::Parser.should_receive(:new).with(page_data).and_return(mock_parser)
+
+      end
+      it 'can tell if an element is enabled' do
+        mock_parser.should_receive(:enabled?).with('rufusButton').and_return(true)
+        driver.enabled?(:name => 'rufusButton').should be_true
     end
-    it 'can tell if an element is displayed on screen' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-      mock_element.should_receive(:displayed?).and_return(true)
-      driver.displayed?(:name => 'rufusButton').should be_true
+      it 'can tell if an element is displayed on screen' do
+        mock_parser.should_receive(:displayed?).with('rufusButton').and_return(true)
+        driver.displayed?(:name => 'rufusButton').should be_true
+      end
+      it 'can get the text value of an element' do
+        mock_parser.should_receive(:value).with('rufusButton').and_return("whateva")
+        driver.text(:name => 'rufusButton').should eq("whateva")
+      end
+      it 'can get the class of an element in expedited fashion' do
+        mock_parser.should_receive(:class_for).with('rufusButton').and_return("UIAButton")
+        driver.class(:name => 'rufusButton').should eq("UIAButton")
+      end
     end
     it 'can enter text into an element' do
       mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:click)
       mock_element.should_receive(:send_keys).with('text')
       driver.type('text', 'rufusButton')
-    end
-    it 'can get the text of an element' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
-      mock_element.should_receive(:text)
-      driver.text(:name => 'rufusLabel')
-    end
-    it 'can get the class of an element' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
-      mock_element.should_receive(:tag_name)
-      driver.class(:name => 'rufusLabel')
     end
   end
 end

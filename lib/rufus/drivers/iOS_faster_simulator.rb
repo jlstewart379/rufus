@@ -3,23 +3,23 @@ require 'rufus/parser'
 
 module Rufus
   module Drivers
-    class IOS_FasterSimulator < Rufus::Drivers::IOS_Simulator
+    class IOS_FasterSimulator < IOS_Simulator
 
       def enabled?(locator)
-        Rufus::Parser.new(page_source).enabled?(locator['name'])
+        Rufus::Parser.new(page_source).enabled?(locator[:name])
       end
 
-      #def displayed?(locator)
-      #  find(locator).displayed?
-      #end
-      #
-      #def text(locator)
-      #  find(locator).text
-      #end
-      #
-      #def class(locator)
-      #  find(locator).tag_name
-      #end
+      def displayed?(locator)
+        Rufus::Parser.new(page_source).displayed?(locator[:name])
+      end
+
+      def text(locator)
+        Rufus::Parser.new(page_source).value(locator[:name])
+      end
+
+      def class(locator)
+        Rufus::Parser.new(page_source).class_for(locator[:name])
+      end
 
 
     end
