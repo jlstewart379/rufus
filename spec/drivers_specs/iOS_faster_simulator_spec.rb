@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rufus/drivers/iOS_faster_simulator'
+require 'rufus/parser'
 require 'selenium-webdriver'
 
 
@@ -10,6 +11,8 @@ describe Rufus::Drivers::IOS_FasterSimulator do
   let(:url){'http://127.0.0.1:4723/wd/hub'}
   let(:mock_driver){'mock selenium driver'}
   let(:driver){Rufus::Drivers::IOS_FasterSimulator.new(config)}
+  let(:page_data){'mock page source'}
+  let(:mock_parser){'a mock rufus parser'}
 
   before(:each) do
     Selenium::WebDriver.should_receive(:for).with(:remote, :desired_capabilities => capabilities, :url => 'http://127.0.0.1:4723/wd/hub').and_return(mock_driver)
@@ -66,8 +69,9 @@ describe Rufus::Drivers::IOS_FasterSimulator do
       driver.press_button 'rufusButton'
     end
     it 'can tell if an element is enabled' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-      mock_element.should_receive(:enabled?).and_return(true)
+      mock_driver.should_receive(:page_source).and_return(page_data)
+      Rufus::Parser.should_receive(:new).with(page_data).and_return(mock_parser)
+      mock_parser.should_receive(:enabled?).and_return(true)
       driver.enabled?(:name => 'rufusButton').should be_true
     end
     it 'can tell if an element is displayed on screen' do
