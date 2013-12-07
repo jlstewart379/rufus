@@ -7,7 +7,6 @@ module Rufus
         return ios_driver_for(config) if is_ios? config
       end
 
-
       private
 
       def self.ios_driver_for(config)
@@ -29,7 +28,10 @@ module Rufus
         Rufus::Drivers::IOS_Device.for(config, @url)
       end
 
-
+      def self.ios_simulator_driver_for(config)
+        return Rufus::Drivers::IOS_FasterSimulator.for(config, @url) if config["read_page_source"]
+        Rufus::Drivers::IOS_Simulator.for(config, @url)
       end
     end
+  end
 end
