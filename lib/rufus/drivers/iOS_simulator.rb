@@ -1,17 +1,15 @@
 require 'selenium-webdriver'
+require 'rufus/drivers/driver_base'
 
 module Rufus
   module Drivers
-    class IOS_Simulator
+    class IOS_Simulator < Rufus::Drivers::DriverBase
 
-      def self.for(config,url)
+      def initialize(config)
         @config = config
-        Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
-        #driver(url)
       end
 
-      private
-      def self.capabilities
+      def capabilities
         {
             'browserName' => @config["browser"],
             'platform' => @config["platform"],
