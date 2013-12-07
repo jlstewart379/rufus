@@ -16,14 +16,14 @@ describe Rufus::Accessors::View do
 
     context 'element exists' do
       it 'reports that element exists' do
-        selenium.should_receive(:find).and_return(Selenium::WebDriver::Element.new(nil, nil))
+        selenium.should_receive(:exists?).with(:name => 'testView').and_return(true)
         view.exists?.should be_true
       end
     end
 
     context 'element does not exist' do
       it 'reports that the element does not exist' do
-        selenium.should_receive(:find).and_return(nil)
+        selenium.should_receive(:exists?).with(:name => 'testView').and_return(false)
         view.exists?.should be_false
       end
     end
@@ -88,7 +88,7 @@ describe Rufus::Accessors::View do
 
     it 'tells selenium to search by text' do
       view_by_text.should_receive(:selenium).and_return(selenium)
-      selenium.should_receive(:find).with({:text=>'textViewText'}).and_return(element)
+      selenium.should_receive(:exists?).with({:text=>'textViewText'}).and_return(element)
       view_by_text.exists?
     end
   end

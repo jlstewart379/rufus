@@ -8,8 +8,7 @@ module Rufus
       end
 
       def exists?
-        element = selenium.find(what)
-        !element.nil?
+          selenium.exists?(what)
       end
 
       def click

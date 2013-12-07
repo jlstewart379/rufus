@@ -35,6 +35,10 @@ module Rufus
         element.find_elements(:tag_name, 'UIATableCell')
       end
 
+      def exists?(locator)
+        not find(locator).nil?
+      end
+
       def click(locator)
         find(locator).click
       end

@@ -34,6 +34,18 @@ describe Rufus::Drivers::IOS_Device do
     let(:mock_element){double('mock selenium driver element')}
 
     context 'finding elements' do
+      context 'existence' do
+        it 'can find out if its part of things' do
+          mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
+          mock_element.should_receive(:nil?).and_return(false)
+          driver.exists?(:name => 'rufusButton').should be_true
+        end
+        it 'can find out if it is not part of things' do
+          mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
+          mock_element.should_receive(:nil?).and_return(true)
+          driver.exists?(:name => 'rufusButton').should be_false
+        end
+      end
       it 'can find an element by name' do
         mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
         driver.find({:name => 'rufusButton'}).should == mock_element
