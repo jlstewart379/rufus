@@ -1,15 +1,18 @@
 require 'yaml'
-require 'rspec'
 require 'rspec/core/rake_task'
 require 'cucumber/rake/task'
 require 'erb'
 require 'childprocess'
 
 desc "Start appium and run features"
-task :test => [:build_sim, :install_sim, :appium_sim, :specs, :features, :stop_sim_server]
+task :test => [:load_rspec, :build_sim, :install_sim, :appium_sim, :specs, :features, :stop_sim_server]
 
 desc "Running specs appium server"
 RSpec::Core::RakeTask.new(:specs)
+
+desc "loads rspec"
+  `gem install rspec`
+end
 
 desc "build RufusApp for simulator"
 task :build_sim do
