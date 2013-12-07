@@ -14,7 +14,6 @@ module Rufus
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
-      @url = parse_url(@config)
       driver
     end
     def driver
