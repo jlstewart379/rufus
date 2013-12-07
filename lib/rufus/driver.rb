@@ -1,9 +1,6 @@
 require 'yaml'
-require 'rufus/drivers/iOS_device'
-require 'rufus/drivers/iOS_simulator'
-require 'selenium-webdriver'
 require 'erb'
-require 'selenium/webdriver/safari/extension'
+require 'rufus/drivers/driver_factory'
 
 module Rufus
   class Driver
@@ -15,6 +12,9 @@ module Rufus
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
       driver
+    end
+    def start
+      driver.start
     end
     def driver
       @selenium ||= Rufus::Drivers::DriverFactory.driver_for(@config)

@@ -1,3 +1,8 @@
+require 'rufus/drivers/iOS_device'
+require 'rufus/drivers/iOS_simulator'
+require 'rufus/drivers/iOS_faster_device'
+require 'rufus/drivers/iOS_faster_simulator'
+
 module Rufus
   module Drivers
     class DriverFactory
