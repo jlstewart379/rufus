@@ -24,8 +24,8 @@ module Rufus
       end
 
       def self.ios_physical_driver_for(config)
-        return Rufus::Drivers::IOS_FasterDevice.for(config, @url) if config["read_page_source"]
-        Rufus::Drivers::IOS_Device.for(config, @url)
+        return Rufus::Drivers::IOS_FasterDevice.new(config, @url) if config["read_page_source"]
+        Rufus::Drivers::IOS_Device.new(config, @url)
       end
 
       def self.ios_simulator_driver_for(config)
