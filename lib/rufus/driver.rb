@@ -8,28 +8,24 @@ require 'selenium/webdriver/safari/extension'
 module Rufus
   class Driver
 
+    attr_reader :config
+    attr_reader :url
+
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
-      @url = url(@config)
+      @url = parse_url(@config)
       driver
     end
-
-
-
     def driver
-
       @selenium ||= Rufus::Drivers::DriverFactory.driver_for(@config, @url)
-
-      #if use_device
-      #  @selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
-      #else
-      #  @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
-      #end
     end
-
-    #def use_device
-    #  @config["use_physical"] == true
-    #end
+    def parse_url(config)
+      if config["appium_url"].nil? || config["appium_url"].eql?("")
+        'http://127.0.0.1:4723/wd/hub'
+      else
+        config["appium_url"]
+      end
+    end
   end
 end
