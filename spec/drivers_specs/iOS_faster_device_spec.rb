@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rufus/drivers/iOS_faster_device'
+require 'rufus/parser'
 
 describe Rufus::Drivers::IOS_FasterDevice do
 
@@ -8,6 +9,8 @@ describe Rufus::Drivers::IOS_FasterDevice do
   let(:url){'http://127.0.0.1:4723/wd/hub'}
   let(:mock_driver){'mock selenium driver'}
   let(:driver){Rufus::Drivers::IOS_FasterDevice.new(config)}
+  let(:page_data){'mock page source'}
+  let(:mock_parser){'a mock rufus parser'}
 
   before(:each) do
     Selenium::WebDriver.should_receive(:for).with(:remote, :desired_capabilities => capabilities, :url => 'http://127.0.0.1:4723/wd/hub').and_return(mock_driver)
@@ -31,19 +34,6 @@ describe Rufus::Drivers::IOS_FasterDevice do
     let(:mock_element){double('mock selenium driver element')}
 
     context 'finding elements' do
-      context 'existence' do
-        it 'can find out if its part of things' do
-          mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-          mock_element.should_receive(:nil?).and_return(false)
-          driver.exists?(:name => 'rufusButton').should be_true
-        end
-        it 'can find out if it is not part of things' do
-          mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-          mock_element.should_receive(:nil?).and_return(true)
-          driver.exists?(:name => 'rufusButton').should be_false
-        end
-      end
-
       it 'can find an element by name' do
         mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
         driver.find({:name => 'rufusButton'}).should == mock_element
@@ -63,32 +53,37 @@ describe Rufus::Drivers::IOS_FasterDevice do
       mock_element.should_receive(:click)
       driver.press_button 'rufusButton'
     end
-    it 'can tell if an element is enabled' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-      mock_element.should_receive(:enabled?).and_return(true)
-      driver.enabled?(:name => 'rufusButton').should be_true
-    end
-    it 'can tell if an element is displayed on screen' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-      mock_element.should_receive(:displayed?).and_return(true)
-      driver.displayed?(:name => 'rufusButton').should be_true
-    end
-    it 'can enter text into an element' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusButton').and_return(mock_element)
-      mock_element.should_receive(:click)
-      mock_element.should_receive(:send_keys).with('text')
-      driver.type('text', 'rufusButton')
-    end
-    it 'can get the text of an element' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
-      mock_element.should_receive(:text)
-      driver.text(:name => 'rufusLabel')
-    end
-    it 'can get the class of an element' do
-      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
-      mock_element.should_receive(:tag_name)
-      driver.class(:name => 'rufusLabel')
+    context 'checking read-only elements in expedited fashion' do
+      before(:each) do
+        mock_driver.should_receive(:page_source).and_return(page_data)
+        Rufus::Parser.should_receive(:new).with(page_data).and_return(mock_parser)
+      end
+      context 'existence' do
+        it 'can find out if its part of things' do
+          mock_parser.should_receive(:exists?).with('rufusButton').and_return(true)
+          driver.exists?(:name => 'rufusButton').should be_true
+        end
+        it 'can find out if it is not part of things' do
+          mock_parser.should_receive(:exists?).with('rufusButton').and_return(false)
+          driver.exists?(:name => 'rufusButton').should be_false
+        end
+      end
+      it 'can tell if an element is enabled' do
+        mock_parser.should_receive(:enabled?).with('rufusButton').and_return(true)
+        driver.enabled?(:name => 'rufusButton').should be_true
+      end
+      it 'can tell if an element is displayed on screen' do
+        mock_parser.should_receive(:displayed?).with('rufusButton').and_return(true)
+        driver.displayed?(:name => 'rufusButton').should be_true
+      end
+      it 'can get the text value of an element' do
+        mock_parser.should_receive(:value).with('rufusButton').and_return("whateva")
+        driver.text(:name => 'rufusButton').should eq("whateva")
+      end
+      it 'can get the class of an element in expedited fashion' do
+        mock_parser.should_receive(:class_for).with('rufusButton').and_return("UIAButton")
+        driver.class(:name => 'rufusButton').should eq("UIAButton")
+      end
     end
   end
-
 end

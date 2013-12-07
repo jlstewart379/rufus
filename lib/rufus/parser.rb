@@ -9,31 +9,31 @@ module Rufus
     end
 
     def class_for(label)
-      view_by_label(label)['type'] if found?(label)
+      view_by_label(label)['type'] if exists?(label)
     end
 
     def value(label)
-      view_by_label(label)['value'] if found?(label)
+      view_by_label(label)['value'] if exists?(label)
     end
 
     def width(label)
-      view_by_label(label)['rect']['size']['width'] if found?(label)
+      view_by_label(label)['rect']['size']['width'] if exists?(label)
     end
 
     def height(label)
-      view_by_label(label)['rect']['size']['height'] if found?(label)
+      view_by_label(label)['rect']['size']['height'] if exists?(label)
     end
 
     def x_pos(label)
-      view_by_label(label)['rect']['origin']['x'] if found?(label)
+      view_by_label(label)['rect']['origin']['x'] if exists?(label)
     end
 
     def y_pos(label)
-      view_by_label(label)['rect']['origin']['y'] if found?(label)
+      view_by_label(label)['rect']['origin']['y'] if exists?(label)
     end
 
     def label_for(label)
-      view_by_label(label)['label'] if found?(label)
+      view_by_label(label)['label'] if exists?(label)
     end
 
     def enabled?(label)
@@ -66,9 +66,7 @@ module Rufus
       end
     end
 
-    private
-
-    def found?(label)
+    def exists?(label)
       false
       view_by_label(label)['name'].eql?(label) unless view_by_label(label).nil?
     end
