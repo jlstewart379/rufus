@@ -11,7 +11,7 @@ desc "Running specs appium server"
 RSpec::Core::RakeTask.new(:specs)
 
 desc "loads rspec"
-task: load_rspec
+task :load_rspec
   `gem install rspec`
 end
 
