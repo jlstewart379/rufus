@@ -18,14 +18,7 @@ module Rufus
       driver
     end
     def driver
-      @selenium ||= Rufus::Drivers::DriverFactory.driver_for(@config, @url)
-    end
-    def parse_url(config)
-      if config["appium_url"].nil? || config["appium_url"].eql?("")
-        'http://127.0.0.1:4723/wd/hub'
-      else
-        config["appium_url"]
-      end
+      @selenium ||= Rufus::Drivers::DriverFactory.driver_for(@config)
     end
   end
 end

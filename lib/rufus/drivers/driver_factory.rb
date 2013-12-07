@@ -2,8 +2,7 @@ module Rufus
   module Drivers
     class DriverFactory
 
-      def self.driver_for(config, url)
-        @url = url
+      def self.driver_for(config)
         return ios_driver_for(config) if is_ios? config
       end
 
@@ -24,13 +23,13 @@ module Rufus
       end
 
       def self.ios_physical_driver_for(config)
-        return Rufus::Drivers::IOS_FasterDevice.new(config, @url) if config["read_page_source"]
-        Rufus::Drivers::IOS_Device.new(config, @url)
+        return Rufus::Drivers::IOS_FasterDevice.new(config) if config["optimized"]
+        Rufus::Drivers::IOS_Device.new(config)
       end
 
       def self.ios_simulator_driver_for(config)
-        return Rufus::Drivers::IOS_FasterSimulator.for(config, @url) if config["read_page_source"]
-        Rufus::Drivers::IOS_Simulator.for(config, @url)
+        return Rufus::Drivers::IOS_FasterSimulator.new(config) if config["read_page_source"]
+        Rufus::Drivers::IOS_Simulator.new(config)
       end
     end
   end

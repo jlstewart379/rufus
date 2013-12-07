@@ -2,6 +2,8 @@ module Rufus
   module Drivers
     class DriverBase
 
+      attr_reader :config
+
       def capabilities; raise Exception; end
 
       def start
@@ -173,7 +175,11 @@ module Rufus
       private
 
       def url
-        'http://127.0.0.1:4723/wd/hub'
+        if @config["appium_url"].nil? || @config["appium_url"].eql?("")
+          'http://127.0.0.1:4723/wd/hub'
+        else
+          @config["appium_url"]
+        end
       end
 
       def click_alert_button(button)
