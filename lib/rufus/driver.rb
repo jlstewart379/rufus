@@ -56,7 +56,8 @@ module Rufus
     end
 
     def enabled?(locator)
-      find(locator).enabled?
+      #find(locator).enabled?
+      driver.enabled?(locator)
     end
 
     def displayed?(locator)
