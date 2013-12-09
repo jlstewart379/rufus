@@ -81,7 +81,7 @@ describe Rufus::Parser do
         @parser.enabled?('showAlertButton').should be_true
       end
       it 'can tell if the view is visible' do
-        @parser.visible?('showAlertButton').should be_true
+        @parser.displayed?('showAlertButton').should be_true
       end
     end
   end

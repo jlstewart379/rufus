@@ -40,7 +40,7 @@ module Rufus
       view_by_label(label)['enabled']
     end
 
-    def visible?(label)
+    def displayed?(label)
       view_by_label(label)['visible']
     end
 
@@ -67,8 +67,11 @@ module Rufus
     end
 
     def exists?(label)
-      false
-      view_by_label(label)['name'].eql?(label) unless view_by_label(label).nil?
+      if view_by_label(label).nil?
+        false
+      else
+        view_by_label(label)['name'].eql?(label)
+      end
     end
   end
 end
