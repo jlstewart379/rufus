@@ -11,128 +11,128 @@ module Rufus
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
-      selenium
+      driver
     end
 
     def start
-      selenium.start
+      driver.start
     end
 
     def quit
-      selenium.quit
+      driver.quit
       @selenium_driver = nil
     end
 
     def find(locator)
-     selenium.find(locator)
+     driver.find(locator)
     end
 
     def cells(locator)
-     selenium.cells(locator)
+     driver.cells(locator)
     end
 
     def exists?(locator)
-      selenium.exists?(locator)
+      driver.exists?(locator)
     end
 
     def click(locator)
-     selenium.click(locator)
+     driver.click(locator)
     end
 
     def press_button name
-     selenium.press_button name
+     driver.press_button name
     end
 
     def enabled?(locator)
-      selenium.enabled?(locator)
+      driver.enabled?(locator)
     end
 
     def displayed?(locator)
-      selenium.displayed?(locator)
+      driver.displayed?(locator)
     end
 
     def text(locator)
-      selenium.text(locator)
+      driver.text(locator)
     end
 
     def class(locator)
-      selenium.class(locator)
+      driver.class(locator)
     end
 
     def orientation
-      selenium.orientation.to_s
+      driver.orientation.to_s
     end
 
     def rotate(orientation)
-      selenium.rotate orientation
+      driver.rotate orientation
     end
 
     def type(keys, name)
-      selenium.type(keys, name)
+      driver.type(keys, name)
     end
 
     def sequence(*names, times)
-      selenium.sequence(names, times, 1)
+      driver.sequence(names, times, 1)
     end
 
     def buttons
-      selenium.buttons
+      driver.buttons
     end
 
     def text_fields
-      selenium.text_fields
+      driver.text_fields
     end
 
     def labels
-      selenium.labels
+      driver.labels
     end
 
     def timed_sequence(names, times, seconds)
-      selenium.timed_sequence(names, times, seconds)
+      driver.timed_sequence(names, times, seconds)
     end
 
     def find_alert(locator)
-      selenium.find_alert(locator)
+      driver.find_alert(locator)
     end
 
     def click_alert(button)
-      selenium.click_alert(button)
+      driver.click_alert(button)
     end
 
     def alert_shown?
-      selenium.alert_shown?
+      driver.alert_shown?
     end
 
     def class_for(element)
-      selenium.class_for(element)
+      driver.class_for(element)
     end
 
     def match?(element, name)
-      selenium.match?
+      driver.match?
     end
 
     def page_source
-      selenium.page_source
+      driver.page_source
     end
 
     def all_elements
-      selenium.all_elements
+      driver.all_elements
     end
 
     def elements_by_tag(name)
-      selenium.elements_by_tag name
+      driver.elements_by_tag name
     end
 
     def scroll_to(locator)
-      selenium.scroll_to(locator)
+      driver.scroll_to(locator)
     end
 
     def screenshot(name)
-      selenium.screenshot name
+      driver.screenshot name
     end
 
-    def selenium
-      @selenium ||= Rufus::Drivers::DriverFactory.driver_for(@config)
+    def driver
+      @selenium_driver ||= Rufus::Drivers::DriverFactory.driver_for(@config)
     end
   end
 end
