@@ -17,6 +17,7 @@ module Rufus
       end
 
       def text(locator)
+        puts 'calling parser'
         Rufus::Parser.new(page_source).value(locator[:name])
       end
 

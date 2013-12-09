@@ -33,7 +33,7 @@ module Rufus
       end
 
       def self.ios_simulator_driver_for(config)
-        return Rufus::Drivers::IOS_FasterSimulator.new(config) if config["read_page_source"]
+        return Rufus::Drivers::IOS_FasterSimulator.new(config) if config["optimized"]
         Rufus::Drivers::IOS_Simulator.new(config)
       end
     end
