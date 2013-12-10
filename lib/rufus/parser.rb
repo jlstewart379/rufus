@@ -1,11 +1,12 @@
+require 'json'
 module Rufus
   class Parser
 
     attr_reader :screen_data
 
     def initialize(json)
-      json = json.gsub('\"','"')
-      @screen_data = MultiJson.load(json)
+      #json = json.gsub('\"','"')
+      @screen_data = JSON.parse(json)
     end
 
     def class_for(label)
