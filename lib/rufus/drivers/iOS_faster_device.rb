@@ -6,13 +6,25 @@ module Rufus
     class IOS_FasterDevice < IOS_Device
 
       def exists?(locator)
-        Rufus::Parser.new(page_source).exists?(locator[:name])
+        if contains_name_key? locator
+          Rufus::Parser.new(page_source).exists?(locator[:name])
+        else
+          super locator
+        end
       end
       def enabled?(locator)
-        Rufus::Parser.new(page_source).enabled?(locator[:name])
+        if contains_name_key? locator
+          Rufus::Parser.new(page_source).enabled?(locator[:name])
+        else
+          super locator
+        end
       end
       def displayed?(locator)
-        Rufus::Parser.new(page_source).displayed?(locator[:name])
+        if contains_name_key? locator
+          Rufus::Parser.new(page_source).displayed?(locator[:name])
+        else
+          super locator
+        end
       end
       def text(locator)
         Rufus::Parser.new(page_source).value(locator[:name])

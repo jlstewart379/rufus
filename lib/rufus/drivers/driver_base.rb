@@ -29,6 +29,10 @@ module Rufus
         end
       end
 
+      def contains_name_key?(locator)
+        locator.keys[0].to_s.eql?('name')
+      end
+
       def cells(locator)
         element = find(locator)
         raise 'Expected view to be of type UIATableView' unless element.tag_name.eql? 'UIATableView'

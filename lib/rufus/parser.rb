@@ -37,10 +37,14 @@ module Rufus
     end
 
     def enabled?(label)
-      view_by_label(label)['enabled']
+      view = view_by_label(label)
+      return false if view.nil?
+      view['enabled']
     end
 
     def displayed?(label)
+      view = view_by_label(label)
+      return false if view.nil?
       view_by_label(label)['visible']
     end
 

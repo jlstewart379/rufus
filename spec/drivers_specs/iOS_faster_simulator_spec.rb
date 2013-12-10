@@ -93,5 +93,21 @@ describe Rufus::Drivers::IOS_FasterSimulator do
       mock_element.should_receive(:send_keys).with('text')
       driver.type('text', 'rufusButton')
     end
+    context 'locator does not contain name key' do
+      it 'calls the super class implementation for exists?' do
+        mock_driver.should_receive(:find_element).with(:xpath, 'rufusButton')
+        driver.exists?(:xpath => 'rufusButton')
+      end
+      it 'calls the super class implementation for enabled?' do
+        mock_driver.should_receive(:find_element).with(:xpath, 'rufusButton').and_return(mock_element)
+        mock_element.should_receive(:enabled?)
+        driver.enabled?(:xpath => 'rufusButton')
+      end
+      it 'calls the super class implementation for displayed?' do
+        mock_driver.should_receive(:find_element).with(:xpath, 'rufusButton').and_return(mock_element)
+        mock_element.should_receive(:displayed?)
+        driver.displayed?(:xpath => 'rufusButton')
+      end
+    end
   end
 end

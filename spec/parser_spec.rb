@@ -75,7 +75,6 @@ describe Rufus::Parser do
         @parser.label_for('showAlertButton').should eq('showAlertButton')
       end
     end
-
     context 'getting view state' do
       it 'can tell if the view is enabled' do
         @parser.enabled?('showAlertButton').should be_true
@@ -83,9 +82,16 @@ describe Rufus::Parser do
       it 'can tell if the view is visible' do
         @parser.displayed?('showAlertButton').should be_true
       end
+      context 'view does not exist in hierarchy data' do
+        it 'return false when checking enabled state' do
+          @parser.enabled?('unknownView').should be_false
+        end
+        it 'returns false when checking displayed state' do
+          @parser.displayed?('unknownView').should be_false
+        end
+      end
     end
   end
-
   context 'getting nested views' do
     let(:view_data){'{\"name\":\"showAlertButton\",\"type\":\"UIAButton\",\"label\":\"showAlertButton\",\"value\":\"Hello\",\"rect\":{\"origin\":{\"x\":304,\"y\":302},\"size\":{\"width\":150,\"height\":30}},\"dom\":null,\"enabled\":true,\"valid\":true,\"visible\":true,\"children\":[{"name":"firstChild","type":"UIAImage","label":null,"value":null,"rect":{"origin":{"x":0,"y":1023},"size":{"width":768,"height":1}},"dom":null,"enabled":true,"valid":true,"visible":false,"children":[{"name":"firstNested","type":"UIStaticText","label":null,"value":null,"rect":{"origin":{"x":0,"y":1024},"size":{"width":668,"height":44}},"dom":null,"enabled":true,"valid":true,"visible":false,"children":[]}]},{"name":"secondChild","type":"UIAButton","label":null,"value":null,"rect":{"origin":{"x":0,"y":1024},"size":{"width":568,"height":34}},"dom":null,"enabled":false,"valid":true,"visible":true,"children":[{"name":"childOfSecondChild","type":"UIATableViewCell","label":null,"value":null,"rect":{"origin":{"x":0,"y":1024},"size":{"width":468,"height":24}},"dom":null,"enabled":true,"valid":true,"visible":false,"children":[]}]}]}'}
     before(:each) do
