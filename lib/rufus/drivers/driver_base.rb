@@ -173,11 +173,15 @@ module Rufus
 
       def scroll_to(locator)
         id = find(locator).ref
-        execute_script 'mobile: scrollTo', {'element' => id}
+        selenium.execute_script 'mobile: scrollTo', {'element' => id}
       end
 
-      def execute_script(script, *args)
-        selenium.execute_script script, args
+      def touch_and_hold(element, duration)
+        #selenium.execute_script script, args
+      end
+
+      def tap(x, y)
+        selenium.execute_script 'mobile: tap', :x => x, :y => y
       end
 
       def screenshot(name)
