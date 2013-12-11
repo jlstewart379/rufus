@@ -8,32 +8,31 @@ module Rufus
       end
 
       def exists?
-        element = selenium.find(what)
-        !element.nil?
+          selenium.exists?(what)
       end
 
       def click
-        selenium.find(what).click
+        selenium.click(what)
       end
 
       def displayed?
-        selenium.find(what).displayed?
+        selenium.displayed?(what)
       end
 
       def enabled?
-        selenium.find(what).enabled?
+        selenium.enabled?(what)
       end
 
       def text
-        selenium.find(what).text
+        selenium.text(what)
       end
 
       def send_keys(keys)
-        selenium.find(what).send_keys keys
+        selenium.type(keys, what[:name])
       end
 
       def class
-        selenium.find(what).tag_name
+        selenium.class(what)
       end
 
       def what

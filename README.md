@@ -1,4 +1,4 @@
-Last Updated: 10-03-2013
+Last Updated: 12-10-2013
 
 This project is intended to facilitate automated testing on iOS devices using cucumber, appium and the Page Object pattern. 
 
@@ -40,6 +40,7 @@ QUICK START GUIDE
     use_physical: true   #run on physical device?
     sim_app_path: $HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphonesimulator/YourApp.app
     device: iPhoneSimulator
+    optimized: true  #use faster lookup strategy
 ````
 - Start appium server in new terminal window
 

@@ -5,7 +5,7 @@ Given(/^I have created a valid appium driver for iOS$/) do
   config = $driver.config
   config["browser"].should eq "iOS"
   config["platform"].should eq "Mac"
-  config["version"].should eq 7.0
+  config["version"].should eq "7.0.3"
   config["app"].should eq app_path
 end
 Given(/^the app is in the "([^"]*)" orientation/) do |orient|

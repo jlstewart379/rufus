@@ -55,23 +55,23 @@ module Rufus
   end
 
   def find(locator)
-    selenium.find(locator)
+    selenium.send(:driver).find(locator)
   end
 
   def click(locator)
-    selenium.find(locator).click
+    find(locator).click
   end
 
   def page_source
-    selenium.page_source
+    selenium.send(:driver).page_source
   end
 
   def elements_of_type(type)
-    selenium.elements_by_tag(type)
+    selenium.send(:driver).elements_by_tag(type)
   end
 
   def scroll_to(locator)
-    selenium.scroll_to(locator)
+    selenium.send(:driver).scroll_to(locator)
   end
 end
 

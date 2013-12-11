@@ -1,66 +1,62 @@
 require 'yaml'
-require 'rufus/drivers/iOS_device'
-require 'rufus/drivers/iOS_simulator'
-require 'selenium-webdriver'
 require 'erb'
-require 'selenium/webdriver/safari/extension'
+require 'rufus/drivers/driver_factory'
 
 module Rufus
   class Driver
 
+    attr_reader :config
+    attr_reader :url
+
     def initialize
       raise 'No config.yml found' if !File.exists?('config.yml')
       @config = YAML.load(ERB.new(File.read('config.yml')).result)
-      @url = url(@config)
+      driver
     end
 
     def start
-      driver.get @url
+      driver.start
     end
 
     def quit
       driver.quit
-      @selenium = nil
-    end
-
-    def config
-      @config
-    end
-
-    def server_url
-      @url
+      @selenium_driver = nil
     end
 
     def find(locator)
-      how = locator.keys[0].to_sym
-      what = locator[how]
-      begin
-        driver.find_element(how, what)
-      rescue Selenium::WebDriver::Error::NoSuchElementError
-        return nil
-      end
+     driver.find(locator)
     end
 
     def cells(locator)
-      element = find(locator)
-      raise 'Expected view to be of type UIATableView' unless element.tag_name.eql? 'UIATableView'
-      element.find_elements(:tag_name, 'UIATableCell')
+     driver.cells(locator)
+    end
+
+    def exists?(locator)
+      driver.exists?(locator)
     end
 
     def click(locator)
-      find(locator).click
+     driver.click(locator)
     end
 
     def press_button name
-      click(:name => name)
+     driver.press_button name
     end
 
     def enabled?(locator)
-      find(locator).enabled?
+      driver.enabled?(locator)
     end
 
     def displayed?(locator)
-      find(locator).displayed?
+      driver.displayed?(locator)
+    end
+
+    def text(locator)
+      driver.text(locator)
+    end
+
+    def class(locator)
+      driver.class(locator)
     end
 
     def orientation
@@ -72,87 +68,47 @@ module Rufus
     end
 
     def type(keys, name)
-      element = find(:name => name)
-      element.click
-      sleep 1
-      element.send_keys keys
+      driver.type(keys, name)
     end
 
     def sequence(*names, times)
-      timed_sequence(names, times, 1)
+      driver.sequence(names, times, 1)
     end
 
     def buttons
-      buttons = []
-      elements = elements_by_tag 'UIAButton'
-      elements.each do |element|
-        buttons << element.text
-      end
-      buttons
+      driver.buttons
     end
 
     def text_fields
-      fields = []
-      elements = elements_by_tag 'UIATextField'
-      elements.each do |element|
-        fields << element.text
-      end
-      fields
+      driver.text_fields
     end
 
     def labels
-      labels = []
-      elements = elements_by_tag 'UIAStaticText'
-      elements.each do |element|
-        labels << element.text
-      end
-      labels
+      driver.labels
     end
 
     def timed_sequence(names, times, seconds)
-      current = 0
-      until current == times
-        names.each do |name|
-          click(:name => name)
-          sleep seconds
-
-        end
-        current += 1
-        puts "sequence #{current} completed"
-      end
+      driver.timed_sequence(names, times, seconds)
     end
 
     def find_alert(locator)
-      alert = nil
-      all_elements.each do |element|
-        if is_alert?(element)
-          alert = element if match?(element, locator[:name])
-        end
-      end
-      alert
+      driver.find_alert(locator)
     end
 
     def click_alert(button)
-      if alert_shown?
-        click_alert_button(button)
-      end
+      driver.click_alert(button)
     end
 
     def alert_shown?
-      all_elements.each do |element|
-        if is_alert?(element)
-          return true
-        end
-      end
-      false
+      driver.alert_shown?
     end
 
     def class_for(element)
-      element.tag_name
+      driver.class_for(element)
     end
 
     def match?(element, name)
-      element.attribute(:name).eql? name
+      driver.match?
     end
 
     def page_source
@@ -160,56 +116,23 @@ module Rufus
     end
 
     def all_elements
-      elements_by_tag('UIAElement')
+      driver.all_elements
     end
 
     def elements_by_tag(name)
-      driver.find_elements(:tag_name, name)
+      driver.elements_by_tag name
     end
 
     def scroll_to(locator)
-      id = find(locator).ref
-      driver.execute_script 'mobile: scrollTo', {'element' => id}
+      driver.scroll_to(locator)
     end
 
     def screenshot(name)
-      driver.save_screenshot name
-    end
-
-    private
-
-    def url(config)
-      if config["appium_url"].nil? || config["appium_url"].eql?("")
-        'http://127.0.0.1:4723/wd/hub'
-      else
-        config["appium_url"]
-      end
-    end
-
-    def click_alert_button(button)
-      all_elements.each do |element|
-        element.click if is_table_view_cell?(element) && match?(element, button)
-      end
-    end
-
-    def is_alert?(element)
-      class_for(element).eql?('UIAAlert')
-    end
-
-    def is_table_view_cell?(element)
-      class_for(element).eql?('UIATableCell')
+      driver.screenshot name
     end
 
     def driver
-      if use_device
-        @selenium ||= Rufus::Drivers::IOS_Device.for(@config,@url)
-      else
-        @selenium ||= Rufus::Drivers::IOS_Simulator.for(@config,@url)
-      end
-    end
-
-    def use_device
-      @config["use_physical"] == true
+      @selenium_driver ||= Rufus::Drivers::DriverFactory.driver_for(@config)
     end
   end
 end
