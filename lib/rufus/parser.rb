@@ -5,7 +5,6 @@ module Rufus
     attr_reader :screen_data
 
     def initialize(json)
-      #json = json.gsub('\"','"')
       @screen_data = JSON.parse(json)
     end
 

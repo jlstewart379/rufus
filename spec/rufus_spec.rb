@@ -86,37 +86,30 @@ describe Rufus do
 
   context 'elements without accessors' do
 
-    let(:selenium){'mock selenium driver'}
+    let(:selenium){'mock driver factory'}
+    let(:raw_selenium){'raw selenium driver'}
     let(:mock_element){'mock selenium element'}
+    let(:elements){'mock list of elements'}
+
+    before(:each) do
+      selenium.should_receive(:send).with(:driver).and_return(raw_selenium)
+    end
 
     it 'can find an element by name' do
-      selenium.should_receive(:find).with({:name => 'rufusButton'}).and_return(mock_element)
+      raw_selenium.should_receive(:find).with(:name => 'rufusButton').and_return(mock_element)
       mock_element.should_receive(:click)
       click(:name => 'rufusButton')
     end
-  end
-
-  context 'getting the raw page data' do
-
-    let(:selenium){'mock selenium driver'}
-    let(:elements){'mock list of elements'}
-
     it 'can get the raw page data' do
-      selenium.should_receive(:page_source).and_return("source data")
+      raw_selenium.should_receive(:page_source).and_return("source data")
       page_source.should eq("source data")
     end
-
     it 'can get a list of buttons' do
-      selenium.should_receive(:elements_by_tag).with('UIAButton').and_return(elements)
+      raw_selenium.should_receive(:elements_by_tag).with('UIAButton')
       elements_of_type 'UIAButton'
     end
-
-  end
-
-  context 'scrolling' do
-    let(:selenium){'mock selenium driver'}
     it 'can swipe to the right' do
-      selenium.should_receive(:scroll_to).with(:name => 'elementName')
+      raw_selenium.should_receive(:scroll_to).with(:name => 'elementName')
       scroll_to(:name => 'elementName')
     end
   end

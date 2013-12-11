@@ -173,7 +173,11 @@ module Rufus
 
       def scroll_to(locator)
         id = find(locator).ref
-        selenium.execute_script 'mobile: scrollTo', {'element' => id}
+        execute_script 'mobile: scrollTo', {'element' => id}
+      end
+
+      def execute_script(script, *args)
+        selenium.execute_script script, args
       end
 
       def screenshot(name)
