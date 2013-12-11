@@ -177,7 +177,7 @@ module Rufus
       end
 
       def touch_and_hold(element, duration)
-        #selenium.execute_script script, args
+        selenium.execute_script 'mobile: tap', element, duration
       end
 
       def tap(x, y)
