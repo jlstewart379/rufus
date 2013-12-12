@@ -29,7 +29,6 @@ QUICK START GUIDE
 ------------------------------
 - gem install rufus
 - require 'rufus' in your Gemfile
-- Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
 - In your env.rb new up a rufus driver in a method that MUST be named selenium.
 
 ````ruby
@@ -37,7 +36,7 @@ QUICK START GUIDE
        @driver ||= new Rufus::Driver.new
     end
 ````
-
+- Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
 
 ````YAML
     browser: iOS
