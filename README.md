@@ -1,4 +1,4 @@
-Last Updated: 12-10-2013
+Last Updated: 12-12-2013
 
 This project is intended to facilitate automated testing on iOS devices using cucumber, appium and the Page Object pattern. 
 
@@ -30,6 +30,13 @@ QUICK START GUIDE
 - gem install rufus
 - require 'rufus' in your Gemfile
 - Create a config.yml in project directory (the one with .xcodeproj in it) with the following information:
+- In your env.rb new up a rufus driver in a method that MUST be named selenium.
+
+````ruby
+    def selenium
+       @driver ||= new Rufus::Driver.new
+    end
+````
 
 
 ````YAML
