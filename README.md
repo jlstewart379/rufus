@@ -29,7 +29,7 @@ QUICK START GUIDE
 ------------------------------
 - gem install rufus
 - require 'rufus' in your Gemfile
-- In your env.rb new up a rufus driver in a method that MUST be named selenium.
+- In your env.rb, new up a rufus driver in a method that MUST be named selenium.
 
 ````ruby
     def selenium
