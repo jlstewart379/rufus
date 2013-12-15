@@ -40,8 +40,8 @@ module Rufus
   end
 
   def enabled_hash_after_wait?(locator, timeout = 5)
-    element = find locator
-    enabled_after_wait? element, timeout
+    view = Rufus::Accessors::View.new locator
+    enabled_after_wait? view, timeout
   end
 
   def exists_hash_after_wait?(locator, timeout = 5)
