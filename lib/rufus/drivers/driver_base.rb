@@ -160,7 +160,12 @@ module Rufus
       end
 
       def page_source
-        selenium.page_source
+        @page_source = selenium.page_source if @page_source.nil?
+        @page_source
+      end
+
+      def reset_page_source
+        @page_source = nil
       end
 
       def all_elements
