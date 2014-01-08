@@ -5,6 +5,7 @@ module Rufus
     include PageNavigation
 
     def on(cls, timeout = 10, &block)
+      selenium.reset_page_source
       screen = cls.new
       wait = 0
       until wait == timeout  do

@@ -13,7 +13,10 @@ describe Rufus::Navigation do
 
   context 'getting the active screen' do
 
+    let(:selenium){double('mock selenium driver')}
+
     before (:each) do
+      selenium.should_receive(:reset_page_source)
       mock_page.should_receive(:new).and_return(mock_page)
     end
 
