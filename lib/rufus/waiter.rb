@@ -11,7 +11,7 @@ module Rufus
       @interval = opts.fetch(:interval, DEFAULT_INTERVAL)
     end
 
-    def wait_until(&block)
+    def until(&block)
       time = Time.now + @timeout
       while Time.now < time
         @selenium.reset_page_source

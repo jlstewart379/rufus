@@ -13,11 +13,11 @@ describe Rufus::Waiter do
 
   it 'returns false if the block is not true' do
     view.should_receive(:exists?).and_return(false)
-    @waiter.wait_until{view.exists?}.should be_false
+    @waiter.until{view.exists?}.should be_false
   end
 
   it 'returns true if the block is true' do
     view.should_receive(:exists?).and_return(true)
-    @waiter.wait_until{view.exists?}.should be_true
+    @waiter.until{view.exists?}.should be_true
   end
 end

@@ -7,70 +7,51 @@ require 'yaml'
 describe Rufus do
   include Rufus
 
-  let(:mock_wait){'mock Selenium::WebDriver::Wait'}
+  let(:mock_wait){'mock Rufus::Waiter'}
   let(:mock_view){'a mock view object'}
+  let(:selenium){double('Selenium::WebDriver')}
+
 
   context 'waiting for an element to exist' do
     context 'element exists with timeout given' do
       it 'returns true if an element is found before given timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 20).and_return(mock_wait)
-        mock_wait.should_receive(:until)
-        exists_after_wait?(mock_view, 20).should be_true
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 1).and_return(mock_wait)
+        mock_wait.should_receive(:until).and_return(true)
+        exists_after_wait?(mock_view, 1).should be_true
       end
       it 'returns true if an element is found before default timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until)
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
+        mock_wait.should_receive(:until).and_return(true)
         exists_after_wait?(mock_view).should be_true
-      end
-    end
-    context 'element does not exist' do
-      it 'returns false if the timeout is reached' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until).and_raise(Selenium::WebDriver::Error::TimeOutError)
-        exists_after_wait?(mock_view).should be_false
       end
     end
   end
 
   context 'waiting for an element to be displayed' do
     context 'element is displayed with timeout given' do
-      it 'returns true if an element is displayed before given timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 20).and_return(mock_wait)
-        mock_wait.should_receive(:until)
-        displayed_after_wait?(mock_view, 20).should be_true
-      end
-      it 'returns true if an element is displayed before default timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until)
-        displayed_after_wait?(mock_view).should be_true
-      end
-    end
-    context 'element does not exist' do
-      it 'returns false if the timeout is reached' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until).and_raise(Selenium::WebDriver::Error::TimeOutError)
-        displayed_after_wait?(mock_view).should be_false
+        it 'returns true if an element is displayed before given timeout occurs' do
+          Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 1).and_return(mock_wait)
+          mock_wait.should_receive(:until).and_return(true)
+          displayed_after_wait?(mock_view, 1).should be_true
+        end
+        it 'returns true if an element is displayed before default timeout occurs' do
+          Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
+          mock_wait.should_receive(:until).and_return(true)
+          displayed_after_wait?(mock_view).should be_true
+        end
       end
     end
-  end
   context 'waiting for an element to be enabled' do
     context 'element is enabled with timeout given' do
-      it 'returns true if an element is displayed before given timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 20).and_return(mock_wait)
-        mock_wait.should_receive(:until)
-        enabled_after_wait?(mock_view, 20).should be_true
+      it 'returns true if an element is enabled before given timeout occurs' do
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 1).and_return(mock_wait)
+        mock_wait.should_receive(:until).and_return(true)
+        enabled_after_wait?(mock_view, 1).should be_true
       end
-      it 'returns true if an element is enabled before default timeout occurs' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until)
+      it 'returns true if an element is not enabled before default timeout occurs' do
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
+        mock_wait.should_receive(:until).and_return(true)
         enabled_after_wait?(mock_view).should be_true
-      end
-    end
-    context 'element does not exist' do
-      it 'returns false if the timeout is reached' do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
-        mock_wait.should_receive(:until).and_raise(Selenium::WebDriver::Error::TimeOutError)
-        enabled_after_wait?(mock_view).should be_false
       end
     end
   end
@@ -110,16 +91,44 @@ describe Rufus do
 
     context 'determine if element is enabled' do
       before(:each) do
-        Selenium::WebDriver::Wait.should_receive(:new).with(:timeout => 5).and_return(mock_wait)
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
         Rufus::Accessors::View.should_receive(:new).with(test_locator).and_return(mock_view)
       end
       it 'can determine if an element is enabled' do
-        mock_wait.should_receive(:until)
+        mock_wait.should_receive(:until).and_return(true)
         enabled_hash_after_wait?(test_locator).should be_true
       end
       it 'can determine if an element is not enabled' do
-        mock_wait.should_receive(:until).and_raise(Selenium::WebDriver::Error::TimeOutError)
+        mock_wait.should_receive(:until).and_return(false)
         enabled_hash_after_wait?(test_locator).should be_false
+      end
+    end
+    context 'determine if element is displayed' do
+      before(:each) do
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
+        Rufus::Accessors::View.should_receive(:new).with(test_locator).and_return(mock_view)
+      end
+      it 'can determine if an element is enabled' do
+        mock_wait.should_receive(:until).and_return(true)
+        displayed_hash_after_wait?(test_locator).should be_true
+      end
+      it 'can determine if an element is not enabled' do
+        mock_wait.should_receive(:until).and_return(false)
+        displayed_hash_after_wait?(test_locator).should be_false
+      end
+    end
+    context 'determine if element exists by hash' do
+      before(:each) do
+        Rufus::Waiter.should_receive(:new).with(selenium, :timeout => 5).and_return(mock_wait)
+        Rufus::Accessors::View.should_receive(:new).with(test_locator).and_return(mock_view)
+      end
+      it 'can determine if an element is enabled' do
+        mock_wait.should_receive(:until).and_return(true)
+        exists_hash_after_wait?(test_locator).should be_true
+      end
+      it 'can determine if an element is not enabled' do
+        mock_wait.should_receive(:until).and_return(false)
+        exists_hash_after_wait?(test_locator).should be_false
       end
     end
   end

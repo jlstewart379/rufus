@@ -2,6 +2,7 @@ require 'rufus/navigation'
 require 'rufus/accessors/accessors'
 require 'rufus/accessors/view'
 require 'rufus/accessors/table'
+require 'rufus/waiter'
 
 module Rufus
 
@@ -10,33 +11,18 @@ module Rufus
   end
 
   def exists_after_wait?(view, timeout = 5)
-    wait = Selenium::WebDriver::Wait.new :timeout => timeout
-    begin
-      wait.until{view.exists?}
-    rescue Selenium::WebDriver::Error::TimeOutError
-      return false
-    end
-    true
+    wait = Rufus::Waiter.new selenium, :timeout => timeout
+    wait.until{view.exists?}
   end
 
   def displayed_after_wait?(view, timeout = 5)
-    wait = Selenium::WebDriver::Wait.new :timeout => timeout
-    begin
-      wait.until{view.displayed?}
-    rescue Selenium::WebDriver::Error::TimeOutError
-      return false
-    end
-    true
+    wait = Rufus::Waiter.new selenium, :timeout => timeout
+    wait.until{view.displayed?}
   end
 
   def enabled_after_wait?(view, timeout = 5)
-    wait = Selenium::WebDriver::Wait.new :timeout => timeout
-    begin
-      wait.until{view.enabled?}
-    rescue Selenium::WebDriver::Error::TimeOutError
-      return false
-    end
-    true
+    wait = Rufus::Waiter.new selenium, :timeout => timeout
+    wait.until{view.enabled?}
   end
 
   def enabled_hash_after_wait?(locator, timeout = 5)

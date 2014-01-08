@@ -131,6 +131,10 @@ module Rufus
       driver.screenshot name
     end
 
+    def reset_page_source
+      driver.reset_page_source
+    end
+
     def driver
       @selenium_driver ||= Rufus::Drivers::DriverFactory.driver_for(@config)
     end
