@@ -91,5 +91,11 @@ describe Rufus::Drivers::IOS_Device do
       mock_element.should_receive(:tag_name)
       driver.class(:name => 'rufusLabel')
     end
+    it 'can get the name of an element' do
+      mock_driver.should_receive(:find_element).with(:name, 'rufusLabel').and_return(mock_element)
+      mock_element.should_receive(:tag_name)
+      driver.class(:name => 'rufusLabel')
+    end
+
   end
 end

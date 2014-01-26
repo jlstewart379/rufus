@@ -67,6 +67,10 @@ module Rufus
         find(locator).tag_name
       end
 
+      def name(locator)
+        find(locator).attribute 'name'
+      end
+
       def orientation
         selenium.orientation.to_s
       end

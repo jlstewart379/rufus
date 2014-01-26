@@ -52,29 +52,33 @@ module Rufus
       view_by_label(label)['children'].count if found(label)
     end
 
-    def view_by_label(label)
+    def view_by_label(locator)
       @found_view = nil
-      view_data_for(@screen_data, label)
+      view_data_for(@screen_data, locator)
       @found_view
     end
 
-    def view_data_for(json, label)
-      if json['name'].eql?(label)
+    def view_data_for(json, locator)
+      how = locator.keys[0].to_s
+      what = locator[how.to_sym]
+      if json[how].eql?(what)
         @found_view = json
       else
         if json['children'].count > 0
           json['children'].each do |child|
-            view_data_for(child, label)
+            view_data_for(child, locator)
           end
         end
       end
     end
 
-    def exists?(label)
-      if view_by_label(label).nil?
+    def exists?(locator)
+      if view_by_label(locator).nil?
         false
       else
-        view_by_label(label)['name'].eql?(label)
+        how = locator.keys[0].to_s
+        what = locator[how.to_sym]
+        view_by_label(locator)[how].eql?(what)
       end
     end
   end

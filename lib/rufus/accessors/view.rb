@@ -41,6 +41,10 @@ module Rufus
         {key => value}
       end
 
+      def name
+        selenium.name(what)
+      end
+
       def locator
         @locator
       end

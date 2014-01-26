@@ -92,6 +92,22 @@ describe Rufus::Accessors::View do
       view_by_text.exists?
     end
   end
+
+  context 'getting the name of a view' do
+
+    let(:named_view){Rufus::Accessors::View.new(:label => "accessLabel")}
+    let(:selenium){double('Selenium::WebDriver')}
+    let(:element){double('Selenium element')}
+
+    it 'tells selenium to get the name of a view' do
+
+      named_view.should_receive(:selenium).and_return(selenium)
+      selenium.should_receive(:name).with({:label => 'accessLabel'}).and_return('elementName')
+      named_view.name.should eq('elementName')
+
+    end
+
+  end
 end
 
 

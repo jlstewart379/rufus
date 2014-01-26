@@ -59,6 +59,10 @@ module Rufus
       driver.class(locator)
     end
 
+    def name(locator)
+      driver.name(locator)
+    end
+
     def orientation
       driver.orientation.to_s
     end
