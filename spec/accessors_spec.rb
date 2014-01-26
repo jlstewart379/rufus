@@ -7,6 +7,7 @@ class TestPage
   label(:some_label, :name => 'someLabel')
   text(:some_text_box, :name => 'someTextBox')
   button(:some_button, :name => 'someButton')
+  image(:some_image, :name => 'someImage')
 
 end
 
@@ -86,16 +87,16 @@ describe Rufus::Accessors do
     let(:image) { double('Image accessor') }
 
     before(:each) do
-      Rufus::Accessors::View.should_receive(:new).with(:name => 'someButton').and_return(button)
+      Rufus::Accessors::View.should_receive(:new).with(:name => 'someImage').and_return(image)
     end
 
     it 'can return the button' do
-      screen.some_button_view.should be(button)
+      screen.some_image_view.should be(image)
     end
 
-    it 'can click a button' do
-      button.should_receive(:click)
-      screen.some_button
+    it 'can click an image' do
+      image.should_receive(:click)
+      screen.some_image
     end
   end
 end

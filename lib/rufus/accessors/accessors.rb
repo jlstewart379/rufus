@@ -26,6 +26,10 @@ module Rufus
       view(name, locator)
     end
 
+    def image(name, locator)
+      view(name, locator)
+    end
+
     def table(name, locator)
       define_method("#{name}_view") do
         Rufus::Accessors::Table.new(locator)
