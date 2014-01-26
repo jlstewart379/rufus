@@ -66,7 +66,24 @@ describe Rufus::Accessors do
   end
 
   context 'button' do
-    let(:button) { double('Label accessor') }
+    let(:button) { double('Button accessor') }
+
+    before(:each) do
+      Rufus::Accessors::View.should_receive(:new).with(:name => 'someButton').and_return(button)
+    end
+
+    it 'can return the button' do
+      screen.some_button_view.should be(button)
+    end
+
+    it 'can click a button' do
+      button.should_receive(:click)
+      screen.some_button
+    end
+  end
+
+  context 'image' do
+    let(:image) { double('Image accessor') }
 
     before(:each) do
       Rufus::Accessors::View.should_receive(:new).with(:name => 'someButton').and_return(button)

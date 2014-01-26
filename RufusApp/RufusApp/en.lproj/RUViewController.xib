@@ -9,6 +9,7 @@
                 <outlet property="displayedPageButton" destination="cx3-SH-qUq" id="ntd-NP-UTK"/>
                 <outlet property="enabledPageButton" destination="8Xe-wy-gw2" id="mNp-pl-GZO"/>
                 <outlet property="existsPageButton" destination="ptK-30-J0y" id="eem-Ie-lJP"/>
+                <outlet property="labeledButton" destination="EcJ-AB-Qud" id="sDY-IP-l25"/>
                 <outlet property="rufusButton" destination="4" id="11"/>
                 <outlet property="scrollPageButton" destination="Trw-jM-66l" id="lPV-bJ-geS"/>
                 <outlet property="showAlertButton" destination="VTc-fX-2Iw" id="ndi-Zu-qSy"/>
@@ -21,8 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
-                    <rect key="frame" x="270" y="251" width="219" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="270" y="250" width="219" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" label="rufusButton"/>
                     <state key="normal" title="Rufus Button">
@@ -32,7 +33,7 @@
                         <action selector="toRufusPage:" destination="-1" eventType="touchUpInside" id="12"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13">
                     <rect key="frame" x="270" y="209" width="219" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" label="rufusTextBox"/>
@@ -113,14 +114,19 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcJ-AB-Qud">
+                    <rect key="frame" x="312" y="548" width="139" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" label="labeledPageButton"/>
+                    <state key="normal" title="Labeled Views Page">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="toLabeledViewsPage:" destination="-1" eventType="touchUpInside" id="mxa-Mp-lPI"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="4" firstAttribute="top" secondItem="2" secondAttribute="top" constant="251" id="6"/>
-                <constraint firstItem="13" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="17"/>
-                <constraint firstItem="4" firstAttribute="trailing" secondItem="13" secondAttribute="trailing" id="20"/>
-                <constraint firstItem="13" firstAttribute="top" secondItem="2" secondAttribute="top" constant="209" id="23"/>
-            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
         </view>
     </objects>

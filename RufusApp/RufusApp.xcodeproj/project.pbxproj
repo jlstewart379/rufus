@@ -15,6 +15,8 @@
 		B869CCF41814B62800093724 /* TablePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CCF21814B62800093724 /* TablePageViewController.xib */; };
 		B869CD0518175B7500093724 /* LabelAPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B869CD0318175B7500093724 /* LabelAPageViewController.m */; };
 		B869CD0618175B7500093724 /* LabelAPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B869CD0418175B7500093724 /* LabelAPageViewController.xib */; };
+		B8824A6918945C880038F4E6 /* LabeledPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8824A6718945C880038F4E6 /* LabeledPageViewController.m */; };
+		B8824A6A18945C880038F4E6 /* LabeledPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8824A6818945C880038F4E6 /* LabeledPageViewController.xib */; };
 		B88C11DE17BD550E00A62E9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DD17BD550E00A62E9D /* UIKit.framework */; };
 		B88C11E017BD550E00A62E9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11DF17BD550E00A62E9D /* Foundation.framework */; };
 		B88C11E217BD550E00A62E9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88C11E117BD550E00A62E9D /* CoreGraphics.framework */; };
@@ -64,6 +66,9 @@
 		B869CD0218175B7500093724 /* LabelAPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAPageViewController.h; sourceTree = "<group>"; };
 		B869CD0318175B7500093724 /* LabelAPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAPageViewController.m; sourceTree = "<group>"; };
 		B869CD0418175B7500093724 /* LabelAPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelAPageViewController.xib; sourceTree = "<group>"; };
+		B8824A6618945C880038F4E6 /* LabeledPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabeledPageViewController.h; sourceTree = "<group>"; };
+		B8824A6718945C880038F4E6 /* LabeledPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabeledPageViewController.m; sourceTree = "<group>"; };
+		B8824A6818945C880038F4E6 /* LabeledPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabeledPageViewController.xib; sourceTree = "<group>"; };
 		B88C11DA17BD550E00A62E9D /* RufusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RufusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88C11DD17BD550E00A62E9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B88C11DF17BD550E00A62E9D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -222,6 +227,13 @@
 				B8F2F168180255FE0037AD69 /* ExistsPageViewController.h */,
 				B8F2F169180255FE0037AD69 /* ExistsPageViewController.m */,
 				B8F2F16A180255FE0037AD69 /* ExistsPageViewController.xib */,
+				B869CD0218175B7500093724 /* LabelAPageViewController.h */,
+				B869CD0318175B7500093724 /* LabelAPageViewController.m */,
+				B869CD0418175B7500093724 /* LabelAPageViewController.xib */,
+				B8824A6618945C880038F4E6 /* LabeledPageViewController.h */,
+				B8824A6718945C880038F4E6 /* LabeledPageViewController.m */,
+				B8824A6818945C880038F4E6 /* LabeledPageViewController.xib */,
+				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
 				B88C121817BD55BB00A62E9D /* RufusPageViewController.h */,
 				B88C121917BD55BB00A62E9D /* RufusPageViewController.m */,
 				B88C121A17BD55BB00A62E9D /* RufusPageViewController.xib */,
@@ -229,13 +241,9 @@
 				B869CCEB1814292E00093724 /* ScrollPageViewController.h */,
 				B869CCEC1814292E00093724 /* ScrollPageViewController.m */,
 				B869CCED1814292E00093724 /* ScrollPageViewController.xib */,
-				B8B8FA9A1810FF1B00E3BCA3 /* OtherViewControllers */,
 				B869CCF01814B62800093724 /* TablePageViewController.h */,
 				B869CCF11814B62800093724 /* TablePageViewController.m */,
 				B869CCF21814B62800093724 /* TablePageViewController.xib */,
-				B869CD0218175B7500093724 /* LabelAPageViewController.h */,
-				B869CD0318175B7500093724 /* LabelAPageViewController.m */,
-				B869CD0418175B7500093724 /* LabelAPageViewController.xib */,
 			);
 			name = PageObjectControllers;
 			sourceTree = "<group>";
@@ -315,6 +323,7 @@
 				B855BA3E1810E9F000B33F42 /* ScrollChildViewController.xib in Resources */,
 				B88C11E817BD550E00A62E9D /* InfoPlist.strings in Resources */,
 				B88C11F017BD550E00A62E9D /* Default.png in Resources */,
+				B8824A6A18945C880038F4E6 /* LabeledPageViewController.xib in Resources */,
 				B88C11F217BD550E00A62E9D /* Default@2x.png in Resources */,
 				B869CCF41814B62800093724 /* TablePageViewController.xib in Resources */,
 				B88C11F417BD550E00A62E9D /* Default-568h@2x.png in Resources */,
@@ -366,6 +375,7 @@
 				B88C11F717BD550E00A62E9D /* RUViewController.m in Sources */,
 				B869CD0518175B7500093724 /* LabelAPageViewController.m in Sources */,
 				B869CCEE1814292E00093724 /* ScrollPageViewController.m in Sources */,
+				B8824A6918945C880038F4E6 /* LabeledPageViewController.m in Sources */,
 				B88C121B17BD55BB00A62E9D /* RufusPageViewController.m in Sources */,
 				B8F2F16B180255FE0037AD69 /* ExistsPageViewController.m in Sources */,
 				B8F2F171180270290037AD69 /* EnabledPageViewController.m in Sources */,

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *enabledPageButton;
 @property (weak, nonatomic) IBOutlet UIButton *scrollPageButton;
 @property (weak, nonatomic) IBOutlet UIButton *tablePageButton;
+@property (weak, nonatomic) IBOutlet UIButton *labeledButton;
 
 - (IBAction)toEnabledPage:(id)sender;
 - (IBAction)toRufusPage:(id)sender;
@@ -25,5 +26,6 @@
 - (IBAction)toDisplayedPage:(id)sender;
 - (IBAction)toSwipePage:(id)sender;
 - (IBAction)toTablePage:(id)sender;
+- (IBAction)toLabeledViewsPage:(id)sender;
 
 @end

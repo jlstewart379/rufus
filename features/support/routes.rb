@@ -20,5 +20,9 @@ Rufus::Navigation.routes = {
     :to_tables => [
         [HomePage, :view_tables],
         [TablePage],
-    ]
+    ],
+    :to_labeled => [
+        [HomePage, :view_labeled],
+        [LabeledPage]
+     ]
 }

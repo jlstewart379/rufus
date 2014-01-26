@@ -13,6 +13,7 @@
 #import "EnabledPageViewController.h"
 #import "ScrollPageViewController.h"
 #import "TablePageViewController.h"
+#import "LabeledPageViewController.h"
 
 
 @interface RUViewController ()
@@ -70,6 +71,11 @@
 - (IBAction)toTablePage:(id)sender {
     TablePageViewController *tablePageViewController = [[TablePageViewController alloc] init];
     [[self navigationController] pushViewController:tablePageViewController animated:YES];
+}
+
+- (IBAction)toLabeledViewsPage:(id)sender {
+    LabeledPageViewController *labeledPageViewController = [[LabeledPageViewController alloc] init];
+    [[self navigationController] pushViewController:labeledPageViewController animated:YES]; 
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
