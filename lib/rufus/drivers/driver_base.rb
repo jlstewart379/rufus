@@ -22,10 +22,16 @@ module Rufus
       def find(locator)
         how = locator.keys[0].to_sym
         what = locator[how]
-        begin
-          selenium.find_element(how, what)
-        rescue Selenium::WebDriver::Error::NoSuchElementError
-          return nil
+
+        if how.to_s.eql?('label')
+          locator = generate_name(locator)
+          find(locator)
+        else
+          begin
+            selenium.find_element(how, what)
+          rescue Selenium::WebDriver::Error::NoSuchElementError
+            return nil
+          end
         end
       end
 
@@ -198,6 +204,12 @@ module Rufus
       end
 
       private
+
+      def generate_name(locator)
+        parser = Rufus::Parser.new(page_source)
+        view = parser.find_view(locator)
+        {:name => view['name']}
+      end
 
       def url
         if @config["appium_url"].nil? || @config["appium_url"].eql?("")

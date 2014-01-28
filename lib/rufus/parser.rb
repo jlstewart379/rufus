@@ -8,51 +8,51 @@ module Rufus
       @screen_data = JSON.parse(json)
     end
 
-    def class_for(label)
-      view_by_label(label)['type'] if exists?(label)
+    def class_for(locator)
+      find_view(locator)['type'] if exists?(locator)
     end
 
-    def value(label)
-      view_by_label(label)['value'] if exists?(label)
+    def value(locator)
+      find_view(locator)['value'] if exists?(locator)
     end
 
-    def width(label)
-      view_by_label(label)['rect']['size']['width'] if exists?(label)
+    def width(locator)
+      find_view(locator)['rect']['size']['width'] if exists?(locator)
     end
 
-    def height(label)
-      view_by_label(label)['rect']['size']['height'] if exists?(label)
+    def height(locator)
+      find_view(locator)['rect']['size']['height'] if exists?(locator)
     end
 
-    def x_pos(label)
-      view_by_label(label)['rect']['origin']['x'] if exists?(label)
+    def x_pos(locator)
+      find_view(locator)['rect']['origin']['x'] if exists?(locator)
     end
 
-    def y_pos(label)
-      view_by_label(label)['rect']['origin']['y'] if exists?(label)
+    def y_pos(locator)
+      find_view(locator)['rect']['origin']['y'] if exists?(locator)
     end
 
-    def label_for(label)
-      view_by_label(label)['label'] if exists?(label)
+    def label_for(locator)
+      find_view(locator)['label'] if exists?(locator)
     end
 
-    def enabled?(label)
-      view = view_by_label(label)
+    def enabled?(locator)
+      view = find_view(locator)
       return false if view.nil?
       view['enabled']
     end
 
-    def displayed?(label)
-      view = view_by_label(label)
+    def displayed?(locator)
+      view = find_view(locator)
       return false if view.nil?
-      view_by_label(label)['visible']
+      find_view(locator)['visible']
     end
 
-    def child_count(label)
-      view_by_label(label)['children'].count if found(label)
+    def child_count(locator)
+      find_view(locator)['children'].count if found(locator)
     end
 
-    def view_by_label(locator)
+    def find_view(locator)
       @found_view = nil
       view_data_for(@screen_data, locator)
       @found_view
@@ -73,12 +73,12 @@ module Rufus
     end
 
     def exists?(locator)
-      if view_by_label(locator).nil?
+      if find_view(locator).nil?
         false
       else
         how = locator.keys[0].to_s
         what = locator[how.to_sym]
-        view_by_label(locator)[how].eql?(what)
+        find_view(locator)[how].eql?(what)
       end
     end
   end

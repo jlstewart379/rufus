@@ -108,6 +108,16 @@ describe Rufus::Drivers::IOS_FasterSimulator do
         mock_element.should_receive(:displayed?)
         driver.displayed?(:xpath => 'rufusButton')
       end
+      context 'locator contains label key' do
+        it 'should use the parser to generate a locator that uses the name' do
+          mock_driver.should_receive(:page_source).and_return(page_data)
+          mock_driver.should_receive(:find_element).with(:name, 'showAlertButton')
+          view_data =  {"name"=>"showAlertButton", "type"=>"UIAButton", "label"=>"showAlertButton", "value"=>nil, "rect"=>{"origin"=>{"x"=>304, "y"=>302}, "size"=>{"width"=>150, "height"=>30}}, "dom"=>nil, "enabled"=>true, "valid"=>true, "visible"=>true, "children"=>[]}
+          Rufus::Parser.should_receive(:new).with(page_data).and_return(mock_parser)
+          mock_parser.should_receive(:find_view).with(:label => 'rufusLabel').and_return(view_data)
+          driver.find(:label => 'rufusLabel')
+        end
+      end
     end
   end
 end
