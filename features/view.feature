@@ -44,8 +44,8 @@ Feature: Interacting with views
      Given I have created a valid appium driver for iOS
      And I am on the "HomePage"
      Then I can determine the view defined "label" is of type "UIAStaticText"
-    @jls
+
    Scenario: Getting a view by label
-     Given I have navigated to the "LabeledPage" using the "to_labeled" route
-     Then I can see the view defined "image" could be found by the name "default.png"
+     Given I click the view defined "labeled"
+     Then I am on the "LabeledPage"
 

@@ -45,6 +45,3 @@ end
 Then(/^I can determine the view defined "([^"]*)" is of type "([^"]*)"$/) do |which, type|
   on(HomePage).send("view_#{which}_view").class.should.eql?(type)
 end
-Then(/^I can see the view defined "([^"]*)" could be found by the name "([^"]*)"$/) do |arg1, arg2|
-  on(LabeledPage).send("view_#{which}_view").
-end

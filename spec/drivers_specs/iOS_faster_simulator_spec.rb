@@ -62,28 +62,28 @@ describe Rufus::Drivers::IOS_FasterSimulator do
       end
       context 'existence' do
         it 'can find out if its part of things' do
-          mock_parser.should_receive(:exists?).with('rufusButton').and_return(true)
+          mock_parser.should_receive(:exists?).with(:name => 'rufusButton').and_return(true)
           driver.exists?(:name => 'rufusButton').should be_true
         end
         it 'can find out if it is not part of things' do
-          mock_parser.should_receive(:exists?).with('rufusButton').and_return(false)
+          mock_parser.should_receive(:exists?).with(:name => 'rufusButton').and_return(false)
           driver.exists?(:name => 'rufusButton').should be_false
         end
       end
       it 'can tell if an element is enabled' do
-        mock_parser.should_receive(:enabled?).with('rufusButton').and_return(true)
+        mock_parser.should_receive(:enabled?).with(:name => 'rufusButton').and_return(true)
         driver.enabled?(:name => 'rufusButton').should be_true
     end
       it 'can tell if an element is displayed on screen' do
-        mock_parser.should_receive(:displayed?).with('rufusButton').and_return(true)
+        mock_parser.should_receive(:displayed?).with(:name => 'rufusButton').and_return(true)
         driver.displayed?(:name => 'rufusButton').should be_true
       end
       it 'can get the text value of an element' do
-        mock_parser.should_receive(:value).with('rufusButton').and_return("whateva")
+        mock_parser.should_receive(:value).with(:name => 'rufusButton').and_return("whateva")
         driver.text(:name => 'rufusButton').should eq("whateva")
       end
       it 'can get the class of an element in expedited fashion' do
-        mock_parser.should_receive(:class_for).with('rufusButton').and_return("UIAButton")
+        mock_parser.should_receive(:class_for).with(:name => 'rufusButton').and_return("UIAButton")
         driver.class(:name => 'rufusButton').should eq("UIAButton")
       end
     end

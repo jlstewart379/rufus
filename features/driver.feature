@@ -1,5 +1,5 @@
 @driver
-Feature: Interacting with a view
+Feature: Interacting with hardware
 
   Scenario: Configuring for iOS
     Given I have created a valid appium driver for iOS
