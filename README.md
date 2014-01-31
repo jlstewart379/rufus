@@ -1,4 +1,4 @@
-Last Updated: 12-12-2013
+Last Updated: 01-30-2014
 
 This project is intended to facilitate automated testing on iOS devices using cucumber, appium and the Page Object pattern. 
 
@@ -12,18 +12,14 @@ PREREQUISITES
 
 In order to use appium you'll first need to install node and npm. Perform the following steps in the terminal to retrieve the necessary items:
 
->brew install node
-
->curl https://npmjs.org/install.sh | sh
-
->export NODE_PATH="/usr/local/lib/node"
-
->export PATH="/usr/local/share/npm/bin:$PATH
-
->npm install -g appium
-
->npm install wd
-
+````
+  $ brew install node
+  $ curl https://npmjs.org/install.sh | sh
+  $ export NODE_PATH="/usr/local/lib/node"
+  $ export PATH="/usr/local/share/npm/bin:$PATH
+  $ npm install -g appium
+  $ npm install wd
+````
 
 QUICK START GUIDE
 ------------------------------
@@ -43,7 +39,7 @@ QUICK START GUIDE
     platform: Mac
     version: 7.0
     app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
-    use_physical: true   #run on physical device?
+    use_physical: false   #run on physical device?
     sim_app_path: $HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphonesimulator/YourApp.app
     device: iPhoneSimulator
     optimized: true  #use faster lookup strategy
@@ -71,7 +67,7 @@ After installing the gem and starting the appium server, open an irb session fro
 DEFINING A BUTTON SEQUENCE
 --------------------------
 
-Rufus doesn't mind the mindless work of pushing buttons in sequence. The following command will push the goodButton, badButton and sortaOkayButton in sequence 10 times in a row if such a sequence is possible. In this example, the goodButton must be available to be pressed after pushing the sortaOkayButton in order for the loop to continue. 
+Rufus doesn't mind the mindless work of pushing buttons in sequence. The following command will push the goodButton, badButton and sortaOkayButton in sequence 10 times in a row if such a sequence is possible. In this example, the goodButton must be available to be pressed after pushing the sortaOkayButton in order for the loop to continue. This can be useful for finding strange behavior becuase of a memory leak, which can sometimes take hundreds of keystrokes before revealing itself. 
 
 ````ruby
     driver.sequence 'goodButton', 'badButton', 'sortaOkayButton', '10'
@@ -96,6 +92,11 @@ Enter 'Hello' into text field
 
 ````ruby
     driver.type 'hello' 'textFieldName'
+````
+Get the view hierarchy
+
+````ruby
+    driver.page_source
 ````
 
 DEPLOYING TO DEVICE WITHOUT USING XCODE
