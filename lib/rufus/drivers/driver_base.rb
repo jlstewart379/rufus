@@ -1,3 +1,5 @@
+require 'appium_lib'
+
 module Rufus
   module Drivers
     class DriverBase
@@ -11,7 +13,7 @@ module Rufus
       end
 
       def quit
-        selenium.quit
+        #selenium.quit
         @selenium_driver = nil
       end
 
@@ -234,7 +236,16 @@ module Rufus
       end
 
       def selenium
-        @selenium_driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
+        if @selenium_driver.nil?
+          p 'capablities'
+          p capabilities["app"]
+          app = {device: 'iPad Simulator', app_path: capabilities["app"]}
+          @selenium_driver = Appium::Driver.new(app)
+          @selenium_driver.start_driver
+          @selenium_driver
+        end
+        @selenium_driver
+        #@selenium_driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
       end
     end
   end
