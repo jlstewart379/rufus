@@ -202,7 +202,7 @@ module Rufus
       end
 
       def screenshot(name)
-        selenium.save_screenshot name
+        selenium.screenshot name
       end
 
       private
