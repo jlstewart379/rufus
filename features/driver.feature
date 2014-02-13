@@ -19,7 +19,7 @@ Feature: Interacting with hardware
     Given I am on the "HomePage"
     When I type "BooYah" into the text field defined "text_box"
     Then the view marked "text_box" has the text "BooYah"
-  @jls
+
   Scenario: Taking a screenshot
     Given I have created a valid appium driver for iOS
     When I take a screenshot called "coolShot.png"

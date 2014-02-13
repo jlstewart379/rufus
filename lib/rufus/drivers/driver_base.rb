@@ -172,7 +172,7 @@ module Rufus
       end
 
       def page_source
-        @page_source = selenium.page_source if @page_source.nil?
+        @page_source = selenium.send(:driver).page_source if @page_source.nil?
         @page_source
       end
 
