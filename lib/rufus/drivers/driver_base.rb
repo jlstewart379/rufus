@@ -80,11 +80,11 @@ module Rufus
       end
 
       def orientation
-        selenium.orientation.to_s
+        selenium.send(:driver).orientation.to_s
       end
 
       def rotate(orientation)
-        selenium.rotate orientation
+        selenium.send(:driver).rotate orientation
       end
 
       def type(keys, name)

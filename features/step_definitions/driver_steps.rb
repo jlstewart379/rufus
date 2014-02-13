@@ -15,7 +15,7 @@ end
 When(/^I rotate the app to "([^"]*)"$/) do |orient|
   orientation = :portrait
   orientation = :landscape if orient.eql?('landscape')
-  $driver.rotate orientation
+  $rufus.rotate orientation
 end
 When(/^I type "([^"]*)" into the text field defined "([^"]*)"$/) do |keys, which|
   on(HomePage).send("view_#{which}_view").send_keys keys
