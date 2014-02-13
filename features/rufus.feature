@@ -10,7 +10,7 @@ Feature: Using Rufus
   Scenario: Clicking on an element by name without accessor
     Given I have clicked on view defined "rufusButton" with an accessor
     Then I am on the "RufusPage"
- @jls
+
   Scenario: Getting the page source
     Then I can print out the page data
 

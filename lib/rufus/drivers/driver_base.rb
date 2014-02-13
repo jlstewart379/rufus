@@ -43,7 +43,6 @@ module Rufus
 
       def cells(locator)
         element = find(locator)
-        raise 'Expected view to be of type UIATableView' unless element.tag_name.eql? 'UIATableView'
         element.find_elements(:tag_name, 'UIATableCell')
       end
 
@@ -72,7 +71,8 @@ module Rufus
       end
 
       def class(locator)
-        find(locator).tag_name
+
+        #find(locator).tag_name
       end
 
       def name(locator)

@@ -39,7 +39,7 @@ Feature: Interacting with views
    Scenario: Getting text of a view
      Given I am on the "HomePage"
      Then I can see the view defined "label" has text "Rufus Label"
-
+  @jls
    Scenario: Getting the class of a view
      Given I have created a valid appium driver for iOS
      And I am on the "HomePage"
