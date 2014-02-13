@@ -3,7 +3,7 @@ Feature: Interacting with hardware
 
   Scenario: Configuring for iOS
     Given I have created a valid appium driver for iOS
-
+  @jls
   Scenario: Rotating the orientation of device to landscape
     Given the app is in the "portrait" orientation
     When I rotate the app to "landscape"
