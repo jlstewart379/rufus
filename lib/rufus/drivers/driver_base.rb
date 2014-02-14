@@ -8,18 +8,7 @@ module Rufus
 
       def capabilities; raise Exception; end
 
-      def start
-        selenium.get url
-      end
 
-      def quit
-        #selenium.quit
-        @selenium_driver = nil
-      end
-
-      def server_url
-        @url
-      end
 
       def find(locator)
         how = locator.keys[0].to_sym
@@ -205,6 +194,18 @@ module Rufus
         selenium.screenshot name
       end
 
+      def start
+        selenium.get url
+      end
+
+      def quit
+        @selenium_driver = nil
+      end
+
+      def server_url
+        @url
+      end
+
       private
 
       def generate_name(locator)
@@ -237,13 +238,11 @@ module Rufus
 
       def selenium
         if @selenium_driver.nil?
-          #app = {device: 'iPad Simulator', app_path: capabilities["app"]}
           @selenium_driver = Appium::Driver.new(app)
           @selenium_driver.start_driver
           @selenium_driver
         end
         @selenium_driver
-        #@selenium_driver ||= Selenium::WebDriver.for(:remote, :desired_capabilities => capabilities, :url => url)
       end
     end
   end

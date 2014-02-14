@@ -9,16 +9,6 @@ module Rufus
         @config = config
       end
 
-      #def capabilities
-      #  {
-      #      'browserName' => @config["browser"],
-      #      'platform' => @config["platform"],
-      #      'version' => @config["version"].to_s,
-      #      'app' => @config["sim_app_path"],
-      #      'device' => "iPhoneSimulator"
-      #  }
-      #end
-
       def app
         {device: @config["device"], app_path: @config["sim_app_path"]}
       end
