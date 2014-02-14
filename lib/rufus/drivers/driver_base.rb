@@ -71,8 +71,8 @@ module Rufus
       end
 
       def class(locator)
-
-        #find(locator).tag_name
+        view_data = Rufus::Parser.new(page_source).find_view(locator)
+        view_data["type"]
       end
 
       def name(locator)
@@ -237,9 +237,7 @@ module Rufus
 
       def selenium
         if @selenium_driver.nil?
-          p 'capablities'
-          p capabilities["app"]
-          app = {device: 'iPad Simulator', app_path: capabilities["app"]}
+          #app = {device: 'iPad Simulator', app_path: capabilities["app"]}
           @selenium_driver = Appium::Driver.new(app)
           @selenium_driver.start_driver
           @selenium_driver
