@@ -29,9 +29,6 @@ module Rufus
       def text(locator)
         Rufus::Parser.new(page_source).value(locator)
       end
-      def class(locator)
-        Rufus::Parser.new(page_source).class_for(locator)
-      end
     end
   end
 end
