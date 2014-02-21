@@ -50,7 +50,7 @@ desc "Starting appium server for simulator"
 task :appium_server do
   config = YAML.load(ERB.new(File.read('config.yml')).result)
   app_path = config["sim_app_path"]
-  system('appium --app "' + app_path + '" --force-ipad --native-instruments-lib 1>&2')
+  system('appium --pre-launch  --no-reset --app "' + app_path + '" 1>&2')
 end
 
 desc "Install CoPilot to simulator"
