@@ -41,12 +41,12 @@ QUICK START GUIDE
     app:$HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphoneos/YourApp.app 
     use_physical: false   #run on physical device?
     sim_app_path: $HOME/Library/Developer/Xcode/DerivedData/<UNIQUE>/Build/Products/Debug-iphonesimulator/YourApp.app
-    device: iPhoneSimulator
+    device: iPad Simulator
     optimized: true  #use faster lookup strategy
 ````
 - Start appium server in new terminal window
 
->appium -U DEVICE_UDID --app YourApp.app --native-instruments-lib #omit -U option for simulator
+>appium --app YourApp.app #use -U <Device UDID> for running on physical device
 
 - Deploy to iOS device or simulator using XCode or libimobiledevice. Libimobiledevice repo located at: https://github.com/benvium/libimobiledevice-macosx
 
